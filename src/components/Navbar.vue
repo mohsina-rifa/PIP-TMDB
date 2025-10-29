@@ -11,16 +11,9 @@ const props = defineProps({
   <header class="navbar">
     <div class="navbar-left">
       <router-link to="/" class="brand">
-        <!-- Bootstrap Film Icon -->
         <i class="bi bi-film logo"></i>
         <span class="title">TMDB-Serpent</span>
       </router-link>
-    </div>
-
-    <div class="navbar-center">
-      <button class="btn btn--medium" type="button" @click="onSearchClick?.()">
-        Search
-      </button>
     </div>
 
     <nav class="navbar-right">
@@ -28,6 +21,16 @@ const props = defineProps({
       <router-link to="/movies/popular" class="nav-link">Movies</router-link>
       <router-link to="/tv/popular" class="nav-link">TV</router-link>
       <router-link to="/watchList" class="nav-link">Watchlist</router-link>
+      <div class="search-bar">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Search movies, TV..."
+        />
+        <button class="btn btn--medium" type="button">
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
     </nav>
   </header>
 </template>
@@ -41,6 +44,7 @@ const props = defineProps({
   justify-content: space-between;
   gap: 1rem;
   padding: 0.75rem 1rem;
+  margin: 5rem;
   background: var(--green-1); /* use palette */
   border-bottom: 1px solid var(--silver-3);
   margin: 0;
@@ -64,12 +68,6 @@ const props = defineProps({
   color: var(--white);
 }
 
-.navbar-center {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
 .navbar-right {
   display: flex;
   gap: 0.75rem;
@@ -84,7 +82,47 @@ const props = defineProps({
 }
 
 .nav-link:hover {
-  background: var(--green-8);
+  font-weight: bolder;
+  transition: background 0.2s, font-weight 0.2s, color 0.2s;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: rgba(224, 224, 224, 0.4);
+  color: var(--silver-6);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-right: 1rem;
+  height: 2.2rem;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  padding: 0.4rem 0.8rem;
+  font-size: 1rem;
+  background: transparent;
+  color: var(--silver-6);
+  width: 160px;
+}
+
+.search-input::placeholder {
+  color: var(--white);
+  opacity: 0.7;
+}
+
+.btn.btn--medium {
+  border-radius: 0 6px 6px 0;
+  background: var(--silver-6);
+  color: var(--green-1);
+  font-weight: bolder;
+  padding: 0 0.8rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border: none;
 }
 
 .btn {
