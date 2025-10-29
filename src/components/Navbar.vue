@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import SearchBar from '../components/SearchBar.vue';
 const props = defineProps({
   onSearchClick: {
     type: Function,
@@ -40,21 +41,7 @@ const props = defineProps({
         class="nav-link text-decoration-none rounded-2"
         >Watchlist</router-link
       >
-      <div
-        class="search-bar d-flex align-items-center gap-0 rounded-2 overflow-hidden me-3"
-      >
-        <input
-          type="text"
-          class="search-input fs-6 bg-transparent border-none"
-          placeholder="Search movies, TV..."
-        />
-        <button
-          class="btn cursor-pointer fw-bold rounded-2 border-0 d-flex align-items-center"
-          type="button"
-        >
-          <i class="bi bi-search"></i>
-        </button>
-      </div>
+      <SearchBar />
     </nav>
   </header>
 </template>
