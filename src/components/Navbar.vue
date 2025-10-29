@@ -27,7 +27,7 @@ const props = defineProps({
         >Home</router-link
       >
       <router-link
-        to="/movies/popular"
+        to="/movie/popular"
         class="nav-link text-decoration-none rounded-2"
         >Movies</router-link
       >
@@ -70,7 +70,9 @@ const props = defineProps({
   padding: 0.5rem 0.75rem;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link:focus,
+.nav-link:active {
   color: var(--white);
   font-weight: bolder;
   transition: background 0.2s, font-weight 0.2s, color 0.2s;

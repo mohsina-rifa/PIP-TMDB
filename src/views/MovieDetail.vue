@@ -1,5 +1,7 @@
 <script setup lang="ts"></script>
 
-<template></template>
+<template>
+  <p>Movie Detail View</p>
+</template>
 
 <style scoped></style>
