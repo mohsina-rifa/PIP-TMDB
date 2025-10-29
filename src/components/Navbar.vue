@@ -34,6 +34,8 @@ const props = defineProps({
 
 <style scoped>
 .navbar {
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -41,6 +43,7 @@ const props = defineProps({
   padding: 0.75rem 1rem;
   background: var(--green-1); /* use palette */
   border-bottom: 1px solid var(--silver-3);
+  margin: 0;
 }
 
 .brand {
