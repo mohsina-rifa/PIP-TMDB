@@ -75,36 +75,4 @@ const props = defineProps({
   font-weight: bolder;
   transition: background 0.2s, font-weight 0.2s, color 0.2s;
 }
-
-.search-bar {
-  background: rgba(224, 224, 224, 0.35);
-  color: var(--silver-6);
-  height: 2.2rem;
-}
-
-.search-input {
-  outline: none;
-  padding: 0.4rem 0.8rem;
-  color: var(--silver-6);
-  width: 160px;
-}
-
-.search-input::placeholder {
-  color: var(--silver-7);
-}
-
-.btn {
-  background: var(--silver-7);
-  color: var(--green-1);
-  padding: 0.5rem 0.75rem;
-  border-radius: 0 6px 6px 0;
-  font-weight: bolder;
-  height: 100%;
-}
-
-.btn:hover {
-  background: var(--silver-6);
-  color: var(--green-1);
-  transition: background 0.2s;
-}
 </style>
