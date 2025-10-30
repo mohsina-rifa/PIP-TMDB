@@ -48,7 +48,7 @@ const props = defineProps({
 
 <style scoped>
 .navbar {
-  background: var(--green-1); /* use palette */
+  background: none; /* use palette */
   border-bottom: 1px solid var(--silver-3);
 }
 
