@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Row from "../components/Row.vue";
+import Trailer from "../components/Trailer.vue";
 import type { Show } from "../types/auth";
 
 const trendingItems: Show[] = [
@@ -68,31 +69,31 @@ const trendingItems: Show[] = [
 const topItems: Show[] = [
   {
     title: "Stranger Things",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "./screen.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
   },
   {
     title: "Wednesday",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "./screen.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
   },
   {
     title: "Titans",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "./screen.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.   ",
   },
   {
     title: "Flash",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "./screen.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.   ",
   },
   {
     title: "Arrow",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "./screen.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.   ",
   },
@@ -101,7 +102,9 @@ const topItems: Show[] = [
 
 <template>
   <main class="home-container d-flex flex-column min-vh-100">
-    <section class="trailer mb-4"></section>
+    <section class="trailer mb-4">
+      <Trailer :items="topItems" />
+    </section>
 
     <section class="px-5">
       <Row :title="'Trending Now'" :items="trendingItems" />
