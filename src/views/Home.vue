@@ -74,19 +74,19 @@ const trendingItems: Show[] = [
       <Row :title="'Trending Now'" :items="trendingItems" />
     </section>
     <section class="px-5">
-      <h2 class="fs-3 fw-bold mb-4">Popular</h2>
+      <Row :title="'Popular'" :items="trendingItems" />
     </section>
     <section class="px-5">
-      <h2 class="fs-3 fw-bold mb-4">Top Rated</h2>
+      <Row :title="'Top Rated'" :items="trendingItems" />
     </section>
     <section class="px-5">
-      <h2 class="fs-3 fw-bold mb-4">Favourites</h2>
+      <Row :title="'Your Picks'" :items="trendingItems" />
     </section>
     <section class="px-5">
-      <h2 class="fs-3 fw-bold mb-4">Upcoming Movies</h2>
+      <Row :title="'Upcoming Movies'" :items="trendingItems" />
     </section>
     <section class="px-5">
-      <h2 class="fs-3 fw-bold mb-4">Upcoming TV Series</h2>
+      <Row :title="'Upcoming TV Series'" :items="trendingItems" />
     </section>
   </main>
 </template>
