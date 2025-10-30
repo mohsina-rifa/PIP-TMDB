@@ -9,7 +9,7 @@
   --green-3: #184d31;
   --green-4: #1e6040;
   --green-5: #227653;
-  --green-6: #267355;
+  --green-6: #267550;
   --green-7: #39a17c;
   --green-8: #51c49a;
   --green-9: #6fe6b8;
@@ -31,6 +31,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: var(--black);
 }
 
 #app {
@@ -38,4 +39,5 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
+  background-color: var(--silver-7);
 }
