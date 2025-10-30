@@ -45,7 +45,7 @@ const buttonType = computed<"button" | "submit" | "reset">(() => {
     :type="buttonType"
     @click="emit('click')"
   >
-    <i v-if="props.icon" :class="props.icon"></i>
+    <i v-if="props.icon" :class="props.icon" class="btn-icon"></i>
     <span class="ms-1">{{ label }}</span>
   </button>
 </template>
@@ -53,16 +53,29 @@ const buttonType = computed<"button" | "submit" | "reset">(() => {
 <style scoped>
 .custom-btn {
   font-size: 1.25rem;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 1.5rem;
   border-radius: 8px;
   font-weight: 600;
-  background: var(--white);
+  background: var(--silver-7);
   color: var(--green-1);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   transition: background 0.2s, color 0.2s;
 }
+
 .custom-btn:hover {
-  background: var(--green-7);
+  background: var(--green-1);
   color: var(--white);
+  font-weight: bold;
+}
+
+.btn-icon {
+  font-size: 1.25rem;
+  color: var(--green-1);
+  font-weight: bold;
+}
+
+.custom-btn:hover .btn-icon {
+  color: var(--white);
+  font-weight: bolder;
 }
 </style>
