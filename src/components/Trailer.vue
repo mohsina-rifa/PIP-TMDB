@@ -25,33 +25,37 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="carousel-container" v-if="items && items.length">
+  <div
+    class="trailer-container position-relative overflow-hidden ps-5 d-flex text-start align-items-start justify-content-start"
+    v-if="items && items.length"
+  >
     <div
-      class="carousel-bg"
-      :style="{ backgroundImage: `url(${items[current]?.thumbnail ?? './screen.png'})` }"
+      class="trailer-bg position-absolute top-0 start-0 w-100 h-100 bg-cover bg-center z-1"
+      :style="{
+        backgroundImage: `url(${items[current]?.thumbnail ?? './screen.png'})`,
+      }"
     ></div>
-    <div class="carousel-content">
-      <h1 class="carousel-title">{{ items[current]?.title }}</h1>
-      <p class="carousel-desc">{{ items[current]?.description }}</p>
-      <div class="carousel-actions d-flex gap-3">
-        <Custom label="Save" type="success" :icon="'bi bi-save'" />
-        <Custom label="Info" type="secondary" :icon="'bi bi-info-square'" />
+    <Transition name="slide-fade" mode="out-in">
+      <div
+        class="trailer-content position-relative z-2"
+        :key="items[current]?.title"
+      >
+        <h1 class="trailer-title fw-bold mb-4">{{ items[current]?.title }}</h1>
+        <p class="trailer-desc mb-4">{{ items[current]?.description }}</p>
+        <div
+          class="trailer-actions d-flex gap-3 align-items-center justify-content-start"
+        >
+          <Custom label="Save" type="success" :icon="'bi bi-save'" />
+          <Custom label="Info" type="secondary" :icon="'bi bi-info-square'" />
+        </div>
       </div>
-    </div>
+    </Transition>
   </div>
 </template>
 
 <style scoped>
-.carousel-container {
-  position: relative;
-  width: 100%;
+.trailer-container {
   height: 100%;
-  overflow: hidden;
-  padding-left: 2rem;
-  display: flex;
-  text-align: left;
-  align-items: flex-start;
-  justify-content: flex-start;
   background: linear-gradient(
     to right top,
     rgba(34, 118, 83, 0.43),
@@ -59,39 +63,45 @@ onUnmounted(() => {
   );
 }
 
-.carousel-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
+.trailer-bg {
   filter: brightness(0.6);
-  z-index: 1;
 }
 
-.carousel-content {
-  position: relative;
-  z-index: 2;
+.trailer-content {
   padding: 2.5rem 3rem;
   color: var(--white);
   max-width: 600px;
   margin-top: 8rem;
 }
 
-.carousel-title {
+.trailer-title {
   font-size: 7rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
 }
 
-.carousel-desc {
+.trailer-desc {
   font-size: 1.2rem;
-  margin-bottom: 2rem;
 }
 
-.carousel-actions {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  justify-content: start;
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+  position: absolute;
+  width: 100%;
+}
+
+.slide-fade-enter-from {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.slide-fade-leave-to {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.slide-fade-enter-to,
+.slide-fade-leave-from {
+  opacity: 1;
+  transform: translateX(0);
 }
 </style>
