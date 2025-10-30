@@ -1,9 +1,77 @@
+<script setup lang="ts">
+import Row from "../components/Row.vue";
+import type { Show } from "../types/auth";
+
+const trendingItems: Show[] = [
+  {
+    title: "Stranger Things",
+    thumbnail: "./thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+  },
+  {
+    title: "Wednesday",
+    thumbnail: "./thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+  },
+  {
+    title: "Riverdale",
+    thumbnail: "./thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+  },
+  {
+    title: "Young Sheldon",
+    thumbnail: "./thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+  },
+  {
+    title: "Breaking Bad",
+    thumbnail: "./thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+  },
+  {
+    title: "Crown",
+    thumbnail: "./thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+  },
+  {
+    title: "Titans",
+    thumbnail: "./thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.   ",
+  },
+  {
+    title: "Flash",
+    thumbnail: "./thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.   ",
+  },
+  {
+    title: "Supergirl",
+    thumbnail: "./thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.   ",
+  },
+  {
+    title: "Arrow",
+    thumbnail: "./thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.   ",
+  },
+];
+</script>
+
 <template>
   <main class="home-container d-flex flex-column min-vh-100">
     <section class="screen-section mb-4"></section>
 
     <section class="px-5">
-      <h2 class="fs-3 fw-bold mb-4">Trending Now</h2>
+      <Row :title="'Trending Now'" :items="trendingItems" />
     </section>
     <section class="px-5">
       <h2 class="fs-3 fw-bold mb-4">Popular</h2>
@@ -23,12 +91,9 @@
   </main>
 </template>
 
-<script setup lang="ts"></script>
-
 <style scoped>
 .home-container {
   gap: 2.5rem;
-  background: var(--green-13);
 }
 
 .screen-section {
