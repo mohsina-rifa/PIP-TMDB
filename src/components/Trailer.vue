@@ -1,0 +1,107 @@
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted } from "vue";
+import Custom from "../components/buttons/Custom.vue";
+import type { Show } from "../types/auth";
+
+const props = defineProps({
+  items: {
+    type: Array as () => Show[],
+    required: true,
+  },
+});
+
+const current = ref(0);
+let interval: number | undefined;
+
+onMounted(() => {
+  interval = window.setInterval(() => {
+    current.value = (current.value + 1) % props.items.length;
+  }, 5000);
+});
+
+onUnmounted(() => {
+  if (interval) clearInterval(interval);
+});
+</script>
+
+<template>
+  <div
+    class="trailer-container position-relative overflow-hidden ps-5 d-flex text-start align-items-start justify-content-start"
+    v-if="items && items.length"
+  >
+    <div
+      class="trailer-bg position-absolute top-0 start-0 w-100 h-100 bg-cover bg-center z-1"
+      :style="{
+        backgroundImage: `url(${items[current]?.thumbnail ?? './screen.png'})`,
+      }"
+    ></div>
+    <Transition name="slide-fade" mode="out-in">
+      <div
+        class="trailer-content position-relative z-2"
+        :key="items[current]?.title"
+      >
+        <h1 class="trailer-title fw-bold mb-4">{{ items[current]?.title }}</h1>
+        <p class="trailer-desc mb-4">{{ items[current]?.description }}</p>
+        <div
+          class="trailer-actions d-flex gap-3 align-items-center justify-content-start"
+        >
+          <Custom label="Save" type="success" :icon="'bi bi-save'" />
+          <Custom label="Info" type="secondary" :icon="'bi bi-info-square'" />
+        </div>
+      </div>
+    </Transition>
+  </div>
+</template>
+
+<style scoped>
+.trailer-container {
+  height: 100%;
+  background: linear-gradient(
+    to right top,
+    rgba(34, 118, 83, 0.43),
+    rgba(13, 38, 28, 0.43)
+  );
+}
+
+.trailer-bg {
+  filter: brightness(0.6);
+}
+
+.trailer-content {
+  padding: 2.5rem 3rem;
+  color: var(--white);
+  max-width: 600px;
+  margin-top: 8rem;
+}
+
+.trailer-title {
+  font-size: 7rem;
+}
+
+.trailer-desc {
+  font-size: 1.2rem;
+}
+
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+  position: absolute;
+  width: 100%;
+}
+
+.slide-fade-enter-from {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.slide-fade-leave-to {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.slide-fade-enter-to,
+.slide-fade-leave-from {
+  opacity: 1;
+  transform: translateX(0);
+}
+</style>
