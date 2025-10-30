@@ -64,11 +64,44 @@ const trendingItems: Show[] = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.   ",
   },
 ];
+
+const topItems: Show[] = [
+  {
+    title: "Stranger Things",
+    thumbnail: "./thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+  },
+  {
+    title: "Wednesday",
+    thumbnail: "./thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+  },
+  {
+    title: "Titans",
+    thumbnail: "./thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.   ",
+  },
+  {
+    title: "Flash",
+    thumbnail: "./thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.   ",
+  },
+  {
+    title: "Arrow",
+    thumbnail: "./thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.   ",
+  },
+];
 </script>
 
 <template>
   <main class="home-container d-flex flex-column min-vh-100">
-    <section class="screen-section mb-4"></section>
+    <section class="trailer mb-4"></section>
 
     <section class="px-5">
       <Row :title="'Trending Now'" :items="trendingItems" />
@@ -96,7 +129,7 @@ const trendingItems: Show[] = [
   gap: 2.5rem;
 }
 
-.screen-section {
+.trailer {
   height: 43rem;
   background: linear-gradient(
     to right top,
