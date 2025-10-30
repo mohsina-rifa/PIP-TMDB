@@ -25,7 +25,7 @@ const props = defineProps({
         <div class="card-img w-100 rounded-2 mb-2">
           <img
             class="w-100 h-100 object-fit-cover rounded-2"
-            :src="item.thumbnail || './thumbnail.png'"
+            :src="item.thumbnail || '../thumbnail.png'"
             alt="Thumbnail"
           />
         </div>
