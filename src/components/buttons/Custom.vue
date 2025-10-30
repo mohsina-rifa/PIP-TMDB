@@ -40,25 +40,21 @@ const buttonType = computed<"button" | "submit" | "reset">(() => {
 
 <template>
   <button
-    class="btn custom-btn d-flex align-items-center gap-2"
+    class="btn custom-btn fs-5 fw-semibold rounded-2 shadow d-flex align-items-center gap-2"
     :class="`btn-${props.type}`"
     :type="buttonType"
     @click="emit('click')"
   >
-    <i v-if="props.icon" :class="props.icon" class="btn-icon"></i>
+    <i v-if="props.icon" :class="props.icon" class="btn-icon fs-5 fw-bold"></i>
     <span class="ms-1">{{ label }}</span>
   </button>
 </template>
 
 <style scoped>
 .custom-btn {
-  font-size: 1.25rem;
   padding: 0.5rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 600;
   background: var(--silver-7);
   color: var(--green-1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   transition: background 0.2s, color 0.2s;
 }
 
@@ -69,9 +65,7 @@ const buttonType = computed<"button" | "submit" | "reset">(() => {
 }
 
 .btn-icon {
-  font-size: 1.25rem;
   color: var(--green-1);
-  font-weight: bold;
 }
 
 .custom-btn:hover .btn-icon {
