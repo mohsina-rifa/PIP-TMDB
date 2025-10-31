@@ -45,7 +45,7 @@ const buttonType = computed<"button" | "submit" | "reset">(() => {
 
 <template>
   <button
-    class="btn"
+    class="btn medium-btn"
     :class="`btn-${props.type}`"
     :type="buttonType"
     @click="emit('click')"
@@ -53,15 +53,33 @@ const buttonType = computed<"button" | "submit" | "reset">(() => {
     <i
       v-if="props.leftIcon"
       :class="props.leftIcon"
-      class="btn-icon fs-5 fw-bold"
+      class="btn-icon me-1 fs-5 fw-bold"
     ></i>
-    <span class="ms-1">{{ label }}</span>
+    <span>{{ label }}</span>
     <i
       v-if="props.rightIcon"
       :class="props.rightIcon"
-      class="btn-icon fs-5 fw-bold"
+      class="btn-icon ms-1 fs-5 fw-bold"
     ></i>
   </button>
 </template>
 
-<style scoped></style>
+<style scoped>
+.medium-btn {
+  transition: background 0.2s, color 0.2s;
+  color: var(--silver-7);
+}
+
+.medium-btn:hover {
+  background-color: var(--silver-1);
+  color: var(--white);
+}
+
+.btn-icon {
+  color: var(--silver-7);
+}
+
+.medium-btn:hover .btn-icon {
+  color: var(--white);
+}
+</style>
