@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Show } from "../types/auth";
 import { useRoute } from "vue-router";
+import Medium from "../components/buttons/Medium.vue";
 
 const route = useRoute();
 
@@ -79,7 +80,13 @@ const reverseKebab = (str: string) => {
 
 <template>
   <section class="list-container px-5 py-4">
-    <h1 class="category-header fw-bold mb-4">{{ reverseKebab(category) }}</h1>
+    <div class="d-flex align-items-center justify-content-between mb-4 mt-2 mx-2">
+      <h1 class="category-header">{{ reverseKebab(category) }}</h1>
+      <div class="d-flex gap-3">
+        <Medium class="list-button" label="Filter" type="dark" :leftIcon="'bi bi-funnel'" />
+        <Medium class="list-button" label="Sort" type="dark" :leftIcon="'bi bi-sort-down-alt'" />
+      </div>
+    </div>
     <div class="card-grid">
       <div v-for="(item, idx) in trendingItems" :key="idx" class="card">
         <div class="card-img w-100 rounded-2 mb-2">
@@ -100,6 +107,16 @@ const reverseKebab = (str: string) => {
 <style scoped>
 .category-header {
   color: var(--green-1);
+  font-size: 3.25rem;
+  font-weight: bolder;
+}
+
+.list-button {
+  background-color: var(--green-1) !important;
+}
+
+.list-button:hover {
+  background-color: var(--green-3) !important;
 }
 
 .list-container {
@@ -114,7 +131,7 @@ const reverseKebab = (str: string) => {
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(232px, 1fr));
   gap: 1.2rem;
 }
 
@@ -134,6 +151,13 @@ const reverseKebab = (str: string) => {
   justify-content: flex-start;
   padding: 1rem;
   margin: 0 auto;
+}
+
+.card:hover {
+  transform: scale(1.06);
+  background-color: var(--green-1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  font-weight: bolder;
 }
 
 .card-img {
