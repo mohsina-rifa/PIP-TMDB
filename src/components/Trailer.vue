@@ -50,8 +50,8 @@ onUnmounted(() => {
           <div
             class="trailer-actions d-flex gap-3 align-items-center justify-content-start"
           >
-            <Custom label="Save" type="success" :icon="'bi bi-save'" />
-            <Custom label="Info" type="secondary" :icon="'bi bi-info-square'" />
+            <Custom label="Save" type="success" :leftIcon="'bi bi-save'" />
+            <Custom label="Info" type="secondary" :leftIcon="'bi bi-info-square'" />
           </div>
         </div>
       </div>
