@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Show } from "../types/auth";
 import { useRoute } from "vue-router";
-import Medium from "../components/buttons/Medium.vue";
+import Dropdown from "../components/buttons/Dropdown.vue";
 
 const route = useRoute();
 
@@ -70,6 +70,26 @@ const trendingItems: Show[] = [
   },
 ];
 
+const filterOptions = [
+  "Most Popular",
+  "Highest Rated",
+  "Newest"
+];
+
+const onFilterSelect = (option: string) => {
+  console.log("Filter selected:", option);
+};
+
+const sortOptions = [
+  "Release date",
+  "A-Z",
+  "Z-A",
+];
+
+const onSortSelect = (option: string) => {
+  console.log("Sort selected:", option);
+};
+
 const reverseKebab = (str: string) => {
   return str
     .split("-")
@@ -83,8 +103,8 @@ const reverseKebab = (str: string) => {
     <div class="d-flex align-items-center justify-content-between mb-4 mt-2 mx-2">
       <h1 class="category-header">{{ reverseKebab(category) }}</h1>
       <div class="d-flex gap-3">
-        <Medium class="list-button" label="Filter" type="dark" :leftIcon="'bi bi-funnel'" />
-        <Medium class="list-button" label="Sort" type="dark" :leftIcon="'bi bi-sort-down-alt'" />
+        <Dropdown class="list-button" label="Filter" type="dark" :leftIcon="'bi bi-funnel'" :options="filterOptions" @select="onFilterSelect" />
+        <Dropdown class="list-button" label="Sort" type="dark" :leftIcon="'bi bi-sort-down-alt'" :options="sortOptions" @select="onSortSelect" />
       </div>
     </div>
     <div class="card-grid">
