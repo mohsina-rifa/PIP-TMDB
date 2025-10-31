@@ -42,7 +42,7 @@ onUnmounted(() => {
             })`,
           }"
         ></div>
-        <div class="trailer-content position-relative z-2">
+        <div class="trailer-content position-relative z-2 py-5 px-5">
           <h1 class="trailer-title fw-bold mb-4">
             {{ items[current]?.title }}
           </h1>
@@ -73,14 +73,14 @@ onUnmounted(() => {
 }
 
 .trailer-content {
-  padding: 2.5rem 3rem;
   color: var(--white);
   max-width: 600px;
-  margin-top: 4rem;
+  margin-top: 5rem;
+  margin-left: 2rem;
 }
 
 .trailer-title {
-  font-size: 7rem;
+  font-size: 5rem;
 }
 
 .trailer-desc {

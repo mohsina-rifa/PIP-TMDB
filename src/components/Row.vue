@@ -29,7 +29,7 @@ const props = defineProps({
             alt="Thumbnail"
           />
         </div>
-        <div class="card-title fs-5 fw-medium text-center">
+        <div class="card-title fw-bold text-center">
           {{ item.title }}
         </div>
       </div>
