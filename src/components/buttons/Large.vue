@@ -34,7 +34,7 @@ const buttonType = computed<"button" | "submit" | "reset">(() => {
 </script>
 
 <template>
-  <button class="btn btn-large" :class="`btn-${type}`" :type="buttonType" @click="emit('click')">
+  <button class="btn btn-lg" :class="`btn-${props.type}`" :type="buttonType" @click="emit('click')">
     {{ label }}
   </button>
 </template>

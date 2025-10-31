@@ -10,9 +10,9 @@ const props = defineProps({
 
 <template>
   <header
-    class="navbar d-flex align-items-center justify-content-between gap-3 py-2 px-4 border-bottom"
+    class="navbar d-flex align-items-center justify-content-between gap-3 py-2 px-4"
   >
-    <div class="navbar-left">
+    <div>
       <router-link
         to="/"
         class="brand d-flex align-items-center gap-2 text-decoration-none"
@@ -48,8 +48,8 @@ const props = defineProps({
 
 <style scoped>
 .navbar {
-  background: none; /* use palette */
-  border-bottom: 1px solid var(--silver-3);
+  background: var(--green-1); /* use palette */
+  border-bottom: 1px solid var(--black);
 }
 
 .brand {
