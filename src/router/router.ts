@@ -8,6 +8,12 @@ const routes: RouteRecordRaw[] = [
     name: 'Home',
     component: () => import('../views/Home.vue'),
   },
+  // listing-page
+  {
+    path: '/list/:category',
+    name: 'List',
+    component: () => import('../views/List.vue'),
+  },
   // search-results
   {
     path: '/search',
