@@ -69,31 +69,31 @@ const trendingItems: Show[] = [
 const topItems: Show[] = [
   {
     title: "Stranger Things",
-    thumbnail: "./screen.png",
+    thumbnail: "./test_1.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
   },
   {
     title: "Wednesday",
-    thumbnail: "./screen.png",
+    thumbnail: "./test_2.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
   },
   {
     title: "Titans",
-    thumbnail: "./screen.png",
+    thumbnail: "./test_3.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.   ",
   },
   {
     title: "Flash",
-    thumbnail: "./screen.png",
+    thumbnail: "./test_4.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.   ",
   },
   {
     title: "Arrow",
-    thumbnail: "./screen.png",
+    thumbnail: "./test_5.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.   ",
   },
@@ -133,12 +133,8 @@ const topItems: Show[] = [
 }
 
 .trailer {
-  height: 43rem;
-  background: linear-gradient(
-    to right top,
-    rgba(34, 118, 83, 0.75),
-    rgba(13, 38, 28, 0.75)
-  );
+  height: 37rem;
+  background: linear-gradient(to right top, var(--black), var(--green-1));
 }
 
 h2 {

@@ -56,7 +56,7 @@ h2 {
   height: 260px;
   background: linear-gradient(
     to right top,
-    rgba(34, 118, 83, 0.75),
+    rgba(18, 57, 49, 0.75),
     rgba(13, 38, 28, 0.75)
   );
   transition: transform 0.3s cubic-bezier(0.4, 0.2, 0.2, 1), box-shadow 0.25s;

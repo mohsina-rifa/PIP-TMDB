@@ -26,27 +26,33 @@ onUnmounted(() => {
 
 <template>
   <div
-    class="trailer-container position-relative overflow-hidden ps-5 d-flex text-start align-items-start justify-content-start"
+    class="trailer-container position-relative overflow-hidden d-flex text-start align-items-start justify-content-start"
     v-if="items && items.length"
   >
-    <div
-      class="trailer-bg position-absolute top-0 start-0 w-100 h-100 bg-cover bg-center z-1"
-      :style="{
-        backgroundImage: `url(${items[current]?.thumbnail ?? './screen.png'})`,
-      }"
-    ></div>
     <Transition name="slide-fade" mode="out-in">
       <div
-        class="trailer-content position-relative z-2"
         :key="items[current]?.title"
+        class="trailer-slide position-relative w-100 h-100"
       >
-        <h1 class="trailer-title fw-bold mb-4">{{ items[current]?.title }}</h1>
-        <p class="trailer-desc mb-4">{{ items[current]?.description }}</p>
         <div
-          class="trailer-actions d-flex gap-3 align-items-center justify-content-start"
-        >
-          <Custom label="Save" type="success" :icon="'bi bi-save'" />
-          <Custom label="Info" type="secondary" :icon="'bi bi-info-square'" />
+          class="trailer-bg position-absolute top-0 start-0 w-100 h-100 bg-cover bg-center z-1"
+          :style="{
+            backgroundImage: `url(${
+              items[current]?.thumbnail ?? './screen.png'
+            })`,
+          }"
+        ></div>
+        <div class="trailer-content position-relative z-2">
+          <h1 class="trailer-title fw-bold mb-4">
+            {{ items[current]?.title }}
+          </h1>
+          <p class="trailer-desc mb-4">{{ items[current]?.description }}</p>
+          <div
+            class="trailer-actions d-flex gap-3 align-items-center justify-content-start"
+          >
+            <Custom label="Save" type="success" :icon="'bi bi-save'" />
+            <Custom label="Info" type="secondary" :icon="'bi bi-info-square'" />
+          </div>
         </div>
       </div>
     </Transition>
@@ -56,22 +62,21 @@ onUnmounted(() => {
 <style scoped>
 .trailer-container {
   height: 100%;
-  background: linear-gradient(
-    to right top,
-    rgba(34, 118, 83, 0.43),
-    rgba(13, 38, 28, 0.43)
-  );
+  background: linear-gradient(to right top, var(--black), var(--green-1));
 }
 
 .trailer-bg {
   filter: brightness(0.6);
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center !important;
 }
 
 .trailer-content {
   padding: 2.5rem 3rem;
   color: var(--white);
   max-width: 600px;
-  margin-top: 8rem;
+  margin-top: 4rem;
 }
 
 .trailer-title {
@@ -84,7 +89,7 @@ onUnmounted(() => {
 
 .slide-fade-enter-active,
 .slide-fade-leave-active {
-  transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+  transition: all 0.25s cubic-bezier(0.55, 0, 0.1, 1);
   position: absolute;
   width: 100%;
 }
