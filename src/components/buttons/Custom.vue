@@ -22,7 +22,12 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  icon: {
+  leftIcon: {
+    type: String,
+    required: false,
+    default: "",
+  },
+  rightIcon: {
     type: String,
     required: false,
     default: "",
@@ -45,8 +50,17 @@ const buttonType = computed<"button" | "submit" | "reset">(() => {
     :type="buttonType"
     @click="emit('click')"
   >
-    <i v-if="props.icon" :class="props.icon" class="btn-icon fs-5 fw-bold"></i>
+    <i
+      v-if="props.leftIcon"
+      :class="props.leftIcon"
+      class="btn-icon fs-5 fw-bold"
+    ></i>
     <span class="ms-1">{{ label }}</span>
+    <i
+      v-if="props.rightIcon"
+      :class="props.rightIcon"
+      class="btn-icon fs-5 fw-bold"
+    ></i>
   </button>
 </template>
 
