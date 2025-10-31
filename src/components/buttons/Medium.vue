@@ -22,6 +22,16 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  leftIcon: {
+    type: String,
+    required: false,
+    default: "",
+  },
+  rightIcon: {
+    type: String,
+    required: false,
+    default: "",
+  },
 });
 
 const emit = defineEmits(["click"]);
@@ -34,10 +44,24 @@ const buttonType = computed<"button" | "submit" | "reset">(() => {
 </script>
 
 <template>
-  <button class="btn" :class="`btn-${props.type}`" :type="buttonType" @click="emit('click')">
-    {{ label }}
+  <button
+    class="btn"
+    :class="`btn-${props.type}`"
+    :type="buttonType"
+    @click="emit('click')"
+  >
+    <i
+      v-if="props.leftIcon"
+      :class="props.leftIcon"
+      class="btn-icon fs-5 fw-bold"
+    ></i>
+    <span class="ms-1">{{ label }}</span>
+    <i
+      v-if="props.rightIcon"
+      :class="props.rightIcon"
+      class="btn-icon fs-5 fw-bold"
+    ></i>
   </button>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
