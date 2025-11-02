@@ -39,61 +39,61 @@ const trailerItems: Show[] = [
 const trendingItems: Show[] = [
   {
     title: "Trending One",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Trending Two",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Trending Three",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Trending Four",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Trending Five",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Trending Six",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Trending Seven",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
   {
     title: "Trending Eight",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
   {
     title: "Trending Nine",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
   {
     title: "Trending Ten",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
@@ -102,61 +102,61 @@ const trendingItems: Show[] = [
 const popularItems: Show[] = [
   {
     title: "Popular One",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Popular Two",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Popular Three",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Popular Four",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Popular Five",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Popular Six",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Popular Seven",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
   {
     title: "Popular Eight",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
   {
     title: "Popular Nine",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
   {
     title: "Popular Ten",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
@@ -165,61 +165,61 @@ const popularItems: Show[] = [
 const topRatedItems: Show[] = [
   {
     title: "Top Rated One",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Top Rated Two",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Top Rated Three",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Top Rated Four",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Top Rated Five",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Top Rated Six",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Top Rated Seven",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
   {
     title: "Top Rated Eight",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
   {
     title: "Top Rated Nine",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
   {
     title: "Top Rated Ten",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
@@ -228,61 +228,61 @@ const topRatedItems: Show[] = [
 const pickedItems: Show[] = [
   {
     title: "Picked One",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Picked Two",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Picked Three",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Picked Four",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Picked Five",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Picked Six",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Picked Seven",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
   {
     title: "Picked Eight",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
   {
     title: "Picked Nine",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
   {
     title: "Picked Ten",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
@@ -291,61 +291,61 @@ const pickedItems: Show[] = [
 const movieItems: Show[] = [
   {
     title: "Movie One",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Movie Two",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Movie Three",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Movie Four",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Movie Five",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Movie Six",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "Movie Seven",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
   {
     title: "Movie Eight",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
   {
     title: "Movie Nine",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
   {
     title: "Movie Ten",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
@@ -354,61 +354,61 @@ const movieItems: Show[] = [
 const tvItems: Show[] = [
   {
     title: "TV One",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "TV Two",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "TV Three",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "TV Four",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "TV Five",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "TV Six",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
     title: "TV Seven",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
   {
     title: "TV Eight",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
   {
     title: "TV Nine",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
   {
     title: "TV Ten",
-    thumbnail: "./thumbnail.png",
+    thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
