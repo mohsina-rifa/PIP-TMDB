@@ -72,20 +72,30 @@ const trendingItems: Show[] = [
   },
 ];
 
-const filteredItems = ref(trendingItems);
+const reverseKebab = (str: string) => {
+  return str
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+};
 
 const filterOptions = ["Most Popular", "Highest Rated", "Newest"];
 
-const onFilterSelect = (option: string): void => {
-  if (option === "Most Popular") {
-    filteredItems.value = trendingItems;
-  } else if (option === "Highest Rated") {
-    filteredItems.value = trendingItems.slice().reverse();
-  } else if (option === "Newest") {
-    filteredItems.value = trendingItems.slice(0, 5);
-  } else {
-    filteredItems.value = trendingItems;
+const filteredBy = ref("");
+
+const filteredItems = computed(() => {
+  if (filteredBy.value === "Most Popular") {
+    return trendingItems;
+  } else if (filteredBy.value === "Highest Rated") {
+    return trendingItems.slice().reverse();
+  } else if (filteredBy.value === "Newest") {
+    return trendingItems.slice(0, 5);
   }
+  return trendingItems;
+});
+
+const onFilterSelect = (option: string): void => {
+  filteredBy.value = option;
 };
 
 const sortOptions = ["Release date", "A-Z", "Z-A"];
@@ -107,12 +117,12 @@ const onSortSelect = (option: string): void => {
   sortedBy.value = option;
 };
 
-const reverseKebab = (str: string) => {
-  return str
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-};
+const listItems = computed(() => {
+  const sorted = sortedItems.value;
+  const filtered = filteredItems.value;
+
+  return sorted.filter((item) => filtered.some((f) => f.title === item.title));
+});
 </script>
 
 <template>
@@ -140,7 +150,7 @@ const reverseKebab = (str: string) => {
         />
       </div>
     </div>
-    <AllFiles :items="trendingItems" />
+    <AllFiles :items="listItems" />
   </section>
 </template>
 
