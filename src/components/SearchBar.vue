@@ -12,6 +12,7 @@ const toKebabCase = (str: string): string => {
 
 const handleSearch = (): void => {
   const kebab = toKebabCase(searchText.value);
+  console.log("Searching for:", kebab);
   router.push(`/search/${kebab}`);
 };
 </script>
@@ -30,6 +31,7 @@ const handleSearch = (): void => {
     <button
       class="btn cursor-pointer fw-bold rounded-2 border-0 d-flex align-items-center"
       type="button"
+      @click="handleSearch"
     >
       <i class="bi bi-search"></i>
     </button>
