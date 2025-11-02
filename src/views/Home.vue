@@ -3,99 +3,414 @@ import Row from "../components/Row.vue";
 import Trailer from "../components/Trailer.vue";
 import type { Show } from "../types/auth";
 
-const trendingItems: Show[] = [
+const trailerItems: Show[] = [
   {
-    title: "Stranger Things",
-    thumbnail: "./thumbnail.png",
+    title: "Trailer One",
+    thumbnail: "./test_1.png",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
-    title: "Wednesday",
-    thumbnail: "./thumbnail.png",
+    title: "Trailer Two",
+    thumbnail: "./test_2.png",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
-    title: "Riverdale",
-    thumbnail: "./thumbnail.png",
+    title: "Trailer Three",
+    thumbnail: "./test_3.png",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
   {
-    title: "Young Sheldon",
-    thumbnail: "./thumbnail.png",
+    title: "Trailer Four",
+    thumbnail: "./test_4.png",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
   {
-    title: "Breaking Bad",
-    thumbnail: "./thumbnail.png",
+    title: "Trailer Five",
+    thumbnail: "./test_5.png",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-  },
-  {
-    title: "Crown",
-    thumbnail: "./thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-  },
-  {
-    title: "Titans",
-    thumbnail: "./thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.   ",
-  },
-  {
-    title: "Flash",
-    thumbnail: "./thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.   ",
-  },
-  {
-    title: "Supergirl",
-    thumbnail: "./thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.   ",
-  },
-  {
-    title: "Arrow",
-    thumbnail: "./thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.   ",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
 ];
 
-const topItems: Show[] = [
+const trendingItems: Show[] = [
   {
-    title: "Stranger Things",
-    thumbnail: "./test_1.png",
+    title: "Trending One",
+    thumbnail: "/thumbnail.png",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
-    title: "Wednesday",
-    thumbnail: "./test_2.png",
+    title: "Trending Two",
+    thumbnail: "/thumbnail.png",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
-    title: "Titans",
-    thumbnail: "./test_3.png",
+    title: "Trending Three",
+    thumbnail: "/thumbnail.png",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.   ",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
-    title: "Flash",
-    thumbnail: "./test_4.png",
+    title: "Trending Four",
+    thumbnail: "/thumbnail.png",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.   ",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
   },
   {
-    title: "Arrow",
-    thumbnail: "./test_5.png",
+    title: "Trending Five",
+    thumbnail: "/thumbnail.png",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.   ",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Trending Six",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Trending Seven",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+  },
+  {
+    title: "Trending Eight",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+  },
+  {
+    title: "Trending Nine",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+  },
+  {
+    title: "Trending Ten",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+  },
+];
+
+const popularItems: Show[] = [
+  {
+    title: "Popular One",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Popular Two",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Popular Three",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Popular Four",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Popular Five",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Popular Six",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Popular Seven",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+  },
+  {
+    title: "Popular Eight",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+  },
+  {
+    title: "Popular Nine",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+  },
+  {
+    title: "Popular Ten",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+  },
+];
+
+const topRatedItems: Show[] = [
+  {
+    title: "Top Rated One",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Top Rated Two",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Top Rated Three",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Top Rated Four",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Top Rated Five",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Top Rated Six",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Top Rated Seven",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+  },
+  {
+    title: "Top Rated Eight",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+  },
+  {
+    title: "Top Rated Nine",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+  },
+  {
+    title: "Top Rated Ten",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+  },
+];
+
+const pickedItems: Show[] = [
+  {
+    title: "Picked One",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Picked Two",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Picked Three",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Picked Four",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Picked Five",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Picked Six",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Picked Seven",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+  },
+  {
+    title: "Picked Eight",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+  },
+  {
+    title: "Picked Nine",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+  },
+  {
+    title: "Picked Ten",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+  },
+];
+
+const movieItems: Show[] = [
+  {
+    title: "Movie One",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Movie Two",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Movie Three",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Movie Four",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Movie Five",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Movie Six",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "Movie Seven",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+  },
+  {
+    title: "Movie Eight",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+  },
+  {
+    title: "Movie Nine",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+  },
+  {
+    title: "Movie Ten",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+  },
+];
+
+const tvItems: Show[] = [
+  {
+    title: "TV One",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "TV Two",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "TV Three",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "TV Four",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "TV Five",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "TV Six",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+  },
+  {
+    title: "TV Seven",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+  },
+  {
+    title: "TV Eight",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+  },
+  {
+    title: "TV Nine",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+  },
+  {
+    title: "TV Ten",
+    thumbnail: "/thumbnail.png",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
   },
 ];
 </script>
@@ -103,26 +418,26 @@ const topItems: Show[] = [
 <template>
   <main class="home-container d-flex flex-column min-vh-100">
     <section class="trailer mb-4">
-      <Trailer :items="topItems" />
+      <Trailer :items="trailerItems" />
     </section>
 
     <section class="px-5">
       <Row :title="'Trending Now'" :items="trendingItems" />
     </section>
     <section class="px-5">
-      <Row :title="'Popular'" :items="trendingItems" />
+      <Row :title="'Popular'" :items="popularItems" />
     </section>
     <section class="px-5">
-      <Row :title="'Top Rated'" :items="trendingItems" />
+      <Row :title="'Top Rated'" :items="topRatedItems" />
     </section>
     <section class="px-5">
-      <Row :title="'Your Picks'" :items="trendingItems" />
+      <Row :title="'Your Picks'" :items="pickedItems" />
     </section>
     <section class="px-5">
-      <Row :title="'Upcoming Movies'" :items="trendingItems" />
+      <Row :title="'Upcoming Movies'" :items="movieItems" />
     </section>
     <section class="px-5">
-      <Row :title="'Upcoming TV Series'" :items="trendingItems" />
+      <Row :title="'Upcoming TV Series'" :items="tvItems" />
     </section>
   </main>
 </template>
@@ -133,7 +448,7 @@ const topItems: Show[] = [
 }
 
 .trailer {
-  height: 37rem;
+  height: 43rem;
   background: linear-gradient(to right top, var(--black), var(--green-1));
 }
 

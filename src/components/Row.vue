@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Show } from "../types/auth";
+import Medium from "./buttons/Medium.vue";
 
 const props = defineProps({
   title: {
@@ -15,8 +16,15 @@ const props = defineProps({
 
 <template>
   <section class="mb-4">
-    <h2 class="section-title fw-bold mb-4 ms-2 text-start fs-1">{{ title }}</h2>
-    <div class="row-scroll d-flex overflow-auto pb-2">
+    <div class="d-flex align-items-center justify-content-between mb-4 ms-2">
+      <h2 class="section-title fw-bold text-start fs-1">{{ title }}</h2>
+      <Medium
+        label="Load More"
+        type="dark"
+        :rightIcon="'bi bi-box-arrow-in-right'"
+      />
+    </div>
+    <div class="row-scroll d-flex overflow-auto pb-2 gap-3 position-relative">
       <div
         v-for="(item, idx) in items"
         :key="idx"
@@ -29,7 +37,7 @@ const props = defineProps({
             alt="Thumbnail"
           />
         </div>
-        <div class="card-title fs-5 fw-medium text-center">
+        <div class="card-title fw-bold text-center">
           {{ item.title }}
         </div>
       </div>
@@ -44,7 +52,28 @@ const props = defineProps({
 }
 
 .row-scroll {
-  gap: 1rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.row-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.row-scroll::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10em;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(
+    to left,
+    rgba(224, 224, 224, 0.5),
+    transparent 50%
+  );
+  z-index: 2;
 }
 
 h2 {
