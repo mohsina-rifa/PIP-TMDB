@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import type { Show } from "../types/auth";
 import { useRoute } from "vue-router";
 import Dropdown from "../components/buttons/Dropdown.vue";
@@ -70,21 +71,23 @@ const trendingItems: Show[] = [
   },
 ];
 
-const filterOptions = [
-  "Most Popular",
-  "Highest Rated",
-  "Newest"
-];
+const filteredItems = ref(trendingItems);
 
-const onFilterSelect = (option: string) => {
-  console.log("Filter selected:", option);
+const filterOptions = ["Most Popular", "Highest Rated", "Newest"];
+
+const onFilterSelect = (option: string): void => {
+  if (option === "Most Popular") {
+    filteredItems.value = trendingItems;
+  } else if (option === "Highest Rated") {
+    filteredItems.value = trendingItems.slice().reverse();
+  } else if (option === "Newest") {
+    filteredItems.value = trendingItems.slice(0, 5);
+  } else {
+    filteredItems.value = trendingItems;
+  }
 };
 
-const sortOptions = [
-  "Release date",
-  "A-Z",
-  "Z-A",
-];
+const sortOptions = ["Release date", "A-Z", "Z-A"];
 
 const onSortSelect = (option: string) => {
   console.log("Sort selected:", option);
@@ -100,15 +103,31 @@ const reverseKebab = (str: string) => {
 
 <template>
   <section class="list-container px-5 py-4">
-    <div class="d-flex align-items-center justify-content-between mb-4 mt-2 mx-2">
+    <div
+      class="d-flex align-items-center justify-content-between mb-4 mt-2 mx-2"
+    >
       <h1 class="category-header">{{ reverseKebab(category) }}</h1>
       <div class="d-flex gap-3">
-        <Dropdown class="list-button" label="Filter" type="dark" :leftIcon="'bi bi-funnel'" :options="filterOptions" @select="onFilterSelect" />
-        <Dropdown class="list-button" label="Sort" type="dark" :leftIcon="'bi bi-sort-down-alt'" :options="sortOptions" @select="onSortSelect" />
+        <Dropdown
+          class="list-button"
+          label="Filter"
+          type="dark"
+          :leftIcon="'bi bi-funnel'"
+          :options="filterOptions"
+          @select="onFilterSelect"
+        />
+        <Dropdown
+          class="list-button"
+          label="Sort"
+          type="dark"
+          :leftIcon="'bi bi-sort-down-alt'"
+          :options="sortOptions"
+          @select="onSortSelect"
+        />
       </div>
     </div>
     <div class="card-grid">
-      <div v-for="(item, idx) in trendingItems" :key="idx" class="card">
+      <div v-for="(item, idx) in filteredItems" :key="idx" class="card">
         <div class="card-img w-100 rounded-2 mb-2">
           <img
             class="w-100 h-100 object-fit-cover rounded-2"
