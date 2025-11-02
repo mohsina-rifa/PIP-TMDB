@@ -1,11 +1,5 @@
 <script setup lang="ts">
 import SearchBar from './SearchBar.vue';
-const props = defineProps({
-  onSearchClick: {
-    type: Function,
-    default: () => {},
-  },
-});
 </script>
 
 <template>

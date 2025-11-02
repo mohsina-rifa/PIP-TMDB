@@ -40,4 +40,11 @@ body {
   padding: 0;
   text-align: center;
   background-color: var(--silver-7);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
 }
