@@ -143,6 +143,13 @@ const reverseKebab = (str: string) => {
   min-height: 100vh;
 }
 
+.list-container,
+.card-grid,
+.d-flex {
+  position: relative; /* Add this if not present */
+  z-index: auto; /* Ensure it doesn't create stacking issues */
+}
+
 .row {
   display: flex;
   flex-wrap: wrap;

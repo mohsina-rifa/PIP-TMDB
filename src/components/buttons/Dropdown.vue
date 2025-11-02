@@ -11,23 +11,22 @@ const props = defineProps({
 
 const showMenu = ref(false);
 
-const toggleMenu = () => {
+const toggleMenu = (): void => {
   showMenu.value = !showMenu.value;
 };
 
 const emit = defineEmits(["select"]);
 
-const selectOption = (option: string) => {
+const selectOption = (option: string): void => {
   showMenu.value = false;
-  // Emit selected option
   emit("select", option);
 };
 </script>
 
 <template>
-  <div class="dropdown-wrapper position-relative">
+  <div class="dropdown-wrapper position-relative d-inline-block">
     <button
-      class="btn dropdown-btn"
+      class="btn dropdown-btn d-flex align-items-center fw-medium border-0"
       :class="`btn-${props.type}`"
       type="button"
       @click="toggleMenu"
@@ -35,21 +34,21 @@ const selectOption = (option: string) => {
       <i
         v-if="props.leftIcon"
         :class="props.leftIcon"
-        class="btn-icon me-1 fs-5 fw-bold"
+        class="btn-icon me-2"
       ></i>
       <span>{{ label }}</span>
       <i
         v-if="props.rightIcon"
         :class="props.rightIcon"
-        class="btn-icon ms-1 fs-5 fw-bold"
+        class="btn-icon ms-2"
       ></i>
       <i class="bi bi-chevron-down ms-2"></i>
     </button>
-    <ul v-if="showMenu" class="dropdown-menu position-absolute mt-2">
+    <ul v-if="showMenu" class="dropdown-menu position-absolute py-2 list-unstyled m-0 d-block">
       <li
         v-for="option in props.options"
         :key="option"
-        class="dropdown-item"
+        class="dropdown-item py-2 px-3"
         @click="selectOption(option)"
       >
         {{ option }}
@@ -60,43 +59,46 @@ const selectOption = (option: string) => {
 
 <style scoped>
 .dropdown-wrapper {
-  display: inline-block;
+  z-index: 1000;
 }
 
 .dropdown-btn {
-  transition: background 0.2s, color 0.2s;
-  color: var(--silver-7);
   min-width: 120px;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  background: var(--green-1);
+  color: var(--white);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
 }
 
-.dropdown-btn:hover {
-  background-color: var(--silver-1);
+.dropdown-btn:hover,
+.dropdown-btn:focus {
+  background: var(--green-3);
   color: var(--white);
 }
 
 .btn-icon {
-  color: var(--silver-7);
-}
-
-.dropdown-btn:hover .btn-icon {
+  font-size: 1.2rem;
   color: var(--white);
 }
 
 .dropdown-menu {
+  top: 110%;
+  left: 0;
   background: var(--green-1);
   border-radius: 8px;
   min-width: 140px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-  padding: 0.5rem 0;
-  z-index: 10;
-  list-style: none;
+  z-index: 1001;
 }
 
 .dropdown-item {
-  padding: 0.5rem 1rem;
   color: var(--white);
   cursor: pointer;
   transition: background 0.15s;
+  border-radius: 6px;
 }
 
 .dropdown-item:hover {
