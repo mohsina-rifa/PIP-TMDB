@@ -45,7 +45,7 @@ const buttonType = computed<"button" | "submit" | "reset">(() => {
 
 <template>
   <button
-    class="btn btn-sm"
+    class="btn custom-btn fs-5 fw-semibold rounded-2 shadow d-flex align-items-center gap-2"
     :class="`btn-${props.type}`"
     :type="buttonType"
     @click="emit('click')"
@@ -53,33 +53,37 @@ const buttonType = computed<"button" | "submit" | "reset">(() => {
     <i
       v-if="props.leftIcon"
       :class="props.leftIcon"
-      class="btn-icon me-1 fs-5 fw-bold"
+      class="btn-icon fs-5 fw-bold"
     ></i>
-    <span>{{ label }}</span>
+    <span class="ms-1">{{ label }}</span>
     <i
       v-if="props.rightIcon"
       :class="props.rightIcon"
-      class="btn-icon ms-1 fs-5 fw-bold"
+      class="btn-icon fs-5 fw-bold"
     ></i>
   </button>
 </template>
 
 <style scoped>
-.small-btn {
+.custom-btn {
+  padding: 0.5rem 1.5rem;
+  background: var(--silver-7);
+  color: var(--green-1);
   transition: background 0.2s, color 0.2s;
-  color: var(--silver-7);
 }
 
-.small-btn:hover {
-  background-color: var(--silver-1);
+.custom-btn:hover {
+  background: var(--green-1);
   color: var(--white);
+  font-weight: bold;
 }
 
 .btn-icon {
-  color: var(--silver-7);
+  color: var(--green-1);
 }
 
-.small-btn:hover .btn-icon {
+.custom-btn:hover .btn-icon {
   color: var(--white);
+  font-weight: bolder;
 }
 </style>
