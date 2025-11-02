@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const searchText = ref("");
 
@@ -9,7 +12,7 @@ const toKebabCase = (str: string): string => {
 
 const handleSearch = (): void => {
   const kebab = toKebabCase(searchText.value);
-  console.log("Searching for:", kebab);
+  router.push(`/search/${kebab}`);
 };
 </script>
 
