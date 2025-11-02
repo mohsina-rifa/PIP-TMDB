@@ -1,10 +1,18 @@
 <script setup lang="ts">
+import { ref } from "vue";
+
 const props = defineProps({
   onSearchClick: {
     type: Function,
     default: () => {},
   },
 });
+
+const searchText = ref("");
+
+const handleSearch = (): void => {
+  props.onSearchClick(searchText.value);
+};
 </script>
 
 <template>
@@ -12,9 +20,11 @@ const props = defineProps({
     class="search-bar d-flex align-items-center gap-0 rounded-2 overflow-hidden me-3"
   >
     <input
+      v-model="searchText"
       type="text"
       class="search-input fs-6 bg-transparent border-none"
       placeholder="Search movies, TV..."
+      @keyup.enter="handleSearch"
     />
     <button
       class="btn cursor-pointer fw-bold rounded-2 border-0 d-flex align-items-center"
