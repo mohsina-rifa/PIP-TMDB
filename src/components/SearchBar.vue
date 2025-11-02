@@ -1,17 +1,15 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-const props = defineProps({
-  onSearchClick: {
-    type: Function,
-    default: () => {},
-  },
-});
-
 const searchText = ref("");
 
+const toKebabCase = (str: string): string => {
+  return str.trim().replace(/\s+/g, "-").toLowerCase();
+};
+
 const handleSearch = (): void => {
-  props.onSearchClick(searchText.value);
+  const kebab = toKebabCase(searchText.value);
+  console.log("Searching for:", kebab);
 };
 </script>
 
