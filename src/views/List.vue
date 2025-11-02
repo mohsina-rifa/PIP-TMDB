@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import type { Show } from "../types/auth";
 import { useRoute } from "vue-router";
 import Dropdown from "../components/buttons/Dropdown.vue";
@@ -90,8 +90,21 @@ const onFilterSelect = (option: string): void => {
 
 const sortOptions = ["Release date", "A-Z", "Z-A"];
 
-const onSortSelect = (option: string) => {
-  console.log("Sort selected:", option);
+const sortedBy = ref("");
+
+const sortedItems = computed(() => {
+  if (sortedBy.value === "A-Z") {
+    return [...trendingItems].sort((a, b) => a.title.localeCompare(b.title));
+  }
+  if (sortedBy.value === "Z-A") {
+    return [...trendingItems].sort((a, b) => b.title.localeCompare(a.title));
+  }
+  // Default: Release date (original order)
+  return trendingItems;
+});
+
+const onSortSelect = (option: string): void => {
+  sortedBy.value = option;
 };
 
 const reverseKebab = (str: string) => {
