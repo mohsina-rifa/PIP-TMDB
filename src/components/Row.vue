@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useRouter } from "vue-router";
 import type { Show } from "../types/auth";
 import Medium from "./buttons/Medium.vue";
 
@@ -12,6 +13,19 @@ const props = defineProps({
     required: true,
   },
 });
+
+const router = useRouter();
+
+const toKebabCase = (str: string) => {
+  return str
+    .replace(/([a-z])([A-Z])/g, "$1-$2")
+    .replace(/[\s_]+/g, "-")
+    .toLowerCase();
+};
+
+const handleLoadAll = () => {
+  router.push(`/list/${toKebabCase(props.title)}`);
+};
 </script>
 
 <template>
@@ -19,9 +33,10 @@ const props = defineProps({
     <div class="d-flex align-items-center justify-content-between mb-4 ms-2">
       <h2 class="section-title fw-bold text-start fs-1">{{ title }}</h2>
       <Medium
-        label="Load More"
+        label="Load All"
         type="dark"
         :rightIcon="'bi bi-box-arrow-in-right'"
+        @click="handleLoadAll"
       />
     </div>
     <div class="row-scroll d-flex overflow-auto pb-2 gap-3 position-relative">
