@@ -16,9 +16,9 @@ const routes: RouteRecordRaw[] = [
   },
   // search-results
   {
-    path: '/search',
+    path: '/search/:query',
     name: 'Search',
-    component: () => import('../views/Search.vue'),
+    component: () => import('../views/SearchResult.vue'),
   },
   // movie-detail
   {
