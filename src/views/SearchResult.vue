@@ -1,28 +1,109 @@
 <script setup lang="ts">
-import type { Show } from "../types/auth";
+import type { Movie } from "../types/auth";
 import AllFiles from "../components/AllFiles.vue";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
 
-const dummyItems: Show[] = [
+const dummyItems: Movie[] = [
   {
+    id: "item_1",
     title: "Item One",
     thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    cast: [
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
+    ],
+    release_year: 2027,
+    rating: 4.5,
+    genres: [
+      "Drama", 
+      "Action"
+    ],
   },
   {
+    id: "item_2",
     title: "Item Two",
     thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    cast: [
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
+    ],
+    release_year: 2027,
+    rating: 4.5,
+    genres: [
+      "Drama", 
+      "Action"
+    ],
   },
   {
+    id: "item_3",
     title: "Item Three",
     thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    cast: [
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
+    ],
+    release_year: 2027,
+    rating: 4.5,
+    genres: [
+      "Drama", 
+      "Action"
+    ],
   },
 ];
 
