@@ -15,6 +15,7 @@
 <style scoped>
 #about {
   background-color: var(--silver-2);
+  margin-top: auto;
 }
 
 #about h2 {

@@ -1,10 +1,20 @@
 <script setup lang="ts">
-const props = defineProps({
-  onSearchClick: {
-    type: Function,
-    default: () => {},
-  },
-});
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+const searchText = ref("");
+
+const toKebabCase = (str: string): string => {
+  return str.trim().replace(/\s+/g, "-").toLowerCase();
+};
+
+const handleSearch = (): void => {
+  const kebab = toKebabCase(searchText.value);
+  console.log("Searching for:", kebab);
+  router.push(`/search/${kebab}`);
+};
 </script>
 
 <template>
@@ -12,13 +22,16 @@ const props = defineProps({
     class="search-bar d-flex align-items-center gap-0 rounded-2 overflow-hidden me-3"
   >
     <input
+      v-model="searchText"
       type="text"
       class="search-input fs-6 bg-transparent border-none"
       placeholder="Search movies, TV..."
+      @keyup.enter="handleSearch"
     />
     <button
       class="btn cursor-pointer fw-bold rounded-2 border-0 d-flex align-items-center"
       type="button"
+      @click="handleSearch"
     >
       <i class="bi bi-search"></i>
     </button>
