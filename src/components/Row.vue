@@ -85,31 +85,4 @@ const handleLoadAll = () => {
 h2 {
   color: var(--green-1);
 }
-
-.card {
-  min-width: 180px;
-  height: 260px;
-  background: linear-gradient(
-    to right top,
-    rgba(18, 57, 49, 0.75),
-    rgba(13, 38, 28, 0.75)
-  );
-  transition: transform 0.3s cubic-bezier(0.4, 0.2, 0.2, 1), box-shadow 0.25s;
-}
-
-.card:hover {
-  transform: scale(1.12);
-  background-color: var(--green-1);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-  font-weight: bolder;
-}
-
-.card-img {
-  height: 70%;
-  background: var(--green-7);
-}
-
-.card-title {
-  color: var(--white);
-}
 </style>

@@ -19,6 +19,10 @@ const props = defineProps({
     default: false,
   },
 });
+
+const getDefaultCastImage = (gender: string): string => {
+  return gender === "male" ? "/male_cast.png" : "/female_cast.png";
+};
 </script>
 
 <template>
@@ -30,8 +34,8 @@ const props = defineProps({
         <div class="card-img w-100 rounded-2 mb-2">
           <img
             class="w-100 h-100 object-fit-cover rounded-2"
-            :src="cast.image || ''"
-            alt="Thumbnail"
+            :src="cast.image || getDefaultCastImage(cast.gender)"
+            alt="Cast"
           />
         </div>
         <div class="card-title fw-bold text-center">
@@ -57,6 +61,7 @@ const props = defineProps({
 <style scoped>
 .card {
   min-width: 180px;
+  max-width: 200px;
   height: 260px;
   background: linear-gradient(
     to right top,
@@ -74,7 +79,7 @@ const props = defineProps({
 }
 
 .card-img {
-  height: 70%;
+  height: 75%;
   background: var(--green-7);
 }
 
