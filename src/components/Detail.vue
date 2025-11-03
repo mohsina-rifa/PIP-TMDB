@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { onMounted } from "vue";
 import type { Show } from "../types/auth";
 
 const itemDetail: Show = {
@@ -7,11 +8,30 @@ const itemDetail: Show = {
   thumbnail: "/thumbnail.png",
   description:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-  cast: ["Actor A", "Actor B", "Actor C"],
+  cast: [
+    {
+      name: "Actor One",
+      role: "Role One",
+      gender: "male",
+      image: "",
+    },
+  ],
   release_year: 2027,
   rating: 4.5,
   genres: ["Drama", "Action"],
 };
+
+const getDefaultCastImage = (gender: string): string => {
+  return gender === "male" ? "/male_cast.png" : "/female_cast.png";
+};
+
+onMounted(() => {
+  for (const cast of itemDetail.cast) {
+    if (!cast.image) {
+      cast.image = getDefaultCastImage(cast.gender);
+    }
+  }
+});
 </script>
 
 <template>
