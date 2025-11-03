@@ -1,11 +1,7 @@
 <script setup lang="ts">
-import type { Movie, Cast } from "../types/auth";
+import type { Movie, Cast, Episode } from "../types/auth";
 
 const props = defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
   item: {
     type: Object as () => Movie,
     default: () => ({} as Movie),
@@ -14,7 +10,15 @@ const props = defineProps({
     type: Object as () => Cast,
     default: () => ({} as Cast),
   },
+  episode: {
+    type: Object as () => Episode,
+    default: () => ({} as Episode),
+  },
   isCast: {
+    type: Boolean,
+    default: false,
+  },
+  isEpisode: {
     type: Boolean,
     default: false,
   },
@@ -40,6 +44,18 @@ const getDefaultCastImage = (gender: string): string => {
         </div>
         <div class="card-title fw-bold text-center">
           {{ cast.name }}
+        </div>
+      </div>
+      <div v-else-if="isEpisode">
+        <div class="card-img w-100 rounded-2 mb-2">
+          <img
+            class="w-100 h-100 object-fit-cover rounded-2"
+            :src="episode.thumbnail || '../thumbnail.png'"
+            alt="Thumbnail"
+          />
+        </div>
+        <div class="card-title fw-bold text-center">
+          {{ episode.episode_number }}. {{ episode.title }}
         </div>
       </div>
       <div v-else>
