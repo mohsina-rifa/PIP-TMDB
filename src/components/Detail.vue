@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Show } from "../types/auth";
+import type { Show} from "../types/auth";
 import Card from "./Card.vue";
 
 const itemDetail: Show = {
@@ -56,18 +56,15 @@ const itemDetail: Show = {
           <button class="btn btn-success rounded-2 px-4 py-2 fw-bold">
             <i class="bi bi-save me-2"></i>Save
           </button>
-          <button class="btn btn-secondary rounded-2 px-4 py-2 fw-bold">
-            <i class="bi bi-info-square me-2"></i>Info
-          </button>
         </div>
       </div>
     </div>
   </section>
   <section id="detail-cast" class="m-5">
     <div class="d-flex align-items-center justify-content-between mb-4 ms-2">
-      <h1 class="cast-title fw-bold text-start fs-1">Casts</h1>
+      <h1 class="row-title fw-bold text-start fs-1">Casts</h1>
     </div>
-    <div class="cast-scroll d-flex overflow-auto pb-2 gap-3 position-relative">
+    <div class="row-scroll d-flex overflow-auto pb-2 gap-3 position-relative">
       <div v-for="(item, idx) in itemDetail.cast" :key="idx">
         <Card :title="item.name" :cast="itemDetail.cast[idx]" :isCast="true" />
       </div>
@@ -97,6 +94,7 @@ const itemDetail: Show = {
 
 .detail-title {
   font-size: 4rem;
+  color: var(--white);
 }
 
 .detail-desc {
@@ -107,21 +105,21 @@ const itemDetail: Show = {
   font-size: 1.1rem;
 }
 
-.cast-title {
+.row-title {
   color: var(--green-1);
   font-size: 1.3rem;
 }
 
-.cast-scroll {
+.row-scroll {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
-.cast-scroll::-webkit-scrollbar {
+.row-scroll::-webkit-scrollbar {
   display: none;
 }
 
-.cast-scroll::after {
+.row-scroll::after {
   content: "";
   position: absolute;
   top: 0;
