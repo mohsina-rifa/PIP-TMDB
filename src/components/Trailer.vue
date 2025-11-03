@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
 import Custom from "../components/buttons/Custom.vue";
-import type { Show } from "../types/auth";
+import type { Movie } from "../types/auth";
 
 const props = defineProps({
   items: {
-    type: Array as () => Show[],
+    type: Array as () => Movie[],
     required: true,
   },
 });

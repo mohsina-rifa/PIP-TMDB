@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Show, Cast } from "../types/auth";
+import type { Movie, Cast } from "../types/auth";
 
 const props = defineProps({
   title: {
@@ -7,8 +7,8 @@ const props = defineProps({
     required: true,
   },
   item: {
-    type: Object as () => Show,
-    default: () => ({} as Show),
+    type: Object as () => Movie,
+    default: () => ({} as Movie),
   },
   cast: {
     type: Object as () => Cast,

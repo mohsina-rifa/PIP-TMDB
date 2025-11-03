@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import Row from "../components/Row.vue";
 import Trailer from "../components/Trailer.vue";
-import type { Show } from "../types/auth";
+import type { Movie } from "../types/auth";
 
-const trailerItems: Show[] = [
+const trailerItems: Movie[] = [
   {
     id: "trailer_1",
     title: "Trailer One",
@@ -156,7 +156,7 @@ const trailerItems: Show[] = [
   },
 ];
 
-const trendingItems: Show[] = [
+const trendingItems: Movie[] = [
   {
     id: "trending_1",
     title: "Trending One",
@@ -459,7 +459,7 @@ const trendingItems: Show[] = [
   },
 ];
 
-const popularItems: Show[] = [
+const popularItems: Movie[] = [
   {
     id: "popular_1",
     title: "Popular One",
@@ -762,7 +762,7 @@ const popularItems: Show[] = [
   },
 ];
 
-const topRatedItems: Show[] = [
+const topRatedItems: Movie[] = [
   {
     id: "top_rated_1",
     title: "Top Rated One",
@@ -1065,7 +1065,7 @@ const topRatedItems: Show[] = [
   },
 ];
 
-const pickedItems: Show[] = [
+const pickedItems: Movie[] = [
   {
     id: "picked_1",
     title: "Picked One",
@@ -1368,7 +1368,7 @@ const pickedItems: Show[] = [
   },
 ];
 
-const movieItems: Show[] = [
+const movieItems: Movie[] = [
   {
     id: "movie_1",
     title: "Movie One",
@@ -1671,7 +1671,7 @@ const movieItems: Show[] = [
   },
 ];
 
-const tvItems: Show[] = [
+const tvItems: Movie[] = [
   {
     id: "tv_1",
     title: "TV One",

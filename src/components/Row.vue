@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import type { Show } from "../types/auth";
+import type { Movie } from "../types/auth";
 import Medium from "./buttons/Medium.vue";
 import Card from "./Card.vue";
 
@@ -10,7 +10,7 @@ const props = defineProps({
     required: true,
   },
   items: {
-    type: Array as () => Show[],
+    type: Array as () => Movie[],
     required: true,
   },
 });

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { Show } from "../types/auth";
+import type { Movie } from "../types/auth";
 import AllFiles from "../components/AllFiles.vue";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
 
-const dummyItems: Show[] = [
+const dummyItems: Movie[] = [
   {
     id: "item_1",
     title: "Item One",

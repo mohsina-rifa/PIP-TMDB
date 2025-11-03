@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { Show } from "../types/auth";
+import type { Movie } from "../types/auth";
 import Card from "./Card.vue";
 
 const props = defineProps({
   items: {
-    type: Array as () => Show[],
+    type: Array as () => Movie[],
     required: true,
   },
 });

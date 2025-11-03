@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import type { Show } from "../types/auth";
+import type { Movie } from "../types/auth";
 import { useRoute } from "vue-router";
 import Dropdown from "../components/buttons/Dropdown.vue";
 import AllFiles from "../components/AllFiles.vue";
@@ -9,7 +9,7 @@ const route = useRoute();
 
 const category = route.params.category as string;
 
-const dummyListItems: Show[] = [
+const dummyListItems: Movie[] = [
   {
     id: "dl_1",
     title: "Item One",
