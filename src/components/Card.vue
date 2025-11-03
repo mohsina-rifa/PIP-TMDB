@@ -22,6 +22,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  handleClick: {
+    type: Function,
+    default: () => () => {},
+  },
 });
 
 const getDefaultCastImage = (gender: string): string => {

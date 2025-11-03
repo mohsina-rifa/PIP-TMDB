@@ -15,7 +15,7 @@ const props = defineProps({
   },
   isSeries: {
     type: Boolean,
-    default: true,
+    default: false,
   },
 });
 
