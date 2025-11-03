@@ -1,7 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Detail from "../components/Detail.vue";
+</script>
 
 <template>
-  <p>Movie Detail View</p>
+  <Detail />
 </template>
 
 <style scoped></style>

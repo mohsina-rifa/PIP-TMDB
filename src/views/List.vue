@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import type { Show } from "../types/auth";
+import type { Movie } from "../types/auth";
 import { useRoute } from "vue-router";
 import Dropdown from "../components/buttons/Dropdown.vue";
 import AllFiles from "../components/AllFiles.vue";
@@ -9,7 +9,7 @@ const route = useRoute();
 
 const category = route.params.category as string;
 
-const dummyListItems: Show[] = [
+const dummyListItems: Movie[] = [
   {
     id: "dl_1",
     title: "Item One",
@@ -17,9 +17,24 @@ const dummyListItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A", 
-      "Actor B", 
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2020,
     rating: 5,
@@ -35,9 +50,24 @@ const dummyListItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A", 
-      "Actor B", 
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2019,
     rating: 4.5,
@@ -53,9 +83,24 @@ const dummyListItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A", 
-      "Actor B", 
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2018,
     rating: 4.8,
@@ -71,9 +116,24 @@ const dummyListItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2017,
     rating: 4.3,
@@ -89,9 +149,24 @@ const dummyListItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2016,
     rating: 4,
@@ -107,9 +182,24 @@ const dummyListItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2015,
     rating: 4.2,
@@ -125,9 +215,24 @@ const dummyListItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2014,
     rating: 4.7,
@@ -143,9 +248,24 @@ const dummyListItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2013,
     rating: 4.6,
@@ -161,9 +281,24 @@ const dummyListItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2012,
     rating: 5,
@@ -179,9 +314,24 @@ const dummyListItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2011,
     rating: 3.9,
