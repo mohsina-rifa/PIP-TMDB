@@ -9,66 +9,186 @@ const route = useRoute();
 
 const category = route.params.category as string;
 
-const trendingItems: Show[] = [
+const dummyListItems: Show[] = [
   {
+    id: "dl_1",
     title: "Item One",
     thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    cast: [
+      "Actor A", 
+      "Actor B", 
+      "Actor C",
+    ],
+    release_year: 2020,
+    rating: 5,
+    genres: [
+      "Action", 
+      "Adventure",
+    ],
   },
   {
+    id: "dl_2",
     title: "Item Two",
     thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    cast: [
+      "Actor A", 
+      "Actor B", 
+      "Actor C",
+    ],
+    release_year: 2019,
+    rating: 4.5,
+    genres: [
+      "Thriller", 
+      "Adventure",
+    ],
   },
   {
+    id: "dl_3",
     title: "Item Three",
     thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    cast: [
+      "Actor A", 
+      "Actor B", 
+      "Actor C",
+    ],
+    release_year: 2018,
+    rating: 4.8,
+    genres: [
+      "Action", 
+      "Thriller",
+    ],
   },
   {
+    id: "dl_4",
     title: "Item Four",
     thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    cast: [
+      "Actor A",
+      "Actor B",
+      "Actor C",
+    ],
+    release_year: 2017,
+    rating: 4.3,
+    genres: [
+      "Romance",
+      "Adventure",
+    ],
   },
   {
+    id: "dl_5",
     title: "Item Five",
     thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    cast: [
+      "Actor A",
+      "Actor B",
+      "Actor C",
+    ],
+    release_year: 2016,
+    rating: 4,
+    genres: [
+      "Action",
+      "Romance",
+    ],
   },
   {
+    id: "dl_6",
     title: "Item Six",
     thumbnail: "/thumbnail.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    cast: [
+      "Actor A",
+      "Actor B",
+      "Actor C",
+    ],
+    release_year: 2015,
+    rating: 4.2,
+    genres: [
+      "Romance",
+      "Drama",
+    ],
   },
   {
+    id: "dl_7",
     title: "Item Seven",
     thumbnail: "/thumbnail.png",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    cast: [
+      "Actor A",
+      "Actor B",
+      "Actor C",
+    ],
+    release_year: 2014,
+    rating: 4.7,
+    genres: [
+      "Drama",
+      "Adventure",
+    ],
   },
   {
+    id: "dl_8",
     title: "Item Eight",
     thumbnail: "/thumbnail.png",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    cast: [
+      "Actor A",
+      "Actor B",
+      "Actor C",
+    ],
+    release_year: 2013,
+    rating: 4.6,
+    genres: [
+      "Action",
+      "Fantasy",
+    ],
   },
   {
+    id: "dl_9",
     title: "Item Nine",
     thumbnail: "/thumbnail.png",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    cast: [
+      "Actor A",
+      "Actor B",
+      "Actor C",
+    ],
+    release_year: 2012,
+    rating: 5,
+    genres: [
+      "Mystery",
+      "Adventure",
+    ],
   },
   {
+    id: "dl_10",
     title: "Item Ten",
     thumbnail: "/thumbnail.png",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    cast: [
+      "Actor A",
+      "Actor B",
+      "Actor C",
+    ],
+    release_year: 2011,
+    rating: 3.9,
+    genres: [
+      "Fantasy",
+      "Romance",
+    ],
   },
 ];
 
@@ -85,13 +205,13 @@ const filteredBy = ref("");
 
 const filteredItems = computed(() => {
   if (filteredBy.value === "Most Popular") {
-    return trendingItems;
+    return dummyListItems;
   } else if (filteredBy.value === "Highest Rated") {
-    return trendingItems.slice().reverse();
+    return dummyListItems.slice().reverse();
   } else if (filteredBy.value === "Newest") {
-    return trendingItems.slice(0, 5);
+    return dummyListItems.slice(0, 5);
   }
-  return trendingItems;
+  return dummyListItems;
 });
 
 const onFilterSelect = (option: string): void => {
@@ -104,13 +224,13 @@ const sortedBy = ref("");
 
 const sortedItems = computed(() => {
   if (sortedBy.value === "A-Z") {
-    return [...trendingItems].sort((a, b) => a.title.localeCompare(b.title));
+    return [...dummyListItems].sort((a, b) => a.title.localeCompare(b.title));
   }
   if (sortedBy.value === "Z-A") {
-    return [...trendingItems].sort((a, b) => b.title.localeCompare(a.title));
+    return [...dummyListItems].sort((a, b) => b.title.localeCompare(a.title));
   }
   // Default: Release date (original order)
-  return trendingItems;
+  return dummyListItems;
 });
 
 const onSortSelect = (option: string): void => {
