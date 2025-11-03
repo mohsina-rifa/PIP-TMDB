@@ -15,6 +15,18 @@ const itemDetail: Show = {
       gender: "male",
       image: "",
     },
+    {
+      name: "Actor Two",
+      role: "Role Two",
+      gender: "female",
+      image: "",
+    },
+    {
+      name: "Actor Three",
+      role: "Role Three",
+      gender: "male",
+      image: "",
+    },
   ],
   release_year: 2027,
   rating: 4.5,

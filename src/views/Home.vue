@@ -11,16 +11,28 @@ const trailerItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2027,
     rating: 4.5,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "trailer_2",
@@ -29,16 +41,28 @@ const trailerItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2026,
     rating: 4.0,
-    genres: [
-      "Drama",
-      "Thriller",
-    ],
+    genres: ["Drama", "Thriller"],
   },
   {
     id: "trailer_3",
@@ -47,16 +71,28 @@ const trailerItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2025,
     rating: 3.5,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "trailer_4",
@@ -65,16 +101,28 @@ const trailerItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2024,
     rating: 4.0,
-    genres: [
-      "Drama",
-      "Thriller",
-    ],
+    genres: ["Drama", "Thriller"],
   },
   {
     id: "trailer_5",
@@ -83,16 +131,28 @@ const trailerItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2023,
     rating: 4.5,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
 ];
 
@@ -104,16 +164,28 @@ const trendingItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2032,
     rating: 4.5,
-    genres: [
-      "Drama",
-      "Thriller",
-    ],
+    genres: ["Drama", "Thriller"],
   },
   {
     id: "trending_2",
@@ -122,16 +194,28 @@ const trendingItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2031,
     rating: 4.0,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "trending_3",
@@ -140,16 +224,28 @@ const trendingItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2030,
     rating: 4.5,
-    genres: [
-      "Drama",
-      "Thriller",
-    ],
+    genres: ["Drama", "Thriller"],
   },
   {
     id: "trending_4",
@@ -158,16 +254,28 @@ const trendingItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2029,
     rating: 4.0,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "trending_5",
@@ -176,16 +284,28 @@ const trendingItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2028,
     rating: 4.2,
-    genres: [
-      "Drama",
-      "Thriller",
-    ],
+    genres: ["Drama", "Thriller"],
   },
   {
     id: "trending_6",
@@ -194,16 +314,28 @@ const trendingItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2027,
     rating: 4.5,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "trending_7",
@@ -212,16 +344,28 @@ const trendingItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2026,
     rating: 4.0,
-    genres: [
-      "Drama",
-      "Thriller",
-    ],
+    genres: ["Drama", "Thriller"],
   },
   {
     id: "trending_8",
@@ -230,16 +374,28 @@ const trendingItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2025,
     rating: 3.5,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "trending_9",
@@ -248,16 +404,28 @@ const trendingItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2024,
     rating: 4.0,
-    genres: [
-      "Drama",
-      "Thriller",
-    ],
+    genres: ["Drama", "Thriller"],
   },
   {
     id: "trending_10",
@@ -266,16 +434,28 @@ const trendingItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2023,
     rating: 4.5,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
 ];
 
@@ -287,16 +467,28 @@ const popularItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2029,
     rating: 3.3,
-    genres: [
-      "Drama",
-      "Thriller",
-    ],
+    genres: ["Drama", "Thriller"],
   },
   {
     id: "popular_2",
@@ -305,16 +497,28 @@ const popularItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2028,
     rating: 3.4,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "popular_3",
@@ -323,16 +527,28 @@ const popularItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2027,
     rating: 3.5,
-    genres: [
-      "Drama",
-      "Thriller",
-    ],
+    genres: ["Drama", "Thriller"],
   },
   {
     id: "popular_4",
@@ -341,16 +557,28 @@ const popularItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2026,
     rating: 3.6,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "popular_5",
@@ -359,16 +587,28 @@ const popularItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2025,
     rating: 3.7,
-    genres: [
-      "Drama",
-      "Thriller",
-    ],
+    genres: ["Drama", "Thriller"],
   },
   {
     id: "popular_6",
@@ -377,16 +617,28 @@ const popularItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2024,
     rating: 3.8,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "popular_7",
@@ -395,16 +647,28 @@ const popularItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2023,
     rating: 3.9,
-    genres: [
-      "Drama",
-      "Thriller",
-    ],
+    genres: ["Drama", "Thriller"],
   },
   {
     id: "popular_8",
@@ -413,16 +677,28 @@ const popularItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2022,
     rating: 4.0,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "popular_9",
@@ -431,16 +707,28 @@ const popularItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2021,
     rating: 4.1,
-    genres: [
-      "Drama",
-      "Thriller",
-    ],
+    genres: ["Drama", "Thriller"],
   },
   {
     id: "popular_10",
@@ -449,16 +737,28 @@ const popularItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2020,
     rating: 4.2,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
 ];
 
@@ -470,16 +770,28 @@ const topRatedItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2022,
     rating: 4.0,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "top_rated_2",
@@ -488,16 +800,28 @@ const topRatedItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2021,
     rating: 4.1,
-    genres: [
-      "Drama",
-      "Thriller",
-    ],
+    genres: ["Drama", "Thriller"],
   },
   {
     id: "top_rated_3",
@@ -506,16 +830,28 @@ const topRatedItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2020,
     rating: 4.2,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "top_rated_4",
@@ -524,16 +860,28 @@ const topRatedItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2029,
     rating: 4.3,
-    genres: [
-      "Drama",
-      "Thriller",
-    ],
+    genres: ["Drama", "Thriller"],
   },
   {
     id: "top_rated_5",
@@ -542,16 +890,28 @@ const topRatedItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2028,
     rating: 4.4,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "top_rated_6",
@@ -560,16 +920,28 @@ const topRatedItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2027,
     rating: 4.5,
-    genres: [
-      "Drama",
-      "Thriller",
-    ],
+    genres: ["Drama", "Thriller"],
   },
   {
     id: "top_rated_7",
@@ -578,16 +950,28 @@ const topRatedItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2026,
     rating: 4.6,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "top_rated_8",
@@ -596,16 +980,28 @@ const topRatedItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2025,
     rating: 4.7,
-    genres: [
-      "Drama",
-      "Thriller",
-    ],
+    genres: ["Drama", "Thriller"],
   },
   {
     id: "top_rated_9",
@@ -614,16 +1010,28 @@ const topRatedItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2024,
     rating: 4.8,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "top_rated_10",
@@ -632,16 +1040,28 @@ const topRatedItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2023,
     rating: 4.9,
-    genres: [
-      "Drama",
-      "Thriller",
-    ],
+    genres: ["Drama", "Thriller"],
   },
 ];
 
@@ -653,16 +1073,28 @@ const pickedItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2025,
     rating: 4.4,
-    genres: [
-      "Drama",
-      "Thriller",
-    ],
+    genres: ["Drama", "Thriller"],
   },
   {
     id: "picked_2",
@@ -671,16 +1103,28 @@ const pickedItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2024,
     rating: 4.5,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "picked_3",
@@ -689,16 +1133,28 @@ const pickedItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2023,
     rating: 4.7,
-    genres: [
-      "Drama",
-      "Thriller",
-    ],
+    genres: ["Drama", "Thriller"],
   },
   {
     id: "picked_4",
@@ -707,16 +1163,28 @@ const pickedItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2022,
     rating: 4.6,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "picked_5",
@@ -725,16 +1193,28 @@ const pickedItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2022,
     rating: 4.6,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "picked_6",
@@ -743,16 +1223,28 @@ const pickedItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2021,
     rating: 4.8,
-    genres: [
-      "Drama",
-      "Thriller",
-    ],
+    genres: ["Drama", "Thriller"],
   },
   {
     id: "picked_7",
@@ -761,16 +1253,28 @@ const pickedItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2020,
     rating: 4.5,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "picked_8",
@@ -779,16 +1283,28 @@ const pickedItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2020,
     rating: 4.5,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "picked_9",
@@ -797,16 +1313,28 @@ const pickedItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2021,
     rating: 4.7,
-    genres: [
-      "Drama",
-      "Thriller",
-    ],
+    genres: ["Drama", "Thriller"],
   },
   {
     id: "picked_10",
@@ -815,16 +1343,28 @@ const pickedItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2020,
     rating: 4.5,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
 ];
 
@@ -836,16 +1376,28 @@ const movieItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2027,
     rating: 4.3,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "movie_2",
@@ -854,16 +1406,28 @@ const movieItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2026,
     rating: 4.5,
-    genres: [
-      "Drama",
-      "Thriller",
-    ],
+    genres: ["Drama", "Thriller"],
   },
   {
     id: "movie_3",
@@ -872,16 +1436,28 @@ const movieItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2025,
     rating: 4.7,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "movie_4",
@@ -890,16 +1466,28 @@ const movieItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2024,
     rating: 4.9,
-    genres: [
-      "Drama",
-      "Thriller",
-    ],
+    genres: ["Drama", "Thriller"],
   },
   {
     id: "movie_5",
@@ -908,16 +1496,28 @@ const movieItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2023,
     rating: 4.6,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "movie_6",
@@ -926,16 +1526,28 @@ const movieItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2022,
     rating: 4.8,
-    genres: [
-      "Drama",
-      "Thriller",
-    ],
+    genres: ["Drama", "Thriller"],
   },
   {
     id: "movie_7",
@@ -944,16 +1556,28 @@ const movieItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2021,
     rating: 4.5,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "movie_8",
@@ -962,16 +1586,28 @@ const movieItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2020,
     rating: 4.5,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "movie_9",
@@ -980,16 +1616,28 @@ const movieItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2022,
     rating: 4.7,
-    genres: [
-      "Drama",
-      "Thriller",
-    ],
+    genres: ["Drama", "Thriller"],
   },
   {
     id: "movie_10",
@@ -998,16 +1646,28 @@ const movieItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2021,
     rating: 4.5,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
 ];
 
@@ -1019,16 +1679,28 @@ const tvItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2020,
     rating: 5,
-    genres: [
-      "Action",
-      "Adventure",
-    ],
+    genres: ["Action", "Adventure"],
   },
   {
     id: "tv_2",
@@ -1037,16 +1709,28 @@ const tvItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2019,
     rating: 4.2,
-    genres: [
-      "Romance",
-      "Adventure",
-    ],
+    genres: ["Romance", "Adventure"],
   },
   {
     id: "tv_3",
@@ -1055,16 +1739,28 @@ const tvItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2018,
     rating: 4.8,
-    genres: [
-      "Action",
-      "Thriller",
-    ],
+    genres: ["Action", "Thriller"],
   },
   {
     id: "tv_4",
@@ -1073,16 +1769,28 @@ const tvItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2017,
     rating: 4.3,
-    genres: [
-      "Romance",
-      "Adventure",
-    ],
+    genres: ["Romance", "Adventure"],
   },
   {
     id: "tv_5",
@@ -1091,16 +1799,28 @@ const tvItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2016,
     rating: 4,
-    genres: [
-      "Action",
-      "Romance",
-    ],
+    genres: ["Action", "Romance"],
   },
   {
     id: "tv_6",
@@ -1109,16 +1829,28 @@ const tvItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2015,
     rating: 4.2,
-    genres: [
-      "Romance",
-      "Drama",
-    ],
+    genres: ["Romance", "Drama"],
   },
   {
     id: "tv_7",
@@ -1127,16 +1859,28 @@ const tvItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2014,
     rating: 4.7,
-    genres: [
-      "Drama",
-      "Adventure",
-    ],
+    genres: ["Drama", "Adventure"],
   },
   {
     id: "tv_8",
@@ -1145,16 +1889,28 @@ const tvItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2013,
     rating: 4.6,
-    genres: [
-      "Action",
-      "Fantasy",
-    ],
+    genres: ["Action", "Fantasy"],
   },
   {
     id: "tv_9",
@@ -1163,16 +1919,28 @@ const tvItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2012,
     rating: 4.5,
-    genres: [
-      "Action",
-      "Drama",
-    ],
+    genres: ["Action", "Drama"],
   },
   {
     id: "tv_10",
@@ -1181,16 +1949,28 @@ const tvItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2011,
     rating: 4.4,
-    genres: [
-      "Action",
-      "Comedy",
-    ],
+    genres: ["Action", "Comedy"],
   },
 ];
 </script>
