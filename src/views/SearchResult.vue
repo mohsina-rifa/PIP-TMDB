@@ -13,9 +13,24 @@ const dummyItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2027,
     rating: 4.5,
@@ -31,9 +46,24 @@ const dummyItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2027,
     rating: 4.5,
@@ -49,9 +79,24 @@ const dummyItems: Show[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
     cast: [
-      "Actor A",
-      "Actor B",
-      "Actor C",
+      {
+        name: "Actor One",
+        role: "Role One",
+        gender: "male",
+        image: "",
+      },
+      {
+        name: "Actor Two",
+        role: "Role Two",
+        gender: "female",
+        image: "",
+      },
+      {
+        name: "Actor Three",
+        role: "Role Three",
+        gender: "male",
+        image: "",
+      },
     ],
     release_year: 2027,
     rating: 4.5,
