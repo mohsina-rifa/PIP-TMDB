@@ -17,6 +17,7 @@ const transformToSeries = (apiData: any): Series => {
         : 0,
       rating: apiData.vote_average || 0,
       genres: apiData.genre_ids || [],
+      mediaType: 'tv' as const,
     },
     total_seasons: apiData.number_of_seasons || 0,
     seasons: [],
