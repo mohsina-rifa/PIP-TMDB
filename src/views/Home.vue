@@ -505,20 +505,16 @@ const pickedItems: Movie[] = [
 
 const movieItems = computed(() => {
   const movies = movieStore.getUpcomingMovies || [];
-  const series = seriesStore.getUpcomingSeries || [];
 
-  const transformedSeries = series.map((s) => s.details);
-
-  return [...movies, ...transformedSeries];
+  return [...movies];
 });
 
 const tvItems = computed(() => {
-  const movies = movieStore.getUpcomingMovies || [];
   const series = seriesStore.getUpcomingSeries || [];
 
   const transformedSeries = series.map((s) => s.details);
 
-  return [...movies, ...transformedSeries];
+  return [...transformedSeries];
 });
 </script>
 

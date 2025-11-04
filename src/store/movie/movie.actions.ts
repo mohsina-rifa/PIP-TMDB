@@ -1,5 +1,24 @@
 import axios from "../../service/api";
 import type { MovieState } from "./movie.state";
+import type { Movie } from "../../types/auth";
+
+const transformToMovie = (apiData: any): Movie => {
+  return {
+    id: apiData.id.toString(),
+    title: apiData.title || apiData.original_title,
+    thumbnail: apiData.poster_path
+      ? `https://image.tmdb.org/t/p/w500${apiData.poster_path}`
+      : "",
+    description: apiData.overview || "",
+    cast: [],
+    release_year: apiData.release_date
+      ? new Date(apiData.release_date).getFullYear()
+      : 0,
+    rating: apiData.vote_average || 0,
+    genres: apiData.genre_ids || [],
+    duration: apiData.runtime || 0,
+  };
+};
 
 export const actions = {
   async fetchTrendingMovies(this: MovieState) {
@@ -7,7 +26,7 @@ export const actions = {
     this.error = null;
     try {
       const response = await axios.get("/trending/movie/week");
-      this.trendingMovies = response.data.results;
+      this.trendingMovies = response.data.results.map(transformToMovie);
     } catch (error: any) {
       this.error = error.message || "Failed to fetch trending movies";
       console.error("Error fetching trending movies:", error);
@@ -21,7 +40,7 @@ export const actions = {
     this.error = null;
     try {
       const response = await axios.get("/movie/popular");
-      this.popularMovies = response.data.results;
+      this.popularMovies = response.data.results.map(transformToMovie);
     } catch (error: any) {
       this.error = error.message || "Failed to fetch popular movies";
       console.error("Error fetching popular movies:", error);
@@ -35,7 +54,7 @@ export const actions = {
     this.error = null;
     try {
       const response = await axios.get("/movie/top_rated");
-      this.topRatedMovies = response.data.results;
+      this.topRatedMovies = response.data.results.map(transformToMovie);
     } catch (error: any) {
       this.error = error.message || "Failed to fetch top rated movies";
       console.error("Error fetching top rated movies:", error);
@@ -49,7 +68,7 @@ export const actions = {
     this.error = null;
     try {
       const response = await axios.get("/movie/upcoming");
-      this.upcomingMovies = response.data.results;
+      this.upcomingMovies = response.data.results.map(transformToMovie);
     } catch (error: any) {
       this.error = error.message || "Failed to fetch upcoming movies";
       console.error("Error fetching upcoming movies:", error);
