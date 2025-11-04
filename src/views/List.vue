@@ -1,346 +1,62 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import type { Movie } from "../types/auth";
 import { useRoute } from "vue-router";
 import Dropdown from "../components/buttons/Dropdown.vue";
 import AllFiles from "../components/AllFiles.vue";
+import { useMovieStore } from "../store/movie/movie.store";
+import { useSeriesStore } from "../store/series/series.store";
+import { useWatchlistStore } from "../store/watchlist/watchlist.store";
 
 const route = useRoute();
 
+const movieStore = useMovieStore();
+const seriesStore = useSeriesStore();
+const watchlistStore = useWatchlistStore();
+
 const category = route.params.category as string;
 
-const dummyListItems: Movie[] = [
-  {
-    id: "dl_1",
-    title: "Item One",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2020,
-    rating: 5,
-    genres: [
-      "Action", 
-      "Adventure",
-    ],
-  },
-  {
-    id: "dl_2",
-    title: "Item Two",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2019,
-    rating: 4.5,
-    genres: [
-      "Thriller", 
-      "Adventure",
-    ],
-  },
-  {
-    id: "dl_3",
-    title: "Item Three",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2018,
-    rating: 4.8,
-    genres: [
-      "Action", 
-      "Thriller",
-    ],
-  },
-  {
-    id: "dl_4",
-    title: "Item Four",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2017,
-    rating: 4.3,
-    genres: [
-      "Romance",
-      "Adventure",
-    ],
-  },
-  {
-    id: "dl_5",
-    title: "Item Five",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2016,
-    rating: 4,
-    genres: [
-      "Action",
-      "Romance",
-    ],
-  },
-  {
-    id: "dl_6",
-    title: "Item Six",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2015,
-    rating: 4.2,
-    genres: [
-      "Romance",
-      "Drama",
-    ],
-  },
-  {
-    id: "dl_7",
-    title: "Item Seven",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2014,
-    rating: 4.7,
-    genres: [
-      "Drama",
-      "Adventure",
-    ],
-  },
-  {
-    id: "dl_8",
-    title: "Item Eight",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2013,
-    rating: 4.6,
-    genres: [
-      "Action",
-      "Fantasy",
-    ],
-  },
-  {
-    id: "dl_9",
-    title: "Item Nine",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2012,
-    rating: 5,
-    genres: [
-      "Mystery",
-      "Adventure",
-    ],
-  },
-  {
-    id: "dl_10",
-    title: "Item Ten",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2011,
-    rating: 3.9,
-    genres: [
-      "Fantasy",
-      "Romance",
-    ],
-  },
-];
+onMounted(async () => {
+  await Promise.all([
+    movieStore.fetchByCategory(category),
+    seriesStore.fetchByCategory(category),
+  ]);
+});
+
+const categoryItems = computed(() => {
+  const categoryMap: Record<string, () => Movie[]> = {
+    "trending-now": () => {
+      const movies = movieStore.getTrendingMovies || [];
+      const series = seriesStore.getTrendingSeries || [];
+      return [...movies, ...series.map((s) => s.details)];
+    },
+    "popular": () => {
+      const movies = movieStore.getPopularMovies || [];
+      const series = seriesStore.getPopularSeries || [];
+      return [...movies, ...series.map((s) => s.details)];
+    },
+    "top-rated": () => {
+      const movies = movieStore.getTopRatedMovies || [];
+      const series = seriesStore.getTopRatedSeries || [];
+      return [...movies, ...series.map((s) => s.details)];
+    },
+    "watchlist": () => {
+      const movies = watchlistStore.getAllMovies || [];
+      const series = watchlistStore.getAllSeries || [];
+      return [...movies, ...series.map((s) => s.details)];
+    },
+    "upcoming-movies": () => {
+      return movieStore.getUpcomingMovies || [];
+    },
+    "upcoming-tv-series": () => {
+      const series = seriesStore.getUpcomingSeries || [];
+      return series.map((s) => s.details);
+    },
+  };
+
+  const getItems = categoryMap[category];
+  return getItems ? getItems() : [];
+});
 
 const reverseKebab = (str: string) => {
   return str
@@ -355,13 +71,13 @@ const filteredBy = ref("");
 
 const filteredItems = computed(() => {
   if (filteredBy.value === "Most Popular") {
-    return dummyListItems;
+    return categoryItems;
   } else if (filteredBy.value === "Highest Rated") {
-    return dummyListItems.slice().reverse();
+    return categoryItems.value.slice().reverse();
   } else if (filteredBy.value === "Newest") {
-    return dummyListItems.slice(0, 5);
+    return categoryItems.value.slice(0, 5);
   }
-  return dummyListItems;
+  return categoryItems;
 });
 
 const onFilterSelect = (option: string): void => {
@@ -374,13 +90,13 @@ const sortedBy = ref("");
 
 const sortedItems = computed(() => {
   if (sortedBy.value === "A-Z") {
-    return [...dummyListItems].sort((a, b) => a.title.localeCompare(b.title));
+    return [...categoryItems.value].sort((a, b) => a.title.localeCompare(b.title));
   }
   if (sortedBy.value === "Z-A") {
-    return [...dummyListItems].sort((a, b) => b.title.localeCompare(a.title));
+    return [...categoryItems.value].sort((a, b) => b.title.localeCompare(a.title));
   }
   // Default: Release date (original order)
-  return dummyListItems;
+  return categoryItems;
 });
 
 const onSortSelect = (option: string): void => {
@@ -388,8 +104,8 @@ const onSortSelect = (option: string): void => {
 };
 
 const listItems = computed(() => {
-  const sorted = sortedItems.value;
-  const filtered = filteredItems.value;
+  const sorted = Array.isArray(sortedItems.value) ? sortedItems.value : sortedItems.value.value;
+  const filtered = Array.isArray(filteredItems.value) ? filteredItems.value : filteredItems.value.value;
 
   return sorted.filter((item) => filtered.some((f) => f.title === item.title));
 });
@@ -446,8 +162,8 @@ const listItems = computed(() => {
 .list-container,
 .card-grid,
 .d-flex {
-  position: relative; /* Add this if not present */
-  z-index: auto; /* Ensure it doesn't create stacking issues */
+  position: relative;
+  z-index: auto;
 }
 
 .row {
