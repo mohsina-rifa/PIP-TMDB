@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useRouter } from "vue-router";
 import type { Movie, Cast, Episode } from "../types/auth";
 
 const props = defineProps({
@@ -31,10 +32,34 @@ const props = defineProps({
 const getDefaultCastImage = (gender: string): string => {
   return gender === "male" ? "/male_cast.png" : "/female_cast.png";
 };
+
+const router = useRouter();
+
+const handleCardClick = () => {
+  // Don't navigate for cast or episode cards
+  if (props.isCast || props.isEpisode) {
+    if (props.handleClick) {
+      props.handleClick();
+    }
+    return;
+  }
+
+  // For movie/series cards, navigate to detail page
+  if (props.item) {
+    const mediaType = props.item.mediaType || "movie";
+    const route =
+      mediaType === "tv" ? `/tv/${props.item.id}` : `/movie/${props.item.id}`;
+    router.push(route);
+  }
+};
 </script>
 
 <template>
-  <div class="card rounded-3 shadow overflow-hidden">
+  <div
+    class="card rounded-3 shadow overflow-hidden"
+    @click="handleCardClick"
+    :class="{ clickable: !isCast && !isEpisode }"
+  >
     <!-- Image Section -->
     <div class="card-img px-3 pt-3">
       <img
@@ -64,7 +89,9 @@ const getDefaultCastImage = (gender: string): string => {
           <span class="h6">{{ cast.name }}</span>
           <span class="text-muted">{{ cast.role }}</span>
         </span>
-        <span v-else-if="isEpisode" class="h6">{{ episode.episode_number }}. {{ episode.title }}</span>
+        <span v-else-if="isEpisode" class="h6"
+          >{{ episode.episode_number }}. {{ episode.title }}</span
+        >
         <span v-else class="h6">{{ item.title }}</span>
       </div>
     </div>
@@ -84,6 +111,10 @@ const getDefaultCastImage = (gender: string): string => {
   display: flex;
   flex-direction: column;
   margin: 0.5rem;
+}
+
+.card.clickable {
+  cursor: pointer;
 }
 
 .card:hover {
