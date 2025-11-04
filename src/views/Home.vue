@@ -1,7 +1,18 @@
 <script setup lang="ts">
+import { onMounted, computed } from "vue";
 import Row from "../components/Row.vue";
 import Trailer from "../components/Trailer.vue";
 import type { Movie } from "../types/auth";
+import { useMovieStore } from "../store/movie/movie.store";
+import { useSeriesStore } from "../store/series/series.store";
+
+const movieStore = useMovieStore();
+const seriesStore = useSeriesStore();
+
+onMounted(() => {
+  movieStore.fetchTrendingMovies();
+  seriesStore.fetchTrendingSeries();
+});
 
 const trailerItems: Movie[] = [
   {
@@ -156,308 +167,14 @@ const trailerItems: Movie[] = [
   },
 ];
 
-const trendingItems: Movie[] = [
-  {
-    id: "trending_1",
-    title: "Trending One",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2032,
-    rating: 4.5,
-    genres: ["Drama", "Thriller"],
-  },
-  {
-    id: "trending_2",
-    title: "Trending Two",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2031,
-    rating: 4.0,
-    genres: ["Action", "Adventure"],
-  },
-  {
-    id: "trending_3",
-    title: "Trending Three",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2030,
-    rating: 4.5,
-    genres: ["Drama", "Thriller"],
-  },
-  {
-    id: "trending_4",
-    title: "Trending Four",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2029,
-    rating: 4.0,
-    genres: ["Action", "Adventure"],
-  },
-  {
-    id: "trending_5",
-    title: "Trending Five",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2028,
-    rating: 4.2,
-    genres: ["Drama", "Thriller"],
-  },
-  {
-    id: "trending_6",
-    title: "Trending Six",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2027,
-    rating: 4.5,
-    genres: ["Action", "Adventure"],
-  },
-  {
-    id: "trending_7",
-    title: "Trending Seven",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2026,
-    rating: 4.0,
-    genres: ["Drama", "Thriller"],
-  },
-  {
-    id: "trending_8",
-    title: "Trending Eight",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2025,
-    rating: 3.5,
-    genres: ["Action", "Adventure"],
-  },
-  {
-    id: "trending_9",
-    title: "Trending Nine",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2024,
-    rating: 4.0,
-    genres: ["Drama", "Thriller"],
-  },
-  {
-    id: "trending_10",
-    title: "Trending Ten",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2023,
-    rating: 4.5,
-    genres: ["Action", "Adventure"],
-  },
-];
+const trendingItems = computed(() => {
+  const movies = movieStore.getTrendingMovies || [];
+  const series = seriesStore.getTrendingSeries || [];
+
+  const transformedSeries = series.map((s) => s.details);
+
+  return [...movies, ...transformedSeries];
+});
 
 const popularItems: Movie[] = [
   {
