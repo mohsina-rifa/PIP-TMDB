@@ -72,7 +72,8 @@ const buttonType = computed<"button" | "submit" | "reset">(() => {
   transition: background 0.2s, color 0.2s;
 }
 
-.custom-btn:hover {
+.custom-btn:hover,
+.custom-btn:disabled {
   background: var(--green-1);
   color: var(--white);
   font-weight: bold;
@@ -82,7 +83,8 @@ const buttonType = computed<"button" | "submit" | "reset">(() => {
   color: var(--green-1);
 }
 
-.custom-btn:hover .btn-icon {
+.custom-btn:hover .btn-icon,
+.custom-btn:disabled .btn-icon {
   color: var(--white);
   font-weight: bolder;
 }

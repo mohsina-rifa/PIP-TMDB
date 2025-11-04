@@ -1,13 +1,47 @@
 import axios from "../../service/api";
 import type { SeriesState } from "./series.state";
+import type { Series } from "../../types/auth";
+
+const transformToSeries = (apiData: any): Series => {
+  return {
+    details: {
+      id: apiData.id.toString(),
+      title: apiData.name || apiData.original_name,
+      thumbnail: apiData.poster_path
+        ? `https://image.tmdb.org/t/p/w500${apiData.poster_path}`
+        : "",
+      description: apiData.overview || "",
+      cast: [],
+      release_year: apiData.first_air_date
+        ? new Date(apiData.first_air_date).getFullYear()
+        : 0,
+      rating: apiData.vote_average || 0,
+      genres: apiData.genre_ids || [],
+      mediaType: 'tv' as const,
+    },
+    total_seasons: apiData.number_of_seasons || 0,
+    seasons: [],
+  };
+};
 
 export const actions = {
   async fetchTrendingSeries(this: SeriesState) {
     this.loading = true;
     this.error = null;
     try {
-      const response = await axios.get("/trending/tv/week");
-      this.trendingSeries = response.data.results;
+      const [popularResponse, topRatedResponse] = await Promise.all([
+        axios.get("/tv/popular"),
+        axios.get("/tv/top_rated"),
+      ]);
+
+      const popularSeries = popularResponse.data.results;
+      const topRatedSeries = topRatedResponse.data.results;
+
+      const commonSeries = popularSeries.filter((popular: any) =>
+        topRatedSeries.some((topRated: any) => topRated.id === popular.id)
+      );
+
+      this.trendingSeries = commonSeries.map(transformToSeries);
     } catch (error: any) {
       this.error = error.message || "Failed to fetch trending series";
       console.error("Error fetching trending series:", error);
@@ -21,7 +55,7 @@ export const actions = {
     this.error = null;
     try {
       const response = await axios.get("/tv/popular");
-      this.popularSeries = response.data.results;
+      this.popularSeries = response.data.results.map(transformToSeries);
     } catch (error: any) {
       this.error = error.message || "Failed to fetch popular series";
       console.error("Error fetching popular series:", error);
@@ -35,7 +69,7 @@ export const actions = {
     this.error = null;
     try {
       const response = await axios.get("/tv/top_rated");
-      this.topRatedSeries = response.data.results;
+      this.topRatedSeries = response.data.results.map(transformToSeries);
     } catch (error: any) {
       this.error = error.message || "Failed to fetch top rated series";
       console.error("Error fetching top rated series:", error);
@@ -48,8 +82,8 @@ export const actions = {
     this.loading = true;
     this.error = null;
     try {
-      const response = await axios.get("/tv/on_the_air");
-      this.upcomingSeries = response.data.results;
+      const response = await axios.get("/tv/airing_today");
+      this.upcomingSeries = response.data.results.map(transformToSeries);
     } catch (error: any) {
       this.error = error.message || "Failed to fetch upcoming series";
       console.error("Error fetching upcoming series:", error);
@@ -57,14 +91,100 @@ export const actions = {
       this.loading = false;
     }
   },
+  
+  async fetchByCategory(this: SeriesState, category: string) {
+    const methodMap: Record<string, (ctx: SeriesState) => Promise<void>> = {
+      "trending-now": (ctx) => actions.fetchTrendingSeries.call(ctx),
+      "popular": (ctx) => actions.fetchPopularSeries.call(ctx),
+      "top-rated": (ctx) => actions.fetchTopRatedSeries.call(ctx),
+      "upcoming-tv-series": (ctx) => actions.fetchUpcomingSeries.call(ctx),
+    };
+
+    const fetchMethod = methodMap[category];
+    if (fetchMethod) {
+      await fetchMethod(this);
+    } else {
+      console.error(`No fetch method found for category: ${category}`);
+    }
+  },
 
   async fetchSeriesById(this: SeriesState, id: string) {
     this.loading = true;
     this.error = null;
     try {
-      const response = await axios.get(`/tv/${id}`);
-      this.currentSeries = response.data;
-      return response.data;
+      // Fetch series details and credits in parallel
+      const [detailsResponse, creditsResponse] = await Promise.all([
+        axios.get(`/tv/${id}`),
+        axios.get(`/tv/${id}/credits`)
+      ]);
+
+      const seriesData = detailsResponse.data;
+      const credits = creditsResponse.data;
+
+      // Transform cast data
+      const cast = credits.cast?.slice(0, 10).map((actor: any) => ({
+        name: actor.name,
+        role: actor.character,
+        gender: actor.gender === 1 ? 'female' : 'male',
+        image: actor.profile_path 
+          ? `https://image.tmdb.org/t/p/w500${actor.profile_path}`
+          : ''
+      })) || [];
+
+      // Transform genres from array of objects to array of strings
+      const genres = seriesData.genres?.map((g: any) => g.name) || [];
+
+      // Transform seasons data
+      const seasons = await Promise.all(
+        seriesData.seasons?.map(async (season: any) => {
+          try {
+            const seasonResponse = await axios.get(`/tv/${id}/season/${season.season_number}`);
+            const seasonData = seasonResponse.data;
+            
+            return {
+              season_number: season.season_number,
+              episodes: seasonData.episodes?.map((ep: any) => ({
+                episode_number: ep.episode_number,
+                title: ep.name,
+                thumbnail: ep.still_path
+                  ? `https://image.tmdb.org/t/p/w500${ep.still_path}`
+                  : '',
+                description: ep.overview || '',
+              })) || []
+            };
+          } catch (error) {
+            console.error(`Error fetching season ${season.season_number}:`, error);
+            return {
+              season_number: season.season_number,
+              episodes: []
+            };
+          }
+        }) || []
+      );
+
+      this.currentSeries = {
+        details: {
+          id: seriesData.id.toString(),
+          title: seriesData.name || seriesData.original_name,
+          thumbnail: seriesData.backdrop_path
+            ? `https://image.tmdb.org/t/p/original${seriesData.backdrop_path}`
+            : seriesData.poster_path
+            ? `https://image.tmdb.org/t/p/w500${seriesData.poster_path}`
+            : "",
+          description: seriesData.overview || "",
+          cast: cast,
+          release_year: seriesData.first_air_date
+            ? new Date(seriesData.first_air_date).getFullYear()
+            : 0,
+          rating: seriesData.vote_average || 0,
+          genres: genres,
+          mediaType: 'tv' as const,
+        },
+        total_seasons: seriesData.number_of_seasons || 0,
+        seasons: seasons,
+      };
+
+      return this.currentSeries;
     } catch (error: any) {
       this.error = error.message || "Failed to fetch series details";
       console.error("Error fetching series details:", error);

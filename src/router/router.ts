@@ -36,7 +36,7 @@ const routes: RouteRecordRaw[] = [
   },
   // user-saved
   {
-    path: '/watchList',
+    path: '/watchlist',
     name: 'WatchList',
     component: () => import('../views/WatchList.vue'),
   },
