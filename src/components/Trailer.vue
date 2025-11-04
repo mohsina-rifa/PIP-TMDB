@@ -2,6 +2,7 @@
 import { ref, onMounted, onUnmounted } from "vue";
 import Custom from "../components/buttons/Custom.vue";
 import type { Movie } from "../types/auth";
+import { useWatchlistStore } from "../store/watchlist/watchlist.store";
 
 const props = defineProps({
   items: {
@@ -22,6 +23,15 @@ onMounted(() => {
 onUnmounted(() => {
   if (interval) clearInterval(interval);
 });
+
+const watchlistStore = useWatchlistStore();
+
+const handleSave = () => {
+  const currentItem = props.items[current.value];
+  if (currentItem) {
+    watchlistStore.addMovie(currentItem);
+  }
+};
 </script>
 
 <template>
@@ -50,7 +60,7 @@ onUnmounted(() => {
           <div
             class="trailer-actions d-flex gap-3 align-items-center justify-content-start"
           >
-            <Custom label="Save" type="success" :leftIcon="'bi bi-save'" />
+            <Custom label="Save" type="success" :leftIcon="'bi bi-save'" @click="handleSave" />
             <Custom label="Info" type="secondary" :leftIcon="'bi bi-info-square'" />
           </div>
         </div>

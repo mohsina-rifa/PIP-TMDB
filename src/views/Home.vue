@@ -5,9 +5,11 @@ import Trailer from "../components/Trailer.vue";
 import type { Movie } from "../types/auth";
 import { useMovieStore } from "../store/movie/movie.store";
 import { useSeriesStore } from "../store/series/series.store";
+import { useWatchlistStore } from "../store/watchlist/watchlist.store";
 
 const movieStore = useMovieStore();
 const seriesStore = useSeriesStore();
+const watchlistStore = useWatchlistStore();
 
 onMounted(() => {
   movieStore.fetchUpcomingMovies();
@@ -18,6 +20,7 @@ onMounted(() => {
   seriesStore.fetchPopularSeries();
   movieStore.fetchTrendingMovies();
   seriesStore.fetchTrendingSeries();
+  watchlistStore.loadFromLocalStorage();
 });
 
 const trendingItems = computed(() => {
@@ -63,308 +66,14 @@ const trailerItems = computed(() => {
   return items;
 });
 
-const pickedItems: Movie[] = [
-  {
-    id: "picked_1",
-    title: "Picked One",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2025,
-    rating: 4.4,
-    genres: ["Drama", "Thriller"],
-  },
-  {
-    id: "picked_2",
-    title: "Picked Two",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2024,
-    rating: 4.5,
-    genres: ["Action", "Adventure"],
-  },
-  {
-    id: "picked_3",
-    title: "Picked Three",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2023,
-    rating: 4.7,
-    genres: ["Drama", "Thriller"],
-  },
-  {
-    id: "picked_4",
-    title: "Picked Four",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2022,
-    rating: 4.6,
-    genres: ["Action", "Adventure"],
-  },
-  {
-    id: "picked_5",
-    title: "Picked Five",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2022,
-    rating: 4.6,
-    genres: ["Action", "Adventure"],
-  },
-  {
-    id: "picked_6",
-    title: "Picked Six",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2021,
-    rating: 4.8,
-    genres: ["Drama", "Thriller"],
-  },
-  {
-    id: "picked_7",
-    title: "Picked Seven",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2020,
-    rating: 4.5,
-    genres: ["Action", "Adventure"],
-  },
-  {
-    id: "picked_8",
-    title: "Picked Eight",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2020,
-    rating: 4.5,
-    genres: ["Action", "Adventure"],
-  },
-  {
-    id: "picked_9",
-    title: "Picked Nine",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2021,
-    rating: 4.7,
-    genres: ["Drama", "Thriller"],
-  },
-  {
-    id: "picked_10",
-    title: "Picked Ten",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2020,
-    rating: 4.5,
-    genres: ["Action", "Adventure"],
-  },
-];
+const watchListItems = computed(() => {
+  const movies = watchlistStore.getAllMovies || [];
+  const series = watchlistStore.getAllSeries || [];
+  
+  const transformedSeries = series.map((s) => s.details);
+  
+  return [...movies, ...transformedSeries];
+});
 
 const movieItems = computed(() => {
   const movies = movieStore.getUpcomingMovies || [];
@@ -397,7 +106,7 @@ const tvItems = computed(() => {
       <Row :title="'Top Rated'" :items="topRatedItems" />
     </section>
     <section class="px-5">
-      <Row :title="'Your Picks'" :items="pickedItems" />
+      <Row :title="'Watchlist'" :items="watchListItems" />
     </section>
     <section class="px-5">
       <Row :title="'Upcoming Movies'" :items="movieItems" />
