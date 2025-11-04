@@ -2,6 +2,7 @@
 import { ref, onMounted, onUnmounted } from "vue";
 import Custom from "../components/buttons/Custom.vue";
 import type { Movie } from "../types/auth";
+import { useWatchlistStore } from "../store/watchlist/watchlist.store";
 
 const props = defineProps({
   items: {
@@ -22,6 +23,24 @@ onMounted(() => {
 onUnmounted(() => {
   if (interval) clearInterval(interval);
 });
+
+const watchlistStore = useWatchlistStore();
+
+const handleSave = () => {
+  const currentItem = props.items[current.value];
+  if (currentItem) {
+    if (currentItem.mediaType === "tv") {
+      const seriesItem = {
+        details: currentItem,
+        total_seasons: 0,
+        seasons: [],
+      };
+      watchlistStore.addSeries(seriesItem);
+    } else {
+      watchlistStore.addMovie(currentItem);
+    }
+  }
+};
 </script>
 
 <template>
@@ -50,8 +69,17 @@ onUnmounted(() => {
           <div
             class="trailer-actions d-flex gap-3 align-items-center justify-content-start"
           >
-            <Custom label="Save" type="success" :leftIcon="'bi bi-save'" />
-            <Custom label="Info" type="secondary" :leftIcon="'bi bi-info-square'" />
+            <Custom
+              label="Save"
+              type="success"
+              :leftIcon="'bi bi-save'"
+              @click="handleSave"
+            />
+            <Custom
+              label="Info"
+              type="secondary"
+              :leftIcon="'bi bi-info-square'"
+            />
           </div>
         </div>
       </div>
@@ -75,16 +103,16 @@ onUnmounted(() => {
 .trailer-content {
   color: var(--white);
   max-width: 600px;
-  margin-top: 5rem;
+  margin-top: 4rem;
   margin-left: 2rem;
 }
 
 .trailer-title {
-  font-size: 5rem;
+  font-size: 4rem;
 }
 
 .trailer-desc {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .slide-fade-enter-active,

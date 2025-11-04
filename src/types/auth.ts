@@ -15,6 +15,7 @@ export type Movie = {
   rating: number;
   genres: string[];
   duration?: number;
+  mediaType?: 'movie' | 'tv';
 };
 
 export type Episode = {
