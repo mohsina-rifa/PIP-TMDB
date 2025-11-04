@@ -63,7 +63,7 @@ const trailerItems = computed(() => {
   return items;
 });
 
-const pickedItems: Movie[] = [
+const watchListItems: Movie[] = [
   {
     id: "picked_1",
     title: "Picked One",
@@ -397,7 +397,7 @@ const tvItems = computed(() => {
       <Row :title="'Top Rated'" :items="topRatedItems" />
     </section>
     <section class="px-5">
-      <Row :title="'Your Picks'" :items="pickedItems" />
+      <Row :title="'Watchlist'" :items="watchListItems" />
     </section>
     <section class="px-5">
       <Row :title="'Upcoming Movies'" :items="movieItems" />
