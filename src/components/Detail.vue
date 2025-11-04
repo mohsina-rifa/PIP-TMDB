@@ -55,6 +55,14 @@ const handleSave = () => {
   }
 };
 
+const handleUnsave = () => {
+  if (props.isSeries && props.series?.details?.id) {
+    watchlistStore.removeSeries(props.series.details.id);
+  } else if (props.movie?.id) {
+    watchlistStore.removeMovie(props.movie.id);
+  }
+};
+
 const isInWatchlist = computed(() => {
   if (props.isSeries && props.series?.details?.id) {
     return watchlistStore.isSeriesInWatchlist(props.series.details.id);
@@ -90,16 +98,23 @@ const isInWatchlist = computed(() => {
           Seasons: {{ series.total_seasons }}
         </h5>
         <h6 class="mb-4">Release Year: {{ currentItem.release_year }}</h6>
-        <p class="detail-desc mb-4 mt-3">{{ currentItem.description }}</p>
+        <p class="detail-desc my-3">{{ currentItem.description }}</p>
         <div
           class="detail-actions d-flex gap-3 align-items-center justify-content-start"
         >
           <Custom
             :label="isInWatchlist ? 'Saved' : 'Save'"
             type="success"
-            :leftIcon="'bi bi-save'"
+            :leftIcon="'bi bi-folder-plus'"
             :disabled="isInWatchlist"
             @click="handleSave"
+          />
+          <Custom
+            label="Remove"
+            type="success"
+            :leftIcon="'bi bi-folder-minus'"
+            v-if="isInWatchlist"
+            @click="handleUnsave"
           />
         </div>
         <div class="mt-3" v-if="currentItem.genres?.length">
