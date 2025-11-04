@@ -90,6 +90,22 @@ export const actions = {
       this.loading = false;
     }
   },
+  
+  async fetchByCategory(this: SeriesState, category: string) {
+    const methodMap: Record<string, (ctx: SeriesState) => Promise<void>> = {
+      "trending-now": (ctx) => actions.fetchTrendingSeries.call(ctx),
+      "popular": (ctx) => actions.fetchPopularSeries.call(ctx),
+      "top-rated": (ctx) => actions.fetchTopRatedSeries.call(ctx),
+      "upcoming-tv-series": (ctx) => actions.fetchUpcomingSeries.call(ctx),
+    };
+
+    const fetchMethod = methodMap[category];
+    if (fetchMethod) {
+      await fetchMethod(this);
+    } else {
+      console.error(`No fetch method found for category: ${category}`);
+    }
+  },
 
   async fetchSeriesById(this: SeriesState, id: string) {
     this.loading = true;

@@ -76,6 +76,22 @@ export const actions = {
       this.loading = false;
     }
   },
+    
+    async fetchByCategory(this: MovieState, category: string) {
+      const methodMap: Record<string, (ctx: MovieState) => Promise<void>> = {
+        "trending-now": (ctx) => actions.fetchTrendingMovies.call(ctx),
+        "popular": (ctx) => actions.fetchPopularMovies.call(ctx),
+        "top-rated": (ctx) => actions.fetchTopRatedMovies.call(ctx),
+        "upcoming-tv-series": (ctx) => actions.fetchUpcomingMovies.call(ctx),
+      };
+  
+      const fetchMethod = methodMap[category];
+      if (fetchMethod) {
+        await fetchMethod(this);
+      } else {
+        console.error(`No fetch method found for category: ${category}`);
+      }
+    },
 
   async fetchMovieById(this: MovieState, id: string) {
     this.loading = true;
