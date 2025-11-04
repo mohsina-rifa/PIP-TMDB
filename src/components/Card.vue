@@ -85,9 +85,9 @@ const handleCardClick = () => {
     <!-- Title Section -->
     <div class="card-body p-3">
       <div class="card-title text-center">
-        <span v-if="isCast">
-          <span class="h6">{{ cast.name }}</span>
-          <span class="text-muted">{{ cast.role }}</span>
+        <span v-if="isCast" class="d-flex flex-column">
+          <span>{{ cast.name }}</span>
+          <span>{{ cast.role }}</span>
         </span>
         <span v-else-if="isEpisode" class="h6"
           >{{ episode.episode_number }}. {{ episode.title }}</span
@@ -146,7 +146,7 @@ const handleCardClick = () => {
 }
 
 .card-title {
-  color: var(--white);
+  color: var(--white) !important;
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.3;
