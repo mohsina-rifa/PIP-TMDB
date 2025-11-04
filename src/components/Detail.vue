@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import type { Movie, Series } from "../types/auth";
+import Custom from "../components/buttons/Custom.vue";
 import Card from "./Card.vue";
 import Dropdown from "./buttons/Dropdown.vue";
 import { useWatchlistStore } from "../store/watchlist/watchlist.store";
@@ -79,28 +80,27 @@ const isInWatchlist = computed(() => {
         <h1 class="detail-title fw-bold mb-4">
           {{ currentItem.title }}
         </h1>
-        <h4 class="my-2">Rating: {{ currentItem.rating?.toFixed(1) || 'N/A' }}</h4>
+        <h4 class="my-2">
+          Rating: {{ currentItem.rating?.toFixed(1) || "N/A" }}
+        </h4>
         <h5 class="mb-2" v-if="!isSeries && movie?.duration">
           Duration: {{ movie.duration }} min
         </h5>
         <h5 class="mb-2" v-if="isSeries && series?.total_seasons">
           Seasons: {{ series.total_seasons }}
         </h5>
-        <h6 class="mb-4">
-          Release Year: {{ currentItem.release_year }}
-        </h6>
+        <h6 class="mb-4">Release Year: {{ currentItem.release_year }}</h6>
         <p class="detail-desc mb-4 mt-3">{{ currentItem.description }}</p>
         <div
           class="detail-actions d-flex gap-3 align-items-center justify-content-start"
         >
-          <button 
-            class="btn btn-success rounded-2 px-4 py-2 fw-bold"
-            @click="handleSave"
+          <Custom
+            :label="isInWatchlist ? 'Saved' : 'Save'"
+            type="success"
+            :leftIcon="'bi bi-save'"
             :disabled="isInWatchlist"
-          >
-            <i class="bi bi-save me-2"></i>
-            {{ isInWatchlist ? 'Saved' : 'Save' }}
-          </button>
+            @click="handleSave"
+          />
         </div>
         <div class="mt-3" v-if="currentItem.genres?.length">
           <span
@@ -114,7 +114,7 @@ const isInWatchlist = computed(() => {
       </div>
     </div>
   </section>
-  
+
   <section id="detail-cast" class="m-5" v-if="currentItem?.cast?.length">
     <div class="d-flex align-items-center justify-content-between mb-4 ms-2">
       <h1 class="row-title fw-bold text-start fs-1">Cast</h1>
@@ -125,8 +125,12 @@ const isInWatchlist = computed(() => {
       </div>
     </div>
   </section>
-  
-  <section v-if="isSeries && seasonList.length > 0" id="detail-episodes" class="m-5">
+
+  <section
+    v-if="isSeries && seasonList.length > 0"
+    id="detail-episodes"
+    class="m-5"
+  >
     <div class="d-flex align-items-center justify-content-between mb-4 ms-2">
       <h1 class="row-title fw-bold text-start fs-1">Seasons and Episodes</h1>
       <Dropdown
