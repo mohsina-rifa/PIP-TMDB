@@ -88,17 +88,17 @@ const isInWatchlist = computed(() => {
         <h1 class="detail-title fw-bold mb-1">
           {{ currentItem.title }}
         </h1>
-        <h4 class="my-1">
+        <h4 class="my-2">
           Rating: {{ currentItem.rating?.toFixed(1) || "N/A" }}
         </h4>
-        <h5 class="mb-1" v-if="!isSeries && movie?.duration">
+        <h5 class="mb-2" v-if="!isSeries && movie?.duration">
           Duration: {{ movie.duration }} min
         </h5>
-        <h5 class="mb-1" v-if="isSeries && series?.total_seasons">
+        <h5 class="mb-2" v-if="isSeries && series?.total_seasons">
           Seasons: {{ series.total_seasons }}
         </h5>
-        <h6 class="mb-1">Release Year: {{ currentItem.release_year }}</h6>
-        <p class="detail-desc my-1">{{ currentItem.description }}</p>
+        <h6 class="mb-4">Release Year: {{ currentItem.release_year }}</h6>
+        <p class="detail-desc my-4">{{ currentItem.description }}</p>
         <div
           class="detail-actions d-flex gap-3 align-items-center justify-content-start"
         >
@@ -117,7 +117,7 @@ const isInWatchlist = computed(() => {
             @click="handleUnsave"
           />
         </div>
-        <div class="mt-3" v-if="currentItem.genres?.length">
+        <div class="mt-4" v-if="currentItem.genres?.length">
           <span
             v-for="(genre, idx) in currentItem.genres"
             :key="idx"
@@ -179,34 +179,18 @@ const isInWatchlist = computed(() => {
 
 .detail-content {
   color: var(--white);
-  max-width: 50%;
-  min-width: 600px;
-  margin-top: 3rem;
-  margin-left: 4rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: calc(100% - 4rem);
+  max-width: 45%;
+  margin-top: 5rem;
+  margin-left: 2rem;
 }
 
 .detail-title {
-  font-size: 3.5rem;
+  font-size: 4rem;
   color: var(--white);
-  line-height: 1.2;
-  margin-bottom: 0.5rem;
 }
 
 .detail-desc {
-  font-size: 1.05rem;
-  line-height: 1.6;
-  max-height: 10rem;
-  overflow-y: auto;
-  margin-bottom: 0.5rem;
-}
-
-.detail-actions {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
 }
 
 .detail-actions .btn {
