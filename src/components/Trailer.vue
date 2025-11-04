@@ -29,7 +29,16 @@ const watchlistStore = useWatchlistStore();
 const handleSave = () => {
   const currentItem = props.items[current.value];
   if (currentItem) {
-    watchlistStore.addMovie(currentItem);
+    if (currentItem.mediaType === "tv") {
+      const seriesItem = {
+        details: currentItem,
+        total_seasons: 0,
+        seasons: [],
+      };
+      watchlistStore.addSeries(seriesItem);
+    } else {
+      watchlistStore.addMovie(currentItem);
+    }
   }
 };
 </script>
@@ -60,8 +69,17 @@ const handleSave = () => {
           <div
             class="trailer-actions d-flex gap-3 align-items-center justify-content-start"
           >
-            <Custom label="Save" type="success" :leftIcon="'bi bi-save'" @click="handleSave" />
-            <Custom label="Info" type="secondary" :leftIcon="'bi bi-info-square'" />
+            <Custom
+              label="Save"
+              type="success"
+              :leftIcon="'bi bi-save'"
+              @click="handleSave"
+            />
+            <Custom
+              label="Info"
+              type="secondary"
+              :leftIcon="'bi bi-info-square'"
+            />
           </div>
         </div>
       </div>
