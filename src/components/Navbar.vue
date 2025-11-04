@@ -1,5 +1,20 @@
 <script setup lang="ts">
-import SearchBar from './SearchBar.vue';
+import { useRouter } from "vue-router";
+import SearchBar from "./SearchBar.vue";
+
+const router = useRouter();
+
+const setMoviesOnly = () => {
+  router.push({ path: "/", query: { filter: "movies" } });
+};
+
+const setTVOnly = () => {
+  router.push({ path: "/", query: { filter: "tv" } });
+};
+
+const clearFilter = () => {
+  router.push("/");
+};
 </script>
 
 <template>
@@ -10,6 +25,7 @@ import SearchBar from './SearchBar.vue';
       <router-link
         to="/"
         class="brand d-flex align-items-center gap-2 text-decoration-none"
+        @click="clearFilter"
       >
         <i class="logo bi bi-film pe-1"></i>
         <span class="title fw-semibold">TMDB-Serpent</span>
@@ -17,22 +33,27 @@ import SearchBar from './SearchBar.vue';
     </div>
 
     <nav class="d-flex align-items-center gap-3">
-      <router-link to="/" class="nav-link text-decoration-none rounded-2"
+      <router-link
+        to="/"
+        class="nav-link cursor-pointer text-decoration-none rounded-2"
+        @click="clearFilter"
         >Home</router-link
       >
-      <router-link
-        to="/movie/popular"
-        class="nav-link text-decoration-none rounded-2"
-        >Movies</router-link
+      <a
+        @click="setMoviesOnly"
+        class="nav-link cursor-pointer text-decoration-none rounded-2"
+        role="button"
+        >Movies</a
       >
-      <router-link
-        to="/tv/popular"
-        class="nav-link text-decoration-none rounded-2"
-        >TV</router-link
+      <a
+        @click="setTVOnly"
+        class="nav-link cursor-pointer text-decoration-none rounded-2"
+        role="button"
+        >TV</a
       >
       <router-link
         to="/watchList"
-        class="nav-link text-decoration-none rounded-2"
+        class="nav-link cursor-pointer text-decoration-none rounded-2"
         >Watchlist</router-link
       >
       <SearchBar />
@@ -42,7 +63,7 @@ import SearchBar from './SearchBar.vue';
 
 <style scoped>
 .navbar {
-  background: var(--green-1); /* use palette */
+  background: var(--green-1);
   border-bottom: 1px solid var(--black);
 }
 

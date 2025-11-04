@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, computed } from "vue";
+import { useRoute } from "vue-router";
 import Row from "../components/Row.vue";
 import Trailer from "../components/Trailer.vue";
 import type { Movie } from "../types/auth";
@@ -10,6 +11,10 @@ import { useWatchlistStore } from "../store/watchlist/watchlist.store";
 const movieStore = useMovieStore();
 const seriesStore = useSeriesStore();
 const watchlistStore = useWatchlistStore();
+const route = useRoute();
+
+// Get filterType directly from route query params
+const filterType = computed(() => route.query.filter as string | undefined);
 
 onMounted(() => {
   movieStore.fetchUpcomingMovies();
@@ -27,8 +32,15 @@ const trendingItems = computed(() => {
   const movies = movieStore.getTrendingMovies || [];
   const series = seriesStore.getTrendingSeries || [];
 
-  const transformedSeries = series.map((s) => s.details);
+  if (filterType.value === "movies") {
+    return movies;
+  }
 
+  if (filterType.value === "tv") {
+    return series.map((s) => s.details);
+  }
+
+  const transformedSeries = series.map((s) => s.details);
   return [...movies, ...transformedSeries];
 });
 
@@ -36,8 +48,15 @@ const popularItems = computed(() => {
   const movies = movieStore.getPopularMovies || [];
   const series = seriesStore.getPopularSeries || [];
 
-  const transformedSeries = series.map((s) => s.details);
+  if (filterType.value === "movies") {
+    return movies;
+  }
 
+  if (filterType.value === "tv") {
+    return series.map((s) => s.details);
+  }
+
+  const transformedSeries = series.map((s) => s.details);
   return [...movies, ...transformedSeries];
 });
 
@@ -45,8 +64,15 @@ const topRatedItems = computed(() => {
   const movies = movieStore.getTopRatedMovies || [];
   const series = seriesStore.getTopRatedSeries || [];
 
-  const transformedSeries = series.map((s) => s.details);
+  if (filterType.value === "movies") {
+    return movies;
+  }
 
+  if (filterType.value === "tv") {
+    return series.map((s) => s.details);
+  }
+
+  const transformedSeries = series.map((s) => s.details);
   return [...movies, ...transformedSeries];
 });
 
@@ -69,24 +95,36 @@ const trailerItems = computed(() => {
 const watchListItems = computed(() => {
   const movies = watchlistStore.getAllMovies || [];
   const series = watchlistStore.getAllSeries || [];
-  
+
+  if (filterType.value === "movies") {
+    return movies;
+  }
+
+  if (filterType.value === "tv") {
+    return series.map((s) => s.details);
+  }
+
   const transformedSeries = series.map((s) => s.details);
-  
   return [...movies, ...transformedSeries];
 });
 
 const movieItems = computed(() => {
   const movies = movieStore.getUpcomingMovies || [];
-
   return [...movies];
 });
 
 const tvItems = computed(() => {
   const series = seriesStore.getUpcomingSeries || [];
-
   const transformedSeries = series.map((s) => s.details);
-
   return [...transformedSeries];
+});
+
+const showUpcomingMovies = computed(() => {
+  return filterType.value !== "tv";
+});
+
+const showUpcomingTV = computed(() => {
+  return filterType.value !== "movies";
 });
 </script>
 
@@ -108,10 +146,10 @@ const tvItems = computed(() => {
     <section class="px-5">
       <Row :title="'Watchlist'" :items="watchListItems" />
     </section>
-    <section class="px-5">
+    <section class="px-5" v-if="showUpcomingMovies">
       <Row :title="'Upcoming Movies'" :items="movieItems" />
     </section>
-    <section class="px-5">
+    <section class="px-5" v-if="showUpcomingTV">
       <Row :title="'Upcoming TV Series'" :items="tvItems" />
     </section>
   </main>
