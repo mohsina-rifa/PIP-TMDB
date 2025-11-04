@@ -1,7 +1,18 @@
 <script setup lang="ts">
+import { onMounted, computed } from "vue";
 import Row from "../components/Row.vue";
 import Trailer from "../components/Trailer.vue";
 import type { Movie } from "../types/auth";
+import { useMovieStore } from "../store/movie/movie.store";
+import { useSeriesStore } from "../store/series/series.store";
+
+const movieStore = useMovieStore();
+const seriesStore = useSeriesStore();
+
+onMounted(() => {
+  movieStore.fetchTopRatedMovies();
+  seriesStore.fetchTopRatedSeries();
+});
 
 const trailerItems: Movie[] = [
   {
@@ -762,308 +773,14 @@ const popularItems: Movie[] = [
   },
 ];
 
-const topRatedItems: Movie[] = [
-  {
-    id: "top_rated_1",
-    title: "Top Rated One",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2022,
-    rating: 4.0,
-    genres: ["Action", "Adventure"],
-  },
-  {
-    id: "top_rated_2",
-    title: "Top Rated Two",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2021,
-    rating: 4.1,
-    genres: ["Drama", "Thriller"],
-  },
-  {
-    id: "top_rated_3",
-    title: "Top Rated Three",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2020,
-    rating: 4.2,
-    genres: ["Action", "Adventure"],
-  },
-  {
-    id: "top_rated_4",
-    title: "Top Rated Four",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2029,
-    rating: 4.3,
-    genres: ["Drama", "Thriller"],
-  },
-  {
-    id: "top_rated_5",
-    title: "Top Rated Five",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2028,
-    rating: 4.4,
-    genres: ["Action", "Adventure"],
-  },
-  {
-    id: "top_rated_6",
-    title: "Top Rated Six",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2027,
-    rating: 4.5,
-    genres: ["Drama", "Thriller"],
-  },
-  {
-    id: "top_rated_7",
-    title: "Top Rated Seven",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2026,
-    rating: 4.6,
-    genres: ["Action", "Adventure"],
-  },
-  {
-    id: "top_rated_8",
-    title: "Top Rated Eight",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2025,
-    rating: 4.7,
-    genres: ["Drama", "Thriller"],
-  },
-  {
-    id: "top_rated_9",
-    title: "Top Rated Nine",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2024,
-    rating: 4.8,
-    genres: ["Action", "Adventure"],
-  },
-  {
-    id: "top_rated_10",
-    title: "Top Rated Ten",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2023,
-    rating: 4.9,
-    genres: ["Drama", "Thriller"],
-  },
-];
+const topRatedItems = computed(() => {
+  const movies = movieStore.getTopRatedMovies || [];
+  const series = seriesStore.getTopRatedSeries || [];
+
+  const transformedSeries = series.map((s) => s.details);
+
+  return [...movies, ...transformedSeries];
+});
 
 const pickedItems: Movie[] = [
   {
