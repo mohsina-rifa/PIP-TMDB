@@ -1,355 +1,38 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
-import type { Movie } from "../types/auth";
+import { ref, computed, onMounted } from "vue";
 import Dropdown from "../components/buttons/Dropdown.vue";
 import AllFiles from "../components/AllFiles.vue";
+import { useWatchlistStore } from "../store/watchlist/watchlist.store";
 
-const dummyListItems: Movie[] = [
-  {
-    id: "dl_1",
-    title: "Item One",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2020,
-    rating: 5,
-    genres: [
-      "Action", 
-      "Adventure",
-    ],
-  },
-  {
-    id: "dl_2",
-    title: "Item Two",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2019,
-    rating: 4.5,
-    genres: [
-      "Thriller", 
-      "Adventure",
-    ],
-  },
-  {
-    id: "dl_3",
-    title: "Item Three",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2018,
-    rating: 4.8,
-    genres: [
-      "Action", 
-      "Thriller",
-    ],
-  },
-  {
-    id: "dl_4",
-    title: "Item Four",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2017,
-    rating: 4.3,
-    genres: [
-      "Romance",
-      "Adventure",
-    ],
-  },
-  {
-    id: "dl_5",
-    title: "Item Five",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2016,
-    rating: 4,
-    genres: [
-      "Action",
-      "Romance",
-    ],
-  },
-  {
-    id: "dl_6",
-    title: "Item Six",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2015,
-    rating: 4.2,
-    genres: [
-      "Romance",
-      "Drama",
-    ],
-  },
-  {
-    id: "dl_7",
-    title: "Item Seven",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2014,
-    rating: 4.7,
-    genres: [
-      "Drama",
-      "Adventure",
-    ],
-  },
-  {
-    id: "dl_8",
-    title: "Item Eight",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2013,
-    rating: 4.6,
-    genres: [
-      "Action",
-      "Fantasy",
-    ],
-  },
-  {
-    id: "dl_9",
-    title: "Item Nine",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2012,
-    rating: 5,
-    genres: [
-      "Mystery",
-      "Adventure",
-    ],
-  },
-  {
-    id: "dl_10",
-    title: "Item Ten",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2011,
-    rating: 3.9,
-    genres: [
-      "Fantasy",
-      "Romance",
-    ],
-  },
-];
+const watchlistStore = useWatchlistStore();
+
+onMounted(() => {
+  watchlistStore.loadFromLocalStorage();
+});
+
+const allWatchlistItems = computed(() => {
+  const movies = watchlistStore.getAllMovies || [];
+  const series = watchlistStore.getAllSeries || [];
+
+  const transformedSeries = series.map((s) => s.details);
+
+  return [...movies, ...transformedSeries];
+});
 
 const filterOptions = ["Most Popular", "Highest Rated", "Newest"];
 
 const filteredBy = ref("");
 
 const filteredItems = computed(() => {
-  if (filteredBy.value === "Most Popular") {
-    return dummyListItems;
-  } else if (filteredBy.value === "Highest Rated") {
-    return dummyListItems.slice().reverse();
+  let items = [...allWatchlistItems.value];
+
+  if (filteredBy.value === "Highest Rated") {
+    items = items.sort((a, b) => b.rating - a.rating);
   } else if (filteredBy.value === "Newest") {
-    return dummyListItems.slice(0, 5);
+    items = items.sort((a, b) => b.release_year - a.release_year);
   }
-  return dummyListItems;
+
+  return items;
 });
 
 const onFilterSelect = (option: string): void => {
@@ -361,26 +44,24 @@ const sortOptions = ["Release date", "A-Z", "Z-A"];
 const sortedBy = ref("");
 
 const sortedItems = computed(() => {
+  let items = [...filteredItems.value];
+
   if (sortedBy.value === "A-Z") {
-    return [...dummyListItems].sort((a, b) => a.title.localeCompare(b.title));
+    items = items.sort((a, b) => a.title.localeCompare(b.title));
+  } else if (sortedBy.value === "Z-A") {
+    items = items.sort((a, b) => b.title.localeCompare(a.title));
+  } else if (sortedBy.value === "Release date") {
+    items = items.sort((a, b) => b.release_year - a.release_year);
   }
-  if (sortedBy.value === "Z-A") {
-    return [...dummyListItems].sort((a, b) => b.title.localeCompare(a.title));
-  }
-  // Default: Release date (original order)
-  return dummyListItems;
+
+  return items;
 });
 
 const onSortSelect = (option: string): void => {
   sortedBy.value = option;
 };
 
-const listItems = computed(() => {
-  const sorted = sortedItems.value;
-  const filtered = filteredItems.value;
-
-  return sorted.filter((item) => filtered.some((f) => f.title === item.title));
-});
+const listItems = computed(() => sortedItems.value);
 </script>
 
 <template>
@@ -388,7 +69,7 @@ const listItems = computed(() => {
     <div
       class="d-flex align-items-center justify-content-between mb-4 mt-2 mx-2"
     >
-      <h1 class="category-header">Your Watch List</h1>
+      <h1 class="category-header mt-4">Your Watch List</h1>
       <div class="d-flex gap-3">
         <Dropdown
           class="list-button"
@@ -408,7 +89,13 @@ const listItems = computed(() => {
         />
       </div>
     </div>
-    <AllFiles :items="listItems" />
+    <div v-if="listItems.length === 0" class="text-center py-5">
+      <i class="bi bi-bookmark-x display-1 text-muted"></i>
+      <p class="text-muted mt-3 fs-5">
+        Your watchlist is empty. Start adding movies and TV shows!
+      </p>
+    </div>
+    <AllFiles v-else :items="listItems" />
   </section>
 </template>
 
