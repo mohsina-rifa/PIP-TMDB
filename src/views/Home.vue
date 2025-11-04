@@ -1,7 +1,18 @@
 <script setup lang="ts">
+import { onMounted, computed } from "vue";
 import Row from "../components/Row.vue";
 import Trailer from "../components/Trailer.vue";
 import type { Movie } from "../types/auth";
+import { useMovieStore } from "../store/movie/movie.store";
+import { useSeriesStore } from "../store/series/series.store";
+
+const movieStore = useMovieStore();
+const seriesStore = useSeriesStore();
+
+onMounted(() => {
+  movieStore.fetchUpcomingMovies();
+  seriesStore.fetchUpcomingSeries();
+});
 
 const trailerItems: Movie[] = [
   {
@@ -1671,308 +1682,14 @@ const movieItems: Movie[] = [
   },
 ];
 
-const tvItems: Movie[] = [
-  {
-    id: "tv_1",
-    title: "TV One",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2020,
-    rating: 5,
-    genres: ["Action", "Adventure"],
-  },
-  {
-    id: "tv_2",
-    title: "TV Two",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2019,
-    rating: 4.2,
-    genres: ["Romance", "Adventure"],
-  },
-  {
-    id: "tv_3",
-    title: "TV Three",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2018,
-    rating: 4.8,
-    genres: ["Action", "Thriller"],
-  },
-  {
-    id: "tv_4",
-    title: "TV Four",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2017,
-    rating: 4.3,
-    genres: ["Romance", "Adventure"],
-  },
-  {
-    id: "tv_5",
-    title: "TV Five",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2016,
-    rating: 4,
-    genres: ["Action", "Romance"],
-  },
-  {
-    id: "tv_6",
-    title: "TV Six",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2015,
-    rating: 4.2,
-    genres: ["Romance", "Drama"],
-  },
-  {
-    id: "tv_7",
-    title: "TV Seven",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2014,
-    rating: 4.7,
-    genres: ["Drama", "Adventure"],
-  },
-  {
-    id: "tv_8",
-    title: "TV Eight",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2013,
-    rating: 4.6,
-    genres: ["Action", "Fantasy"],
-  },
-  {
-    id: "tv_9",
-    title: "TV Nine",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2012,
-    rating: 4.5,
-    genres: ["Action", "Drama"],
-  },
-  {
-    id: "tv_10",
-    title: "TV Ten",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2011,
-    rating: 4.4,
-    genres: ["Action", "Comedy"],
-  },
-];
+const tvItems = computed(() => {
+  const movies = movieStore.getUpcomingMovies || [];
+  const series = seriesStore.getUpcomingSeries || [];
+
+  const transformedSeries = series.map((s) => s.details);
+
+  return [...movies, ...transformedSeries];
+});
 </script>
 
 <template>
