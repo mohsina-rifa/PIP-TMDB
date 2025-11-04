@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import type { Movie, Series } from "../types/auth";
 import Card from "./Card.vue";
 import Dropdown from "./buttons/Dropdown.vue";
+import { useWatchlistStore } from "../store/watchlist/watchlist.store";
 
 const props = defineProps({
   movie: {
@@ -19,130 +20,16 @@ const props = defineProps({
   },
 });
 
-const movieDetail: Movie = {
-  id: "movie",
-  title: "Default Movie",
-  thumbnail: "/thumbnail.png",
-  description:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-  cast: [
-    {
-      name: "Actor One",
-      role: "Role One",
-      gender: "male",
-      image: "",
-    },
-    {
-      name: "Actor Two",
-      role: "Role Two",
-      gender: "female",
-      image: "",
-    },
-    {
-      name: "Actor Three",
-      role: "Role Three",
-      gender: "male",
-      image: "",
-    },
-  ],
-  release_year: 2027,
-  rating: 4.5,
-  genres: ["Drama", "Action"],
-};
+const watchlistStore = useWatchlistStore();
 
-const seriesDetail: Series = {
-  details: {
-    id: "series",
-    title: "Default Series",
-    thumbnail: "/thumbnail.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2025,
-    rating: 4.7,
-    genres: ["Thriller", "Mystery"],
-  },
-  total_seasons: 2,
-  seasons: [
-    {
-      season_number: 1,
-      total_episodes: 3,
-      episodes: [
-        {
-          episode_number: 1,
-          title: "Episode 1",
-          thumbnail: "/thumbnail.png",
-          description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-        },
-        {
-          episode_number: 2,
-          title: "Episode 2",
-          thumbnail: "/thumbnail.png",
-          description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-        },
-        {
-          episode_number: 3,
-          title: "Episode 3",
-          thumbnail: "/thumbnail.png",
-          description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-        },
-      ],
-    },
-    {
-      season_number: 2,
-      total_episodes: 3,
-      episodes: [
-        {
-          episode_number: 1,
-          title: "Episode 1",
-          thumbnail: "/thumbnail.png",
-          description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-        },
-        {
-          episode_number: 2,
-          title: "Episode 2",
-          thumbnail: "/thumbnail.png",
-          description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-        },
-        {
-          episode_number: 3,
-          title: "Episode 3",
-          thumbnail: "/thumbnail.png",
-          description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-        },
-      ],
-    },
-  ],
-};
+const currentItem = computed(() => {
+  return props.isSeries ? props.series?.details : props.movie;
+});
 
-const seasonList = seriesDetail.seasons.map(
-  (season) => `Season ${season.season_number}`
-);
+const seasonList = computed(() => {
+  if (!props.isSeries || !props.series?.seasons) return [];
+  return props.series.seasons.map((season) => `Season ${season.season_number}`);
+});
 
 const selectedSeason = ref(1);
 
@@ -151,53 +38,95 @@ const handleSeasonSelect = (option: string): void => {
   selectedSeason.value = num;
 };
 
-const seasonWiseEpisodes = (seasonNumber: number) => {
-  const season = seriesDetail.seasons.find(
-    (s) => s.season_number === seasonNumber
+const seasonWiseEpisodes = computed(() => {
+  if (!props.isSeries || !props.series?.seasons) return [];
+  const season = props.series.seasons.find(
+    (s) => s.season_number === selectedSeason.value
   );
   return season ? season.episodes : [];
+});
+
+const handleSave = () => {
+  if (props.isSeries && props.series) {
+    watchlistStore.addSeries(props.series);
+  } else if (props.movie) {
+    watchlistStore.addMovie(props.movie);
+  }
 };
+
+const isInWatchlist = computed(() => {
+  if (props.isSeries && props.series?.details?.id) {
+    return watchlistStore.isSeriesInWatchlist(props.series.details.id);
+  } else if (props.movie?.id) {
+    return watchlistStore.isMovieInWatchlist(props.movie.id);
+  }
+  return false;
+});
 </script>
 
 <template>
-  <section id="detail-screen">
+  <section id="detail-screen" v-if="currentItem">
     <div
       class="detail-container position-relative overflow-hidden d-flex text-start align-items-start justify-content-start"
     >
       <div
         class="detail-bg position-absolute top-0 start-0 w-100 h-100 bg-cover bg-center z-1"
         :style="{
-          backgroundImage: `url(${movieDetail.thumbnail ?? './screen.png'})`,
+          backgroundImage: `url(${currentItem.thumbnail ?? './screen.png'})`,
         }"
       ></div>
-      <div class="detail-content position-relative z-2 py-5 px-5">
+      <div class="detail-content position-relative z-2 py-2 px-5">
         <h1 class="detail-title fw-bold mb-4">
-          {{ movieDetail.title }}
+          {{ currentItem.title }}
         </h1>
-        <h4 class="my-2">Rating : {{ movieDetail.rating }}</h4>
-        <h5 class="mb-4">Duration: {{ movieDetail.duration }}</h5>
-        <p class="detail-desc mb-4 mt-5">{{ movieDetail.description }}</p>
+        <h4 class="my-2">Rating: {{ currentItem.rating?.toFixed(1) || 'N/A' }}</h4>
+        <h5 class="mb-2" v-if="!isSeries && movie?.duration">
+          Duration: {{ movie.duration }} min
+        </h5>
+        <h5 class="mb-2" v-if="isSeries && series?.total_seasons">
+          Seasons: {{ series.total_seasons }}
+        </h5>
+        <h6 class="mb-4">
+          Release Year: {{ currentItem.release_year }}
+        </h6>
+        <p class="detail-desc mb-4 mt-3">{{ currentItem.description }}</p>
         <div
           class="detail-actions d-flex gap-3 align-items-center justify-content-start"
         >
-          <button class="btn btn-success rounded-2 px-4 py-2 fw-bold">
-            <i class="bi bi-save me-2"></i>Save
+          <button 
+            class="btn btn-success rounded-2 px-4 py-2 fw-bold"
+            @click="handleSave"
+            :disabled="isInWatchlist"
+          >
+            <i class="bi bi-save me-2"></i>
+            {{ isInWatchlist ? 'Saved' : 'Save' }}
           </button>
+        </div>
+        <div class="mt-3" v-if="currentItem.genres?.length">
+          <span
+            v-for="(genre, idx) in currentItem.genres"
+            :key="idx"
+            class="badge me-2"
+          >
+            {{ genre }}
+          </span>
         </div>
       </div>
     </div>
   </section>
-  <section id="detail-cast" class="m-5">
+  
+  <section id="detail-cast" class="m-5" v-if="currentItem?.cast?.length">
     <div class="d-flex align-items-center justify-content-between mb-4 ms-2">
-      <h1 class="row-title fw-bold text-start fs-1">Casts</h1>
+      <h1 class="row-title fw-bold text-start fs-1">Cast</h1>
     </div>
     <div class="row-scroll d-flex overflow-auto pb-2 gap-3 position-relative">
-      <div v-for="(item, idx) in movieDetail.cast" :key="idx">
-        <Card :title="item.name" :cast="movieDetail.cast[idx]" :isCast="true" />
+      <div v-for="(castMember, idx) in currentItem.cast" :key="idx">
+        <Card :cast="castMember" :isCast="true" />
       </div>
     </div>
   </section>
-  <section v-if="isSeries" id="detail-episodes" class="m-5">
+  
+  <section v-if="isSeries && seasonList.length > 0" id="detail-episodes" class="m-5">
     <div class="d-flex align-items-center justify-content-between mb-4 ms-2">
       <h1 class="row-title fw-bold text-start fs-1">Seasons and Episodes</h1>
       <Dropdown
@@ -209,8 +138,8 @@ const seasonWiseEpisodes = (seasonNumber: number) => {
       />
     </div>
     <div class="row-scroll d-flex overflow-auto pb-2 gap-3 position-relative">
-      <div v-for="(item, idx) in seasonWiseEpisodes(selectedSeason)" :key="idx">
-        <Card :isEpisode="true" :episode="item" />
+      <div v-for="(episode, idx) in seasonWiseEpisodes" :key="idx">
+        <Card :isEpisode="true" :episode="episode" />
       </div>
     </div>
   </section>
@@ -249,6 +178,11 @@ const seasonWiseEpisodes = (seasonNumber: number) => {
   font-size: 1.1rem;
 }
 
+.detail-actions .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .row-title {
   color: var(--green-1);
   font-size: 1.3rem;
@@ -281,5 +215,12 @@ const seasonWiseEpisodes = (seasonNumber: number) => {
 
 h1 {
   color: var(--green-1);
+}
+
+.badge {
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  color: var(--black);
+  background-color: rgba(224, 224, 224, 0.75);
 }
 </style>
