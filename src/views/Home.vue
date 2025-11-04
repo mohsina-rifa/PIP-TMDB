@@ -20,159 +20,6 @@ onMounted(() => {
   seriesStore.fetchTrendingSeries();
 });
 
-const trailerItems: Movie[] = [
-  {
-    id: "trailer_1",
-    title: "Trailer One",
-    thumbnail: "./test_1.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2027,
-    rating: 4.5,
-    genres: ["Action", "Adventure"],
-  },
-  {
-    id: "trailer_2",
-    title: "Trailer Two",
-    thumbnail: "./test_2.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2026,
-    rating: 4.0,
-    genres: ["Drama", "Thriller"],
-  },
-  {
-    id: "trailer_3",
-    title: "Trailer Three",
-    thumbnail: "./test_3.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2025,
-    rating: 3.5,
-    genres: ["Action", "Adventure"],
-  },
-  {
-    id: "trailer_4",
-    title: "Trailer Four",
-    thumbnail: "./test_4.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2024,
-    rating: 4.0,
-    genres: ["Drama", "Thriller"],
-  },
-  {
-    id: "trailer_5",
-    title: "Trailer Five",
-    thumbnail: "./test_5.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.  ",
-    cast: [
-      {
-        name: "Actor One",
-        role: "Role One",
-        gender: "male",
-        image: "",
-      },
-      {
-        name: "Actor Two",
-        role: "Role Two",
-        gender: "female",
-        image: "",
-      },
-      {
-        name: "Actor Three",
-        role: "Role Three",
-        gender: "male",
-        image: "",
-      },
-    ],
-    release_year: 2023,
-    rating: 4.5,
-    genres: ["Action", "Adventure"],
-  },
-];
-
 const trendingItems = computed(() => {
   const movies = movieStore.getTrendingMovies || [];
   const series = seriesStore.getTrendingSeries || [];
@@ -198,6 +45,22 @@ const topRatedItems = computed(() => {
   const transformedSeries = series.map((s) => s.details);
 
   return [...movies, ...transformedSeries];
+});
+
+const trailerItems = computed(() => {
+  const items: Movie[] = [];
+
+  if (topRatedItems.value.length > 0 && topRatedItems.value[0]) {
+    items.push(topRatedItems.value[0]);
+  }
+  if (popularItems.value.length > 0 && popularItems.value[0]) {
+    items.push(popularItems.value[0]);
+  }
+  if (trendingItems.value.length > 0 && trendingItems.value[0]) {
+    items.push(trendingItems.value[0]);
+  }
+
+  return items;
 });
 
 const pickedItems: Movie[] = [

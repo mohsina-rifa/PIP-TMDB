@@ -75,16 +75,16 @@ onUnmounted(() => {
 .trailer-content {
   color: var(--white);
   max-width: 600px;
-  margin-top: 5rem;
+  margin-top: 4rem;
   margin-left: 2rem;
 }
 
 .trailer-title {
-  font-size: 5rem;
+  font-size: 4rem;
 }
 
 .trailer-desc {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .slide-fade-enter-active,
