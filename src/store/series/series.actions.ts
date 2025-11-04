@@ -58,7 +58,7 @@ export const actions = {
     }
   },
 
-  async fetchSeriesById(this: SeriesState, id: number) {
+  async fetchSeriesById(this: SeriesState, id: string) {
     this.loading = true;
     this.error = null;
     try {

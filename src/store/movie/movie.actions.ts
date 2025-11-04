@@ -58,7 +58,7 @@ export const actions = {
     }
   },
 
-  async fetchMovieById(this: MovieState, id: number) {
+  async fetchMovieById(this: MovieState, id: string) {
     this.loading = true;
     this.error = null;
     try {
