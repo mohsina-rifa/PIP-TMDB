@@ -112,9 +112,79 @@ export const actions = {
     this.loading = true;
     this.error = null;
     try {
-      const response = await axios.get(`/tv/${id}`);
-      this.currentSeries = response.data;
-      return response.data;
+      // Fetch series details and credits in parallel
+      const [detailsResponse, creditsResponse] = await Promise.all([
+        axios.get(`/tv/${id}`),
+        axios.get(`/tv/${id}/credits`)
+      ]);
+
+      const seriesData = detailsResponse.data;
+      const credits = creditsResponse.data;
+
+      // Transform cast data
+      const cast = credits.cast?.slice(0, 10).map((actor: any) => ({
+        name: actor.name,
+        role: actor.character,
+        gender: actor.gender === 1 ? 'female' : 'male',
+        image: actor.profile_path 
+          ? `https://image.tmdb.org/t/p/w500${actor.profile_path}`
+          : ''
+      })) || [];
+
+      // Transform genres from array of objects to array of strings
+      const genres = seriesData.genres?.map((g: any) => g.name) || [];
+
+      // Transform seasons data
+      const seasons = await Promise.all(
+        seriesData.seasons?.map(async (season: any) => {
+          try {
+            const seasonResponse = await axios.get(`/tv/${id}/season/${season.season_number}`);
+            const seasonData = seasonResponse.data;
+            
+            return {
+              season_number: season.season_number,
+              episodes: seasonData.episodes?.map((ep: any) => ({
+                episode_number: ep.episode_number,
+                title: ep.name,
+                thumbnail: ep.still_path
+                  ? `https://image.tmdb.org/t/p/w500${ep.still_path}`
+                  : '',
+                description: ep.overview || '',
+              })) || []
+            };
+          } catch (error) {
+            console.error(`Error fetching season ${season.season_number}:`, error);
+            return {
+              season_number: season.season_number,
+              episodes: []
+            };
+          }
+        }) || []
+      );
+
+      this.currentSeries = {
+        details: {
+          id: seriesData.id.toString(),
+          title: seriesData.name || seriesData.original_name,
+          thumbnail: seriesData.backdrop_path
+            ? `https://image.tmdb.org/t/p/original${seriesData.backdrop_path}`
+            : seriesData.poster_path
+            ? `https://image.tmdb.org/t/p/w500${seriesData.poster_path}`
+            : "",
+          description: seriesData.overview || "",
+          cast: cast,
+          release_year: seriesData.first_air_date
+            ? new Date(seriesData.first_air_date).getFullYear()
+            : 0,
+          rating: seriesData.vote_average || 0,
+          genres: genres,
+          mediaType: 'tv' as const,
+        },
+        total_seasons: seriesData.number_of_seasons || 0,
+        seasons: seasons,
+      };
+
+      return this.currentSeries;
     } catch (error: any) {
       this.error = error.message || "Failed to fetch series details";
       console.error("Error fetching series details:", error);
