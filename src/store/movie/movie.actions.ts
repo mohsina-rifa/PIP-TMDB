@@ -17,6 +17,7 @@ const transformToMovie = (apiData: any): Movie => {
     rating: apiData.vote_average || 0,
     genres: apiData.genre_ids || [],
     duration: apiData.runtime || 0,
+    mediaType: 'movie' as const,
   };
 };
 
