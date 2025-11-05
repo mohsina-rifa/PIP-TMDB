@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
+import { useRouter } from "vue-router";
 import Custom from "../components/buttons/Custom.vue";
 import type { Movie } from "../types/auth";
 import { useWatchlistStore } from "../store/watchlist/watchlist.store";
+
+const router = useRouter();
 
 const props = defineProps({
   items: {
@@ -39,6 +42,17 @@ const handleSave = () => {
     } else {
       watchlistStore.addMovie(currentItem);
     }
+  }
+};
+
+const handleInfo = () => {
+  const currentItem = props.items[current.value];
+  if (currentItem) {
+    const path =
+      currentItem.mediaType === "tv"
+        ? `/tv/${currentItem.id}`
+        : `/movie/${currentItem.id}`;
+    router.push(path);
   }
 };
 </script>
@@ -79,6 +93,7 @@ const handleSave = () => {
               label="Info"
               type="secondary"
               :leftIcon="'bi bi-info-square'"
+              @click="handleInfo"
             />
           </div>
         </div>
