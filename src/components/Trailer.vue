@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted, computed } from "vue";
 import { useRouter } from "vue-router";
 import Custom from "../components/buttons/Custom.vue";
 import type { Movie } from "../types/auth";
@@ -55,6 +55,28 @@ const handleInfo = () => {
     router.push(path);
   }
 };
+
+const isInWatchlist = computed(() => {
+  const currentItem = props.items[current.value];
+  if (!currentItem) return false;
+  
+  if (currentItem.mediaType === "tv") {
+    return watchlistStore.isSeriesInWatchlist(currentItem.id);
+  } else {
+    return watchlistStore.isMovieInWatchlist(currentItem.id);
+  }
+});
+
+const handleUnsave = () => {
+  const currentItem = props.items[current.value];
+  if (!currentItem) return;
+  
+  if (currentItem.mediaType === "tv") {
+    watchlistStore.removeSeries(currentItem.id);
+  } else {
+    watchlistStore.removeMovie(currentItem.id);
+  }
+};
 </script>
 
 <template>
@@ -84,6 +106,14 @@ const handleInfo = () => {
             class="trailer-actions d-flex gap-3 align-items-center justify-content-start"
           >
             <Custom
+              v-if="isInWatchlist"
+              label="Remove"
+              type="success"
+              :leftIcon="'bi bi-save'"
+              @click="handleUnsave"
+            />
+            <Custom
+              v-else
               label="Save"
               type="success"
               :leftIcon="'bi bi-save'"
