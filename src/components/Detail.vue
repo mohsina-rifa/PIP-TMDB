@@ -5,6 +5,8 @@ import Custom from "../components/buttons/Custom.vue";
 import Card from "./Card.vue";
 import Dropdown from "./buttons/Dropdown.vue";
 import { useWatchlistStore } from "../store/watchlist/watchlist.store";
+import { useMovieStore } from "../store/movie/movie.store";
+import { useSeriesStore } from "../store/series/series.store";
 
 const props = defineProps({
   movie: {
@@ -22,9 +24,17 @@ const props = defineProps({
 });
 
 const watchlistStore = useWatchlistStore();
+const movieStore = useMovieStore();
+const seriesStore = useSeriesStore();
 
 const currentItem = computed(() => {
   return props.isSeries ? props.series?.details : props.movie;
+});
+
+const trailerKey = computed(() => {
+  return props.isSeries
+    ? seriesStore.getCurrentSeriesTrailer
+    : movieStore.getCurrentMovieTrailer;
 });
 
 const seasonList = computed(() => {
@@ -78,12 +88,29 @@ const isInWatchlist = computed(() => {
     <div
       class="detail-container position-relative overflow-hidden d-flex text-start align-items-start justify-content-start"
     >
+      <!-- YouTube Trailer or Fallback Background -->
       <div
+        v-if="trailerKey"
+        class="detail-bg position-absolute top-0 start-0 w-100 h-100 z-1"
+      >
+        <iframe
+          :src="`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=1&controls=0&loop=1&playlist=${trailerKey}&showinfo=0&modestbranding=1&rel=0`"
+          frameborder="0"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          class="w-100 h-100 object-fit-cover"
+          style="pointer-events: none"
+        ></iframe>
+        <div class="trailer-overlay position-absolute top-0 start-0 w-100 h-100 pointer-events-none z-1"></div>
+      </div>
+      <div
+        v-else
         class="detail-bg position-absolute top-0 start-0 w-100 h-100 bg-cover bg-center z-1 bg-no-repeat"
         :style="{
-          backgroundImage: `url(${currentItem.thumbnail ?? './screen.png'})`,
+          backgroundImage: `url(${currentItem.thumbnail ?? './thumbnail.png'})`,
         }"
       ></div>
+
       <div class="detail-content position-relative z-2 py-1 px-5">
         <h1 class="detail-title fw-bold mb-1">
           {{ currentItem.title }}
@@ -172,6 +199,14 @@ const isInWatchlist = computed(() => {
 
 .detail-bg {
   filter: brightness(0.6);
+}
+
+.detail-bg iframe {
+  transform: scale(1.5);
+}
+
+.trailer-overlay {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent 60%);
 }
 
 .detail-content {

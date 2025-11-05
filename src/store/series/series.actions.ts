@@ -17,7 +17,7 @@ const transformToSeries = (apiData: any): Series => {
         : 0,
       rating: apiData.vote_average || 0,
       genres: apiData.genre_ids || [],
-      mediaType: 'tv' as const,
+      mediaType: "tv" as const,
     },
     total_seasons: apiData.number_of_seasons || 0,
     seasons: [],
@@ -91,11 +91,11 @@ export const actions = {
       this.loading = false;
     }
   },
-  
+
   async fetchByCategory(this: SeriesState, category: string) {
     const methodMap: Record<string, (ctx: SeriesState) => Promise<void>> = {
       "trending-now": (ctx) => actions.fetchTrendingSeries.call(ctx),
-      "popular": (ctx) => actions.fetchPopularSeries.call(ctx),
+      popular: (ctx) => actions.fetchPopularSeries.call(ctx),
       "top-rated": (ctx) => actions.fetchTopRatedSeries.call(ctx),
       "upcoming-tv-series": (ctx) => actions.fetchUpcomingSeries.call(ctx),
     };
@@ -112,51 +112,62 @@ export const actions = {
     this.loading = true;
     this.error = null;
     try {
-      // Fetch series details and credits in parallel
-      const [detailsResponse, creditsResponse] = await Promise.all([
-        axios.get(`/tv/${id}`),
-        axios.get(`/tv/${id}/credits`)
-      ]);
+      const [detailsResponse, creditsResponse, videosResponse] =
+        await Promise.all([
+          axios.get(`/tv/${id}`),
+          axios.get(`/tv/${id}/credits`),
+          axios.get(`/tv/${id}/videos`),
+        ]);
 
       const seriesData = detailsResponse.data;
       const credits = creditsResponse.data;
+      const videos = videosResponse.data;
 
-      // Transform cast data
-      const cast = credits.cast?.slice(0, 10).map((actor: any) => ({
-        name: actor.name,
-        role: actor.character,
-        gender: actor.gender === 1 ? 'female' : 'male',
-        image: actor.profile_path 
-          ? `https://image.tmdb.org/t/p/w500${actor.profile_path}`
-          : ''
-      })) || [];
+      const trailer = videos.results?.find(
+        (video: any) => video.type === "Trailer" && video.site === "YouTube"
+      );
+      this.currentSeriesTrailer = trailer ? trailer.key : null;
 
-      // Transform genres from array of objects to array of strings
+      const cast =
+        credits.cast?.slice(0, 10).map((actor: any) => ({
+          name: actor.name,
+          role: actor.character,
+          gender: actor.gender === 1 ? "female" : "male",
+          image: actor.profile_path
+            ? `https://image.tmdb.org/t/p/w500${actor.profile_path}`
+            : "",
+        })) || [];
+
       const genres = seriesData.genres?.map((g: any) => g.name) || [];
 
-      // Transform seasons data
       const seasons = await Promise.all(
         seriesData.seasons?.map(async (season: any) => {
           try {
-            const seasonResponse = await axios.get(`/tv/${id}/season/${season.season_number}`);
+            const seasonResponse = await axios.get(
+              `/tv/${id}/season/${season.season_number}`
+            );
             const seasonData = seasonResponse.data;
-            
+
             return {
               season_number: season.season_number,
-              episodes: seasonData.episodes?.map((ep: any) => ({
-                episode_number: ep.episode_number,
-                title: ep.name,
-                thumbnail: ep.still_path
-                  ? `https://image.tmdb.org/t/p/w500${ep.still_path}`
-                  : '',
-                description: ep.overview || '',
-              })) || []
+              episodes:
+                seasonData.episodes?.map((ep: any) => ({
+                  episode_number: ep.episode_number,
+                  title: ep.name,
+                  thumbnail: ep.still_path
+                    ? `https://image.tmdb.org/t/p/w500${ep.still_path}`
+                    : "",
+                  description: ep.overview || "",
+                })) || [],
             };
           } catch (error) {
-            console.error(`Error fetching season ${season.season_number}:`, error);
+            console.error(
+              `Error fetching season ${season.season_number}:`,
+              error
+            );
             return {
               season_number: season.season_number,
-              episodes: []
+              episodes: [],
             };
           }
         }) || []
@@ -178,7 +189,7 @@ export const actions = {
             : 0,
           rating: seriesData.vote_average || 0,
           genres: genres,
-          mediaType: 'tv' as const,
+          mediaType: "tv" as const,
         },
         total_seasons: seriesData.number_of_seasons || 0,
         seasons: seasons,
@@ -214,6 +225,7 @@ export const actions = {
 
   clearCurrentSeries(this: SeriesState) {
     this.currentSeries = null;
+    this.currentSeriesTrailer = null;
   },
 
   clearError(this: SeriesState) {

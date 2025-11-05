@@ -8,6 +8,7 @@ export interface MovieState {
   topRatedMovies: Movie[];
   upcomingMovies: Movie[];
   currentMovie: Movie | null;
+  currentMovieTrailer: string | null;
   loading: boolean;
   error: string | null;
   genreMappings: GenreMapping;
@@ -20,6 +21,7 @@ export const state: MovieState = {
   topRatedMovies: [],
   upcomingMovies: [],
   currentMovie: null,
+  currentMovieTrailer: null,
   loading: false,
   error: null,
   genreMappings: { movieGenres: {}, tvGenres: {} },
