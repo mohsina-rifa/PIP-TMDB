@@ -99,13 +99,21 @@ export const actions = {
     this.loading = true;
     this.error = null;
     try {
-      const [detailsResponse, creditsResponse] = await Promise.all([
-        axios.get(`/movie/${id}`),
-        axios.get(`/movie/${id}/credits`),
-      ]);
+      const [detailsResponse, creditsResponse, videosResponse] =
+        await Promise.all([
+          axios.get(`/movie/${id}`),
+          axios.get(`/movie/${id}/credits`),
+          axios.get(`/movie/${id}/videos`),
+        ]);
 
       const movieData = detailsResponse.data;
       const credits = creditsResponse.data;
+      const videos = videosResponse.data;
+
+      const trailer = videos.results?.find(
+        (video: any) => video.type === "Trailer" && video.site === "YouTube"
+      );
+      this.currentMovieTrailer = trailer ? trailer.key : null;
 
       const cast =
         credits.cast?.slice(0, 10).map((actor: any) => ({
@@ -165,7 +173,7 @@ export const actions = {
       this.loading = false;
     }
   },
-  
+
   async fetchGenreMappings(this: MovieState) {
     try {
       const mappings = await filterService.fetchGenreMappings();
@@ -179,6 +187,7 @@ export const actions = {
 
   clearCurrentMovie(this: MovieState) {
     this.currentMovie = null;
+    this.currentMovieTrailer = null; 
   },
 
   clearError(this: MovieState) {
