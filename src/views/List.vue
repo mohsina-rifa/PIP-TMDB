@@ -5,6 +5,7 @@ import { useRoute, useRouter } from "vue-router";
 import Dropdown from "../components/buttons/Dropdown.vue";
 import AllFiles from "../components/AllFiles.vue";
 import Custom from "../components/buttons/Custom.vue";
+import Large from "../components/buttons/Large.vue";
 import { filterService } from "../service/filter";
 import { useMovieStore } from "../store/movie/movie.store";
 import { useSeriesStore } from "../store/series/series.store";
@@ -119,7 +120,22 @@ const filteredItems = computed(() => {
   return items;
 });
 
+const filterActive = ref(false);
+
+const clearFilter = (): void => {
+  if (filterActive.value) {
+    filterActive.value = false;
+    currentPage.value = 1;
+    
+    const query = { ...route.query };
+    delete query.genre;
+    router.push({ query });
+  }
+};
+
 const onFilterSelect = (option: string): void => {
+  filterActive.value = true;
+
   currentPage.value = 1;
   router.push({
     path: route.path,
@@ -145,7 +161,7 @@ const sortedItems = computed(() => {
       b.title.localeCompare(a.title)
     );
   }
-  
+
   return categoryItems.value;
 });
 
@@ -184,8 +200,16 @@ const loadMore = () => {
     >
       <h1 class="category-header fw-bolder">{{ reverseKebab(category) }}</h1>
       <div class="d-flex gap-3">
-        <Dropdown
+        <Large
+          v-if="filterActive"
           class="list-button"
+          label="Reset"
+          type="dark"
+          :leftIcon="'bi bi-arrow-counterclockwise'"
+          @click="clearFilter"
+        />
+        <Dropdown
+          class="list-button rounded-3"
           label="Filter"
           type="dark"
           :leftIcon="'bi bi-funnel'"
@@ -193,7 +217,7 @@ const loadMore = () => {
           @select="onFilterSelect"
         />
         <Dropdown
-          class="list-button"
+          class="list-button rounded-3"
           label="Sort"
           type="dark"
           :leftIcon="'bi bi-sort-down-alt'"
@@ -203,8 +227,11 @@ const loadMore = () => {
       </div>
     </div>
     <AllFiles :items="listItems" />
-    
-    <div v-if="showLoadMore" class="load-more-container d-flex justify-content-center align-items-center my-4">
+
+    <div
+      v-if="showLoadMore"
+      class="load-more-container d-flex justify-content-center align-items-center my-4"
+    >
       <Custom
         class="px-5"
         label="Load More"
@@ -223,6 +250,11 @@ const loadMore = () => {
 
 .list-button {
   background-color: var(--green-1) !important;
+  color: var(--white) !important;
+}
+
+.list-button i {
+  color: var(--white) !important;
 }
 
 .list-button:hover {
