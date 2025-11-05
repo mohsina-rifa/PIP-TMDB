@@ -29,7 +29,7 @@ const handleSearch = (): void => {
       @keyup.enter="handleSearch"
     />
     <button
-      class="btn cursor-pointer fw-bold rounded-2 border-0 d-flex align-items-center"
+      class="btn cursor-pointer fw-bold rounded-2 border-0 d-flex align-items-center py-2 px-3 h-100"
       type="button"
       @click="handleSearch"
     >
@@ -59,10 +59,7 @@ const handleSearch = (): void => {
 .btn {
   background: var(--silver-7);
   color: var(--green-1);
-  padding: 0.5rem 0.75rem;
   border-radius: 0 6px 6px 0;
-  font-weight: bolder;
-  height: 100%;
 }
 
 .btn:hover {

@@ -79,7 +79,7 @@ const isInWatchlist = computed(() => {
       class="detail-container position-relative overflow-hidden d-flex text-start align-items-start justify-content-start"
     >
       <div
-        class="detail-bg position-absolute top-0 start-0 w-100 h-100 bg-cover bg-center z-1"
+        class="detail-bg position-absolute top-0 start-0 w-100 h-100 bg-cover bg-center z-1 bg-no-repeat"
         :style="{
           backgroundImage: `url(${currentItem.thumbnail ?? './screen.png'})`,
         }"
@@ -121,7 +121,7 @@ const isInWatchlist = computed(() => {
           <span
             v-for="(genre, idx) in currentItem.genres"
             :key="idx"
-            class="badge me-2"
+            class="badge me-2 py-2 px-3"
           >
             {{ genre }}
           </span>
@@ -172,9 +172,6 @@ const isInWatchlist = computed(() => {
 
 .detail-bg {
   filter: brightness(0.6);
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-  background-position: center !important;
 }
 
 .detail-content {
@@ -238,7 +235,6 @@ h1 {
 
 .badge {
   font-size: 0.9rem;
-  padding: 0.5rem 1rem;
   color: var(--black);
   background-color: rgba(224, 224, 224, 0.75);
 }

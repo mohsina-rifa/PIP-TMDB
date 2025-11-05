@@ -35,25 +35,25 @@ const clearFilter = () => {
     <nav class="d-flex align-items-center gap-3">
       <router-link
         to="/"
-        class="nav-link cursor-pointer text-decoration-none rounded-2"
+        class="nav-link py-2 px-3 cursor-pointer text-decoration-none rounded-2"
         @click="clearFilter"
         >Home</router-link
       >
       <a
         @click="setMoviesOnly"
-        class="nav-link cursor-pointer text-decoration-none rounded-2"
+        class="nav-link py-2 px-3 cursor-pointer text-decoration-none rounded-2"
         role="button"
         >Movies</a
       >
       <a
         @click="setTVOnly"
-        class="nav-link cursor-pointer text-decoration-none rounded-2"
+        class="nav-link py-2 px-3 cursor-pointer text-decoration-none rounded-2"
         role="button"
         >TV</a
       >
       <router-link
         to="/watchList"
-        class="nav-link cursor-pointer text-decoration-none rounded-2"
+        class="nav-link py-2 px-3 cursor-pointer text-decoration-none rounded-2"
         >Watchlist</router-link
       >
       <SearchBar />
@@ -82,7 +82,6 @@ const clearFilter = () => {
 
 .nav-link {
   color: var(--white);
-  padding: 0.5rem 0.75rem;
 }
 
 .nav-link:hover,
