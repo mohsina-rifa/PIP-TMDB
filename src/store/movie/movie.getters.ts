@@ -12,6 +12,8 @@ export const getters = {
   getUpcomingMovies: (state: MovieState) => state.upcomingMovies,
 
   getCurrentMovie: (state: MovieState) => state.currentMovie,
+  
+  getCurrentMovieTrailer: (state: MovieState) => state.currentMovieTrailer,
 
   isLoading: (state: MovieState) => state.loading,
 
