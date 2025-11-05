@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from "vue";
 import type { Movie } from "../types/auth";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import Dropdown from "../components/buttons/Dropdown.vue";
 import AllFiles from "../components/AllFiles.vue";
+import { filterService } from "../service/filter";
 import { useMovieStore } from "../store/movie/movie.store";
 import { useSeriesStore } from "../store/series/series.store";
 import { useWatchlistStore } from "../store/watchlist/watchlist.store";
 
 const route = useRoute();
+const router = useRouter();
 
 const movieStore = useMovieStore();
 const seriesStore = useSeriesStore();
@@ -17,6 +19,8 @@ const watchlistStore = useWatchlistStore();
 const category = route.params.category as string;
 
 onMounted(async () => {
+  genreMappings.value = await movieStore.fetchGenreMappings();
+
   await Promise.all([
     movieStore.fetchByCategory(category),
     seriesStore.fetchByCategory(category),
@@ -30,7 +34,7 @@ const categoryItems = computed(() => {
       const series = seriesStore.getTrendingSeries || [];
       return [...movies, ...series.map((s) => s.details)];
     },
-    "popular": () => {
+    popular: () => {
       const movies = movieStore.getPopularMovies || [];
       const series = seriesStore.getPopularSeries || [];
       return [...movies, ...series.map((s) => s.details)];
@@ -40,7 +44,7 @@ const categoryItems = computed(() => {
       const series = seriesStore.getTopRatedSeries || [];
       return [...movies, ...series.map((s) => s.details)];
     },
-    "watchlist": () => {
+    watchlist: () => {
       const movies = watchlistStore.getAllMovies || [];
       const series = watchlistStore.getAllSeries || [];
       return [...movies, ...series.map((s) => s.details)];
@@ -65,23 +69,60 @@ const reverseKebab = (str: string) => {
     .join(" ");
 };
 
-const filterOptions = ["Most Popular", "Highest Rated", "Newest"];
+const genreMappings = ref<{
+  movieGenres: Record<string, number>;
+  tvGenres: Record<string, number>;
+}>({
+  movieGenres: {},
+  tvGenres: {},
+});
 
-const filteredBy = ref("");
+const filterOptions = [
+  "Action",
+  "Adventure",
+  "Animation",
+  "Comedy",
+  "Crime",
+  "Documentary",
+  "Drama",
+  "Family",
+  "Fantasy",
+  "Mystery",
+  "Science Fiction",
+  "Thriller",
+  "War",
+];
+
+const filteredBy = computed(() => (route.query.genre as string) || "");
 
 const filteredItems = computed(() => {
-  if (filteredBy.value === "Most Popular") {
-    return categoryItems;
-  } else if (filteredBy.value === "Highest Rated") {
-    return categoryItems.value.slice().reverse();
-  } else if (filteredBy.value === "Newest") {
-    return categoryItems.value.slice(0, 5);
+  let items = categoryItems.value;
+
+  if (filteredBy.value) {
+    const genreIds = filterService.getGenreIds(
+      filteredBy.value,
+      genreMappings.value.movieGenres,
+      genreMappings.value.tvGenres
+    );
+
+    if (genreIds.length > 0) {
+      items = items.filter((item) =>
+        item.genres?.some((genreId) => genreIds.includes(Number(genreId)))
+      );
+    }
   }
-  return categoryItems;
+
+  return items;
 });
 
 const onFilterSelect = (option: string): void => {
-  filteredBy.value = option;
+  router.push({
+    path: route.path,
+    query: {
+      ...route.query,
+      genre: option,
+    },
+  });
 };
 
 const sortOptions = ["Release date", "A-Z", "Z-A"];
@@ -90,12 +131,16 @@ const sortedBy = ref("");
 
 const sortedItems = computed(() => {
   if (sortedBy.value === "A-Z") {
-    return [...categoryItems.value].sort((a, b) => a.title.localeCompare(b.title));
+    return [...categoryItems.value].sort((a, b) =>
+      a.title.localeCompare(b.title)
+    );
   }
   if (sortedBy.value === "Z-A") {
-    return [...categoryItems.value].sort((a, b) => b.title.localeCompare(a.title));
+    return [...categoryItems.value].sort((a, b) =>
+      b.title.localeCompare(a.title)
+    );
   }
-  // Default: Release date (original order)
+  
   return categoryItems;
 });
 
@@ -104,8 +149,10 @@ const onSortSelect = (option: string): void => {
 };
 
 const listItems = computed(() => {
-  const sorted = Array.isArray(sortedItems.value) ? sortedItems.value : sortedItems.value.value;
-  const filtered = Array.isArray(filteredItems.value) ? filteredItems.value : filteredItems.value.value;
+  const sorted = Array.isArray(sortedItems.value)
+    ? sortedItems.value
+    : sortedItems.value.value;
+  const filtered = filteredItems.value;
 
   return sorted.filter((item) => filtered.some((f) => f.title === item.title));
 });
