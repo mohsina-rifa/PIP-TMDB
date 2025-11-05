@@ -83,8 +83,12 @@ const handleCardClick = () => {
     </div>
 
     <!-- Title Section -->
-    <div class="card-body p-3 flex-fill d-flex align-items-center justify-content-center">
-      <div class="card-title text-center fs-6 fw-semibold overflow-hidden text-truncate">
+    <div
+      class="card-body p-3 flex-fill d-flex align-items-center justify-content-center"
+    >
+      <div
+        class="card-title text-center fs-6 fw-semibold overflow-hidden text-truncate"
+      >
         <span v-if="isCast" class="d-flex flex-column">
           <span>{{ cast.name }}</span>
           <span>{{ cast.role }}</span>
@@ -102,11 +106,7 @@ const handleCardClick = () => {
 .card {
   width: 180px;
   height: 280px;
-  background: linear-gradient(
-    to right top,
-    rgba(18, 57, 49, 0.75),
-    rgba(13, 38, 28, 0.75)
-  );
+  background: linear-gradient(to right top, var(--green-1), var(--green-3));
   transition: transform 0.3s cubic-bezier(0.4, 0.2, 0.2, 1), box-shadow 0.25s;
 }
 
@@ -116,7 +116,7 @@ const handleCardClick = () => {
 
 .card:hover {
   transform: scale(1.05);
-  background-color: var(--green-1);
+  background: linear-gradient(to right top, var(--green-1), var(--black));
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 

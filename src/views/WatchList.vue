@@ -1,13 +1,30 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import Dropdown from "../components/buttons/Dropdown.vue";
 import AllFiles from "../components/AllFiles.vue";
+import Large from "../components/buttons/Large.vue";
+import { filterService } from "../service/filter";
+import { useMovieStore } from "../store/movie/movie.store";
 import { useWatchlistStore } from "../store/watchlist/watchlist.store";
 
+const route = useRoute();
+const router = useRouter();
+
+const movieStore = useMovieStore();
 const watchlistStore = useWatchlistStore();
 
-onMounted(() => {
+const genreMappings = ref<{
+  movieGenres: Record<string, number>;
+  tvGenres: Record<string, number>;
+}>({
+  movieGenres: {},
+  tvGenres: {},
+});
+
+onMounted(async () => {
   watchlistStore.loadFromLocalStorage();
+  genreMappings.value = await movieStore.fetchGenreMappings();
 });
 
 const allWatchlistItems = computed(() => {
@@ -19,24 +36,66 @@ const allWatchlistItems = computed(() => {
   return [...movies, ...transformedSeries];
 });
 
-const filterOptions = ["Most Popular", "Highest Rated", "Newest"];
+const filterOptions = [
+  "Action",
+  "Adventure",
+  "Animation",
+  "Comedy",
+  "Crime",
+  "Documentary",
+  "Drama",
+  "Family",
+  "Fantasy",
+  "Mystery",
+  "Science Fiction",
+  "Thriller",
+  "War",
+];
 
-const filteredBy = ref("");
+const filteredBy = computed(() => (route.query.genre as string) || "");
 
 const filteredItems = computed(() => {
-  let items = [...allWatchlistItems.value];
+  let items = allWatchlistItems.value;
 
-  if (filteredBy.value === "Highest Rated") {
-    items = items.sort((a, b) => b.rating - a.rating);
-  } else if (filteredBy.value === "Newest") {
-    items = items.sort((a, b) => b.release_year - a.release_year);
+  if (filteredBy.value) {
+    const genreIds = filterService.getGenreIds(
+      filteredBy.value,
+      genreMappings.value.movieGenres,
+      genreMappings.value.tvGenres
+    );
+
+    if (genreIds.length > 0) {
+      items = items.filter((item) =>
+        item.genres?.some((genreId) => genreIds.includes(Number(genreId)))
+      );
+    }
   }
 
   return items;
 });
 
+const filterActive = ref(false);
+
+const clearFilter = (): void => {
+  if (filterActive.value) {
+    filterActive.value = false;
+
+    const query = { ...route.query };
+    delete query.genre;
+    router.push({ query });
+  }
+};
+
 const onFilterSelect = (option: string): void => {
-  filteredBy.value = option;
+  filterActive.value = true;
+
+  router.push({
+    path: route.path,
+    query: {
+      ...route.query,
+      genre: option,
+    },
+  });
 };
 
 const sortOptions = ["Release date", "A-Z", "Z-A"];
@@ -44,24 +103,37 @@ const sortOptions = ["Release date", "A-Z", "Z-A"];
 const sortedBy = ref("");
 
 const sortedItems = computed(() => {
-  let items = [...filteredItems.value];
-
   if (sortedBy.value === "A-Z") {
-    items = items.sort((a, b) => a.title.localeCompare(b.title));
-  } else if (sortedBy.value === "Z-A") {
-    items = items.sort((a, b) => b.title.localeCompare(a.title));
-  } else if (sortedBy.value === "Release date") {
-    items = items.sort((a, b) => b.release_year - a.release_year);
+    return [...allWatchlistItems.value].sort((a, b) =>
+      a.title.localeCompare(b.title)
+    );
+  }
+  if (sortedBy.value === "Z-A") {
+    return [...allWatchlistItems.value].sort((a, b) =>
+      b.title.localeCompare(a.title)
+    );
+  }
+  if (sortedBy.value === "Release date") {
+    return [...allWatchlistItems.value].sort(
+      (a, b) => b.release_year - a.release_year
+    );
   }
 
-  return items;
+  return allWatchlistItems.value;
 });
 
 const onSortSelect = (option: string): void => {
   sortedBy.value = option;
 };
 
-const listItems = computed(() => sortedItems.value);
+const listItems = computed(() => {
+  const sorted = Array.isArray(sortedItems.value)
+    ? sortedItems.value
+    : sortedItems.value;
+  const filtered = filteredItems.value;
+
+  return sorted.filter((item) => filtered.some((f) => f.title === item.title));
+});
 </script>
 
 <template>
@@ -71,8 +143,16 @@ const listItems = computed(() => sortedItems.value);
     >
       <h1 class="category-header mt-4 fw-bolder">Your Watch List</h1>
       <div class="d-flex gap-3">
-        <Dropdown
+        <Large
+          v-if="filterActive"
           class="list-button"
+          label="Reset"
+          type="dark"
+          :leftIcon="'bi bi-arrow-counterclockwise'"
+          @click="clearFilter"
+        />
+        <Dropdown
+          class="list-button rounded-3"
           label="Filter"
           type="dark"
           :leftIcon="'bi bi-funnel'"
@@ -80,7 +160,7 @@ const listItems = computed(() => sortedItems.value);
           @select="onFilterSelect"
         />
         <Dropdown
-          class="list-button"
+          class="list-button rounded-3"
           label="Sort"
           type="dark"
           :leftIcon="'bi bi-sort-down-alt'"
@@ -107,6 +187,11 @@ const listItems = computed(() => sortedItems.value);
 
 .list-button {
   background-color: var(--green-1) !important;
+  color: var(--white) !important;
+}
+
+.list-button i {
+  color: var(--white) !important;
 }
 
 .list-button:hover {
