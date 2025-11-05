@@ -178,11 +178,11 @@ const loadMore = () => {
 </script>
 
 <template>
-  <section class="list-container px-5 py-4">
+  <section class="list-container min-vh-100 px-5 py-4">
     <div
       class="d-flex align-items-center justify-content-between mb-4 mt-2 mx-2"
     >
-      <h1 class="category-header">{{ reverseKebab(category) }}</h1>
+      <h1 class="category-header fw-bolder">{{ reverseKebab(category) }}</h1>
       <div class="d-flex gap-3">
         <Dropdown
           class="list-button"
@@ -204,7 +204,7 @@ const loadMore = () => {
     </div>
     <AllFiles :items="listItems" />
     
-    <div v-if="showLoadMore" class="load-more-container d-flex justify-content-center align-items-center">
+    <div v-if="showLoadMore" class="load-more-container d-flex justify-content-center align-items-center my-4">
       <Custom
         class="px-5"
         label="Load More"
@@ -219,7 +219,6 @@ const loadMore = () => {
 .category-header {
   color: var(--green-1);
   font-size: 3.25rem;
-  font-weight: bolder;
 }
 
 .list-button {
@@ -228,26 +227,5 @@ const loadMore = () => {
 
 .list-button:hover {
   background-color: var(--green-3) !important;
-}
-
-.list-container {
-  min-height: 100vh;
-}
-
-.list-container,
-.card-grid,
-.d-flex {
-  position: relative;
-  z-index: auto;
-}
-
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  --bs-gutter-x: 0rem;
-}
-
-.load-more-container {
-  margin: 3rem 0;
 }
 </style>
