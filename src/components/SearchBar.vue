@@ -1,0 +1,70 @@
+<script setup lang="ts">
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+const searchText = ref("");
+
+const toKebabCase = (str: string): string => {
+  return str.trim().replace(/\s+/g, "-").toLowerCase();
+};
+
+const handleSearch = (): void => {
+  const kebab = toKebabCase(searchText.value);
+  console.log("Searching for:", kebab);
+  router.push(`/search/${kebab}`);
+};
+</script>
+
+<template>
+  <div
+    class="search-bar d-flex align-items-center gap-0 rounded-2 overflow-hidden me-3"
+  >
+    <input
+      v-model="searchText"
+      type="text"
+      class="search-input fs-6 bg-transparent border-none"
+      placeholder="Search movies, TV..."
+      @keyup.enter="handleSearch"
+    />
+    <button
+      class="btn cursor-pointer fw-bold rounded-2 border-0 d-flex align-items-center py-2 px-3 h-100"
+      type="button"
+      @click="handleSearch"
+    >
+      <i class="bi bi-search"></i>
+    </button>
+  </div>
+</template>
+
+<style scoped>
+.search-bar {
+  background: rgba(224, 224, 224, 0.35);
+  color: var(--silver-6);
+  height: 2.2rem;
+}
+
+.search-input {
+  outline: none;
+  padding: 0.4rem 0.8rem;
+  color: var(--silver-6);
+  width: 160px;
+}
+
+.search-input::placeholder {
+  color: var(--silver-7);
+}
+
+.btn {
+  background: var(--silver-7);
+  color: var(--green-1);
+  border-radius: 0 6px 6px 0;
+}
+
+.btn:hover {
+  background: var(--silver-6);
+  color: var(--green-1);
+  transition: background 0.2s;
+}
+</style>

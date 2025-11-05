@@ -1,0 +1,50 @@
+:root {
+  /* Black & White */
+  --black: #000000;
+  --white: #ffffff;
+
+  /* Greens (dark to light) */
+  --green-1: #0d261c;
+  --green-2: #123926;
+  --green-3: #184d31;
+  --green-4: #1e6040;
+  --green-5: #227653;
+  --green-6: #267550;
+  --green-7: #39a17c;
+  --green-8: #51c49a;
+  --green-9: #6fe6b8;
+  --green-10: #8fffd4;
+  --green-11: #b0ffeb;
+  --green-12: #d7fff7;
+  --green-13: #f0fff0;
+
+  /* Silvers (dark to light) */
+  --silver-1: #2c2c2c;
+  --silver-2: #4d4d4d;
+  --silver-3: #666666;
+  --silver-4: #808080;
+  --silver-5: #a3a3a3;
+  --silver-6: #c0c0c0;
+  --silver-7: #e0e0e0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--black);
+}
+
+#app {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background-color: var(--silver-7);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
