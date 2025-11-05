@@ -87,15 +87,15 @@ const results = computed(() => searchResults.value);
 </script>
 
 <template>
-  <section class="search-results px-5 py-4">
+  <section class="min-vh-100 px-5 py-4">
     <h1
-      class="search-header d-flex mb-5 mt-3 mx-2 justify-content-start align-items-center"
+      class="search-header d-flex mb-5 mt-3 mx-2 justify-content-start align-items-center fw-bolder"
     >
       Results for "{{ searchTerm }}"
     </h1>
     <div
       v-if="isLoading"
-      class="loading-container d-flex justify-content-center align-items-center py-5"
+      class="min-vh-50 d-flex justify-content-center align-items-center py-5"
     >
       <div class="spinner-border text-success" role="status">
         <span class="visually-hidden">Loading...</span>
@@ -115,14 +115,5 @@ const results = computed(() => searchResults.value);
 .search-header {
   color: var(--green-1);
   font-size: 3.25rem;
-  font-weight: bolder;
-}
-
-.loading-container {
-  min-height: 50vh;
-}
-
-.search-results {
-  min-height: 100vh;
 }
 </style>
