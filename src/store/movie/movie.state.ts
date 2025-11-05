@@ -1,3 +1,4 @@
+import type { GenreMapping } from "../../service/filter";
 import type { Movie } from "../../types/auth";
 
 export interface MovieState {
@@ -9,6 +10,7 @@ export interface MovieState {
   currentMovie: Movie | null;
   loading: boolean;
   error: string | null;
+  genreMappings: GenreMapping;
 }
 
 export const state: MovieState = {
@@ -20,4 +22,5 @@ export const state: MovieState = {
   currentMovie: null,
   loading: false,
   error: null,
+  genreMappings: { movieGenres: {}, tvGenres: {} },
 };

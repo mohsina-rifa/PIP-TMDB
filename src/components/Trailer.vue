@@ -45,7 +45,7 @@ const handleSave = () => {
 
 <template>
   <div
-    class="trailer-container position-relative overflow-hidden d-flex text-start align-items-start justify-content-start"
+    class="trailer-container position-relative overflow-hidden d-flex text-start align-items-start justify-content-start h-100"
     v-if="items && items.length"
   >
     <Transition name="slide-fade" mode="out-in">
@@ -89,7 +89,6 @@ const handleSave = () => {
 
 <style scoped>
 .trailer-container {
-  height: 100%;
   background: linear-gradient(to right top, var(--black), var(--green-1));
 }
 

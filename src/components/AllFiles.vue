@@ -11,7 +11,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="card-grid">
+  <div class="card-grid d-grid">
     <div v-for="(item, idx) in items" :key="idx" class="custom-card">
       <Card :title="item.title" :item="item" />
     </div>
@@ -20,7 +20,6 @@ const props = defineProps({
 
 <style scoped>
 .card-grid {
-  display: grid;
   grid-template-columns: repeat(auto-fill, minmax(232px, 1fr));
   gap: 1.2rem;
 }

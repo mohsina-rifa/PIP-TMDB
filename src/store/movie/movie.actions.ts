@@ -1,4 +1,5 @@
 import axios from "../../service/api";
+import { filterService } from "../../service/filter";
 import type { MovieState } from "./movie.state";
 import type { Movie } from "../../types/auth";
 
@@ -162,6 +163,17 @@ export const actions = {
       throw error;
     } finally {
       this.loading = false;
+    }
+  },
+  
+  async fetchGenreMappings(this: MovieState) {
+    try {
+      const mappings = await filterService.fetchGenreMappings();
+      this.genreMappings = mappings;
+      return mappings;
+    } catch (error: any) {
+      console.error("Error fetching genre mappings:", error);
+      throw error;
     }
   },
 

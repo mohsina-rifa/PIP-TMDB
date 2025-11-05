@@ -26,7 +26,7 @@ const selectOption = (option: string): void => {
 <template>
   <div class="dropdown-wrapper position-relative d-inline-block">
     <button
-      class="btn dropdown-btn d-flex align-items-center fw-medium border-0"
+      class="btn dropdown-btn d-flex align-items-center fw-medium border-0 cursor-pointer"
       :class="`btn-${props.type}`"
       type="button"
       @click="toggleMenu"
@@ -44,11 +44,11 @@ const selectOption = (option: string): void => {
       ></i>
       <i class="bi bi-chevron-down ms-2"></i>
     </button>
-    <ul v-if="showMenu" class="dropdown-menu position-absolute py-2 list-unstyled m-0 d-block">
+    <ul v-if="showMenu" class="dropdown-menu position-absolute py-2 list-unstyled m-0 d-block rounded-3">
       <li
         v-for="option in props.options"
         :key="option"
-        class="dropdown-item py-2 px-3"
+        class="dropdown-item py-2 px-3 cursor-pointer rounded-2"
         @click="selectOption(option)"
       >
         {{ option }}
@@ -69,7 +69,6 @@ const selectOption = (option: string): void => {
   background: var(--green-1);
   color: var(--white);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
   transition: background 0.2s, color 0.2s;
 }
 
@@ -86,9 +85,7 @@ const selectOption = (option: string): void => {
 
 .dropdown-menu {
   top: 110%;
-  left: 0;
   background: var(--green-1);
-  border-radius: 8px;
   min-width: 140px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   z-index: 1001;
@@ -96,9 +93,7 @@ const selectOption = (option: string): void => {
 
 .dropdown-item {
   color: var(--white);
-  cursor: pointer;
   transition: background 0.15s;
-  border-radius: 6px;
 }
 
 .dropdown-item:hover {
