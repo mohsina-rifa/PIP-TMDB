@@ -65,11 +65,11 @@ const listItems = computed(() => sortedItems.value);
 </script>
 
 <template>
-  <section class="list-container px-5 py-4">
+  <section class="min-vh-100 px-5 py-4">
     <div
       class="d-flex align-items-center justify-content-between mb-4 mt-2 mx-2"
     >
-      <h1 class="category-header mt-4">Your Watch List</h1>
+      <h1 class="category-header mt-4 fw-bolder">Your Watch List</h1>
       <div class="d-flex gap-3">
         <Dropdown
           class="list-button"
@@ -103,7 +103,6 @@ const listItems = computed(() => sortedItems.value);
 .category-header {
   color: var(--green-1);
   font-size: 3.25rem;
-  font-weight: bolder;
 }
 
 .list-button {
@@ -112,22 +111,5 @@ const listItems = computed(() => sortedItems.value);
 
 .list-button:hover {
   background-color: var(--green-3) !important;
-}
-
-.list-container {
-  min-height: 100vh;
-}
-
-.list-container,
-.card-grid,
-.d-flex {
-  position: relative;
-  z-index: auto;
-}
-
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  --bs-gutter-x: 0rem;
 }
 </style>
