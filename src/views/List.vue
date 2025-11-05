@@ -4,6 +4,7 @@ import type { Movie } from "../types/auth";
 import { useRoute, useRouter } from "vue-router";
 import Dropdown from "../components/buttons/Dropdown.vue";
 import AllFiles from "../components/AllFiles.vue";
+import Custom from "../components/buttons/Custom.vue";
 import { filterService } from "../service/filter";
 import { useMovieStore } from "../store/movie/movie.store";
 import { useSeriesStore } from "../store/series/series.store";
@@ -17,6 +18,9 @@ const seriesStore = useSeriesStore();
 const watchlistStore = useWatchlistStore();
 
 const category = route.params.category as string;
+
+const itemsPerPage = ref(21);
+const currentPage = ref(1);
 
 onMounted(async () => {
   genreMappings.value = await movieStore.fetchGenreMappings();
@@ -116,6 +120,7 @@ const filteredItems = computed(() => {
 });
 
 const onFilterSelect = (option: string): void => {
+  currentPage.value = 1;
   router.push({
     path: route.path,
     query: {
@@ -141,21 +146,35 @@ const sortedItems = computed(() => {
     );
   }
   
-  return categoryItems;
+  return categoryItems.value;
 });
 
 const onSortSelect = (option: string): void => {
+  currentPage.value = 1;
   sortedBy.value = option;
 };
 
-const listItems = computed(() => {
+const fullListItems = computed(() => {
   const sorted = Array.isArray(sortedItems.value)
     ? sortedItems.value
-    : sortedItems.value.value;
+    : sortedItems.value;
   const filtered = filteredItems.value;
 
   return sorted.filter((item) => filtered.some((f) => f.title === item.title));
 });
+
+const listItems = computed(() => {
+  const totalItems = currentPage.value * itemsPerPage.value;
+  return fullListItems.value.slice(0, totalItems);
+});
+
+const showLoadMore = computed(() => {
+  return fullListItems.value.length > listItems.value.length;
+});
+
+const loadMore = () => {
+  currentPage.value += 1;
+};
 </script>
 
 <template>
@@ -184,6 +203,15 @@ const listItems = computed(() => {
       </div>
     </div>
     <AllFiles :items="listItems" />
+    
+    <div v-if="showLoadMore" class="load-more-container d-flex justify-content-center align-items-center">
+      <Custom
+        class="px-5"
+        label="Load More"
+        type="secondary"
+        @click="loadMore"
+      />
+    </div>
   </section>
 </template>
 
@@ -217,5 +245,9 @@ const listItems = computed(() => {
   display: flex;
   flex-wrap: wrap;
   --bs-gutter-x: 0rem;
+}
+
+.load-more-container {
+  margin: 3rem 0;
 }
 </style>
