@@ -13,6 +13,8 @@ export const getters = {
   
   getCurrentSeries: (state: SeriesState) => state.currentSeries,
   
+  getCurrentSeriesTrailer: (state: SeriesState) => state.currentSeriesTrailer,
+  
   isLoading: (state: SeriesState) => state.loading,
   
   getError: (state: SeriesState) => state.error,

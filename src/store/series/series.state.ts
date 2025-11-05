@@ -7,6 +7,7 @@ export interface SeriesState {
   topRatedSeries: Series[];
   upcomingSeries: Series[];
   currentSeries: Series | null;
+  currentSeriesTrailer: string | null;
   loading: boolean;
   error: string | null;
 }
@@ -18,6 +19,7 @@ export const state: SeriesState = {
   topRatedSeries: [],
   upcomingSeries: [],
   currentSeries: null,
+  currentSeriesTrailer: null,
   loading: false,
   error: null,
 };
