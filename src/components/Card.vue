@@ -56,35 +56,35 @@ const handleCardClick = () => {
 
 <template>
   <div
-    class="card rounded-3 shadow overflow-hidden"
+    class="card d-flex flex-column m-2 rounded-3 shadow overflow-hidden"
     @click="handleCardClick"
     :class="{ clickable: !isCast && !isEpisode }"
   >
     <!-- Image Section -->
-    <div class="card-img px-3 pt-3">
+    <div class="card-img w-100 flex-shrink-0 overflow-hidden px-3 pt-3">
       <img
         v-if="isCast"
         :src="cast.image || getDefaultCastImage(cast.gender)"
         alt="Cast"
-        class="w-100 h-100 object-fit-cover"
+        class="w-100 h-100 w-100 h-100 object-fit-cover object-position-center"
       />
       <img
         v-else-if="isEpisode"
         :src="episode.thumbnail || '../thumbnail.png'"
         alt="Episode Thumbnail"
-        class="w-100 h-100 object-fit-cover"
+        class="w-100 h-100 w-100 h-100 object-fit-cover object-position-center"
       />
       <img
         v-else
         :src="item.thumbnail || '../thumbnail.png'"
         alt="Movie Thumbnail"
-        class="w-100 h-100 object-fit-cover"
+        class="w-100 h-100 w-100 h-100 object-fit-cover object-position-center"
       />
     </div>
 
     <!-- Title Section -->
-    <div class="card-body p-3">
-      <div class="card-title text-center">
+    <div class="card-body p-3 flex-fill d-flex align-items-center justify-content-center">
+      <div class="card-title text-center fs-6 fw-semibold overflow-hidden text-truncate">
         <span v-if="isCast" class="d-flex flex-column">
           <span>{{ cast.name }}</span>
           <span>{{ cast.role }}</span>
@@ -108,9 +108,6 @@ const handleCardClick = () => {
     rgba(13, 38, 28, 0.75)
   );
   transition: transform 0.3s cubic-bezier(0.4, 0.2, 0.2, 1), box-shadow 0.25s;
-  display: flex;
-  flex-direction: column;
-  margin: 0.5rem;
 }
 
 .card.clickable {
@@ -124,35 +121,17 @@ const handleCardClick = () => {
 }
 
 .card-img {
-  width: 100%;
   height: 220px;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.card-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
 }
 
 .card-body {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   min-height: 60px;
 }
 
 .card-title {
   color: var(--white) !important;
-  font-size: 0.875rem;
-  font-weight: 600;
   line-height: 1.3;
   max-height: 2.6em;
-  overflow: hidden;
-  text-overflow: ellipsis;
   display: -webkit-box;
   line-clamp: 2;
   -webkit-line-clamp: 2;
