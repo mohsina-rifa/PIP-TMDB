@@ -4,7 +4,7 @@ A simple **Vue.js** frontend app inspired by **The Movie Database (TMDB)** that 
 
 ---
 
-## 🚀 Features
+## 📋 Features
 - 🔍 Search movies & TV shows (with instant suggestions)
 - 🎞️ Browse categories — Trending, Popular, Top Rated, Upcoming
 - 📄 Movie & TV detail pages with cast, trailer, and overview
@@ -23,3 +23,6 @@ A simple **Vue.js** frontend app inspired by **The Movie Database (TMDB)** that 
 - **TMDB API**
 
 ---
+
+## 🚀 Deployment 
+https://anish0m-tmdb.netlify.app/
