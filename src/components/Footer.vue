@@ -3,11 +3,11 @@
 <template>
   <div id="about" class="text-center p-5">
       <h2 class="fs-1">Trying to Reach Out?</h2>
-      <p class="fs-3">Feel free to reach out to me on my social media handles.</p>
+      <p class="fs-3">Feel free to reach out on our social media.</p>
       <div class="d-flex justify-content-center gap-5 mt-4">
-        <a href="https://www.facebook.com/mohsina452" class="bi bi-facebook fs-2 text-decoration-none"></a>
-        <a href="https://www.x.com/anish0m" class="bi bi-twitter-x fs-2 text-decoration-none"></a>
-        <a href="mailto:mohsina.tabassum.rifa@gmail.com" class="bi bi-envelope fs-2 text-decoration-none"></a>
+        <a href="https://www.facebook.com/themoviedb/" class="bi bi-facebook fs-2 text-decoration-none"></a>
+        <a href="https://x.com/themoviedb?lang=en" class="bi bi-twitter-x fs-2 text-decoration-none"></a>
+        <a href="mailto:support@themoviedb.org" class="bi bi-envelope fs-2 text-decoration-none"></a>
       </div>
     </div>
 </template>
